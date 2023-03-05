@@ -6,6 +6,10 @@
   padding: 0 30px;
 }
 
+.content {
+  margin-top: 90px;
+}
+
 .img-content {
   height: 300px;
   width: 100%;
@@ -38,4 +42,14 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.list-link {
+}
+
+.link-item {
+  color: #000;
+  text-decoration: none;
+  padding: 5px 8px;
+  font-size: 14px;
 }

@@ -9,7 +9,8 @@
             $arr = $this -> UrlProcess();
      
             // Controller
-            if( file_exists("../mvc/controllers/". $arr[0] .".php") ){
+            if( file_exists("../mvc/controllers/". $arr[0] ."Controller.php") ){
+                $arr[0] = $arr[0] . 'Controller';
                 $this -> controller = $arr[0];
                 unset($arr[0]);
             }
@@ -26,7 +27,6 @@
     
             // Params
             $this -> params = $arr ? array_values($arr) : [];
-    
             call_user_func_array([$this -> controller, $this -> action], $this -> params );
     
         }

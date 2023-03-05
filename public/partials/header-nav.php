@@ -24,7 +24,7 @@
 
             </ul>
             <div class="authentication">
-                <a href="#" class='login'>ĐĂNG NHẬP</a>
+                <a href="/user/login" class='login'>ĐĂNG NHẬP</a>
             </div>
         </div>
     </div>

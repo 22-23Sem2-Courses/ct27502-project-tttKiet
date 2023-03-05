@@ -1,0 +1,24 @@
+#header {
+  /* background-image: url(../images/bg1-header.jpg); */
+  background: linear-gradient(to right, #000000b4, #000000b4),
+    url(../images/bg1-header.jpg) no-repeat center/cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  display: flex;
+  align-items: center;
+  min-height: 662px;
+  font-size: 14px;
+  box-shadow: -1px 0px 3px 1px rgba(0, 0, 0, 0.63);
+  -webkit-box-shadow: -1px 0px 3px 1px rgba(0, 0, 0, 0.63);
+  -moz-box-shadow: -1px 0px 3px 1px rgba(0, 0, 0, 0.63);
+  animation: change-background 16s linear infinite;
+}
+
+@keyframes change-background {
+  to {
+    background: linear-gradient(to right, #000000b4, #000000b4),
+      url(../images/bg2-header.jpg) no-repeat center/cover;
+  }
+}

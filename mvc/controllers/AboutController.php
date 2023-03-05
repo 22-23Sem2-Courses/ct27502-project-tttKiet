@@ -1,9 +1,10 @@
 <?php
 
-class About extends Controller
+class AboutController extends Controller
 {
     function index()
     {
         $this->view("about");
     }
+    
 }

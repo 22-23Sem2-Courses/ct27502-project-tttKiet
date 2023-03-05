@@ -16,25 +16,21 @@
 
     <!-- Css -->
     <link rel="stylesheet" href="./assets/css/index.css">
-    <link rel="stylesheet" href="./assets/css/home.css">
+    <link rel="stylesheet" href="./assets/css/header-nav.css">
     <link rel="stylesheet" href="./assets/css/about.css">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://kit.fontawesome.com/7ceef37285.css" crossorigin="anonymous">
 </head>
 
 <body>
     <div id="root">
-        <!-- Header -->
         <header id="header">
             <?php
             include "./partials/header-nav.php"
             ?>
         </header>
 
-        <!-- Main -->
         <main id="main" class="">
-            <div class="content container mt-4">
+            <div class="content container ">
                 <div class="row intro-content">
                     <h1 class="section-title text-center mb-5">
                         <strong>Tổng quan về Football Order</strong>
@@ -51,34 +47,41 @@
                         <div class="col-5 col-img">
                             <img src="https://cdn.pixabay.com/photo/2017/08/10/01/38/grass-2616911_960_720.jpg" alt="" class="img-content img-fluid">
                         </div>
-                    </div>
 
-                    <div class="row mb-5">
-                        <div class="col-5 col-img">
-                            <img src="https://cdn.pixabay.com/photo/2017/09/23/11/43/football-2778583__340.jpg" alt="" class="img-content img-fluid ">
-                        </div>
-                        <div class="col-7 text-col">
-                            <h1 class="text-content-title">
-                                Giới thiệu về Football Order
-                            </h1>
-                            <p class="text-content-description">
-                                Football Order là một trang web đặt sân bóng đá online cho người chơi yêu thích môn thể thao vua. Với Football Order, bạn có thể dễ dàng tìm kiếm và đặt sân bóng đá ở bất kỳ địa điểm nào với chất lượng tốt nhất và giá cả hợp lý.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="row mb-5">
-                        <div class="col-7 text-col">
-                            <h1 class="text-content-title">
-                                Bạn nhận được gì từ Fooball Order
-                            </h1>
-                            <p class="text-content-description">
-                                Chúng tôi cung cấp cho người dùng các tính năng tiện lợi và đơn giản như tìm kiếm, đặt sân và thanh toán trực tuyến với nhiều phương thức thanh toán khác nhau. Đồng thời, Football-order cũng cung cấp thông tin chi tiết về sân bóng đá như kích thước sân, giá cả, địa chỉ, hình ảnh, đánh giá từ người chơi và nhiều thông tin khác. Chúng tôi cam kết mang đến cho người dùng trải nghiệm đặt sân bóng đá tuyệt vời nhất với dịch vụ chuyên nghiệp và thân thiện.
-                            </p>
+                        <div class="row mb-5">
+                            <div class="col-5 col-img">
+                                <img src="https://cdn.pixabay.com/photo/2017/09/23/11/43/football-2778583__340.jpg" alt="" class="img-content img-fluid ">
+                            </div>
+                            <div class="col-7 text-col">
+                                <h1 class="text-content-title">
+                                    Giới thiệu về Football Order
+                                </h1>
+                                <p class="text-content-description">
+                                    Football Order là một trang web đặt sân bóng đá online cho người chơi yêu thích môn
+                                    thể thao vua. Với Football Order, bạn có thể dễ dàng tìm kiếm và đặt sân bóng đá ở
+                                    bất kỳ địa điểm nào với chất lượng tốt nhất và giá cả hợp lý.
+                                </p>
+                            </div>
                         </div>
 
-                        <div class="col-5  col-img">
-                            <img src="https://cdn.pixabay.com/photo/2020/04/02/11/37/football-pitch-4994688__340.jpg" alt="" class="img-content img-fluid ">
+                        <div class="row mb-5">
+                            <div class="col-7 text-col">
+                                <h1 class="text-content-title">
+                                    Bạn nhận được gì từ Fooball Order
+                                </h1>
+                                <p class="text-content-description">
+                                    Chúng tôi cung cấp cho người dùng các tính năng tiện lợi và đơn giản như tìm kiếm,
+                                    đặt sân và thanh toán trực tuyến với nhiều phương thức thanh toán khác nhau. Đồng
+                                    thời, Football-order cũng cung cấp thông tin chi tiết về sân bóng đá như kích thước
+                                    sân, giá cả, địa chỉ, hình ảnh, đánh giá từ người chơi và nhiều thông tin khác.
+                                    Chúng tôi cam kết mang đến cho người dùng trải nghiệm đặt sân bóng đá tuyệt vời nhất
+                                    với dịch vụ chuyên nghiệp và thân thiện.
+                                </p>
+                            </div>
+
+                            <div class="col-5  col-img">
+                                <img src="https://cdn.pixabay.com/photo/2020/04/02/11/37/football-pitch-4994688__340.jpg" alt="" class="img-content img-fluid ">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -100,12 +103,18 @@
                 </div>
             </div>
         </main>
-
         <!-- Footer -->
         <footer>
             <div class="footer-wrap container">
-                <div class="row">
-                    link
+                <div class="row ">
+                    <div class="list-link text-center">
+                        <a href="" class="link-item">Trang chủ</a>
+                        <a href="" class="link-item">Giới thiệu</a>
+                        <a href="" class="link-item">Đặt sân</a>
+                        <a href="" class="link-item">Đánh giá</a>
+                        <a href="" class="link-item">Đăng nhập</a>
+
+                    </div>
                 </div>
                 <hr>
                 <div class="row">

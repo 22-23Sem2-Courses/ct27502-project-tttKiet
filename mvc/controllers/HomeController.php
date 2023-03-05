@@ -1,6 +1,6 @@
 <?php 
 
-    class Home extends Controller {
+    class HomeController extends Controller {
         function index() {
             $this -> view("home");
         }
