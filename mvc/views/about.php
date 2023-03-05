@@ -20,8 +20,6 @@
         <link rel="stylesheet" href="./assets/css/header-nav.css">
         <link rel="stylesheet" href="./assets/css/about.css">
 
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="https://kit.fontawesome.com/7ceef37285.css" crossorigin="anonymous">
     </head>
 
     <body>

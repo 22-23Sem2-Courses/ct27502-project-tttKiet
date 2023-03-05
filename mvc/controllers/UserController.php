@@ -1,10 +1,11 @@
 <?php
 
-class User extends Controller
+class UserController extends Controller
 {
     function index()
     {
-        $this->view("login");
+        $this->view("home");
+
     }
 
     function login()
