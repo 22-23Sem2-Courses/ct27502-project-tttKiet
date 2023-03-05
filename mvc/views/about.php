@@ -84,26 +84,21 @@
                     <h1 class="section-title text-center my-5">
                         <strong>Liên hệ với chúng tôi</strong>
                     </h1>
-                    <div class="col-8 col-img">
+                    <div class="col-7 col-img">
                         <img src="https://images.pexels.com/photos/399187/pexels-photo-399187.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" class="img-content img-fluid">
                     </div>
-                    <div class="col-4 text-center list-contact">
+                    <div class="col-5 text-center list-contact">
                         <ul class="">
-                            <li class="contact-text"> Email: <span class="badge rounded-pill text-bg-success">admin@gmail.com</span></li>
-                            <li class="contact-text"><span class="badge rounded-pill text-bg-success">SĐT: 0123456789</span></li>
-                            <li class="contact-text"><span class="badge rounded-pill text-bg-success">Địa chỉ: Khu II, Đ. 3/2, Xuân Khánh, Ninh Kiều, Cần Thơ</span></li>
-                            <li class="contact-text"><span class="badge rounded-pill text-bg-success">admin@gmail.com</span></li>
+                            <li class="contact-text py-1"><i class="fa-sharp fa-solid fa-envelope"></i> Email: <span class="badge rounded-pill text-bg-success">admin@gmail.com</span></li>
+                            <li class="contact-text py-1"><i class="fa-sharp fa-solid fa-phone"></i> SĐT: <span class="badge rounded-pill text-bg-success">0123456789</span></li>
+                            <li class="contact-text py-1"><i class="fa-brands fa-facebook"></i> Facebook: <span class="badge rounded-pill text-bg-success">facebook.com/ctu</span></li>
+                            <li class="contact-text py-1"><i class="fa-sharp fa-solid fa-location-dot"></i> Địa chỉ: <span class="badge rounded-pill text-bg-success">Khu II, Đ. 3/2, Xuân Khánh, Ninh Kiều, Cần Thơ</span></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </main>
-        <!-- TEST -->
-        <footer>
-            <div>
-                <h1>Footer</h1>
-            </div>
-        </footer>
+
     </div>
 </body>
 
