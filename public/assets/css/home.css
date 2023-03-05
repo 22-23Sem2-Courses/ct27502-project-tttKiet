@@ -1,4 +1,6 @@
 #header {
+  background-color: rgba(255, 0, 0, 0.929);
+  font-size: 14px;
 }
 
 .header__nav {
@@ -15,7 +17,7 @@
 }
 
 .img {
-  width: 100%;
+  width: 80%;
   object-fit: cover;
   object-position: center;
   border-radius: 4px;
@@ -36,8 +38,8 @@
   justify-content: space-around;
 }
 
-.header__list--item {
-}
+/* .header__list--item {
+} */
 
 .header__item--link {
   display: block;
@@ -45,4 +47,5 @@
   padding: 12px 24px;
   font-size: 14px;
   color: #3e4bffa4;
+  color: #63e804a4;
 }
