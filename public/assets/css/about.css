@@ -1,0 +1,41 @@
+.text-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 30px;
+}
+
+.img-content {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.text-content-description {
+  font-size: 18px;
+  line-height: 30px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.section-title {
+  font-size: 35px;
+}
+
+.contact-text {
+  font-size: 20px;
+}
+/* body {
+  background-color: rgba(3, 99, 3, 0.205);
+} */
+
+.list-contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
