@@ -25,12 +25,14 @@
 
 <body>
     <div id="root">
+        <!-- Header -->
         <header id="header">
             <?php
             include "./partials/header-nav.php"
             ?>
         </header>
 
+        <!-- Main -->
         <main id="main" class="">
             <div class="content container mt-4">
                 <div class="row intro-content">
@@ -99,9 +101,19 @@
             </div>
         </main>
 
+        <!-- Footer -->
+        <footer>
+            <div class="footer-wrap container">
+                <div class="row">
+                    link
+                </div>
+                <hr>
+                <div class="row">
+                    icon
+                </div>
+            </div>
+        </footer>
     </div>
 </body>
 
 </html>
-
-<!-- Pull LTV -->
