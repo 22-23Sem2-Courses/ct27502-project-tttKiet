@@ -6,6 +6,10 @@
   padding: 0 30px;
 }
 
+.content {
+  margin-top: 90px;
+}
+
 .img-content {
   height: 300px;
   width: 100%;
@@ -27,6 +31,10 @@ ul {
   font-size: 35px;
 }
 
+.contact {
+  padding-bottom: 30px;
+}
+
 .contact-text {
   font-size: 20px;
 }
@@ -38,4 +46,9 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.carousel-item,
+.carousel-inner {
+  border-radius: 10px !important;
 }

@@ -1,64 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Football Order</title>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Order</title>
 
 
-        <!-- Icon -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <!-- Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 
-        <!-- Bootstrap 5-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- Bootstrap 5-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
-        <!-- Css -->
-        <link rel="stylesheet" href="./assets/css/index.css">
-        <link rel="stylesheet" href="./assets/css/header-nav.css">
-        <link rel="stylesheet" href="./assets/css/about.css">
+    <!-- Css -->
+    <link rel="stylesheet" href="./assets/css/index.css">
+    <link rel="stylesheet" href="./assets/css/header-nav.css">
+    <link rel="stylesheet" href="./assets/css/about.css">
+    <link rel="stylesheet" href="./assets/css/footer.css">
 
-    </head>
+</head>
 
-    <body>
-        <div id="root">
-            <header id="header">
-                <?php
+<body>
+    <div id="root">
+        <header id="header">
+            <?php
             include "./partials/header-nav.php"
             ?>
-            </header>
+        </header>
 
-            <main id="main" class="">
-                <div class="content container mt-4">
-                    <div class="row intro-content">
-                        <h1 class="section-title text-center mb-5">
-                            <strong>Tổng quan về Football Order</strong>
-                        </h1>
-                        <div class="row mb-5">
-                            <div class="col-7 text-col">
-                                <h1 class="text-content-title">
-                                    Bạn có biết ?
-                                </h1>
-                                <p class="text-content-description">
-                                    Trước khi có các trang web đặt sân bóng online như hiện nay, việc đặt sân bóng đá
-                                    thường gặp phải nhiều khó khăn và phiền toái. Đầu tiên, người chơi phải tốn nhiều
-                                    thời gian và công sức để tìm kiếm các sân bóng đá phù hợp với nhu cầu và yêu cầu của
-                                    mình. Thường xuyên phải liên lạc và trực tiếp đến sân để hỏi thông tin và kiểm tra
-                                    tình trạng sân trước khi đặt sân.
-                                </p>
-                            </div>
-                            <div class="col-5 col-img">
-                                <img src="https://cdn.pixabay.com/photo/2017/08/10/01/38/grass-2616911_960_720.jpg"
-                                    alt="" class="img-content img-fluid">
-                            </div>
+        <main id="main" class="">
+            <div class="content container ">
+                <div class="row intro-content">
+                    <h1 class="section-title text-center mb-5">
+                        <strong>Tổng quan về Football Order</strong>
+                    </h1>
+                    <div class="row mb-5">
+                        <div class="col-7 text-col">
+                            <h1 class="text-content-title">
+                                Bạn có biết ?
+                            </h1>
+                            <p class="text-content-description">
+                                Trước khi có các trang web đặt sân bóng online như hiện nay, việc đặt sân bóng đá thường gặp phải nhiều khó khăn và phiền toái. Đầu tiên, người chơi phải tốn nhiều thời gian và công sức để tìm kiếm các sân bóng đá phù hợp với nhu cầu và yêu cầu của mình. Thường xuyên phải liên lạc và trực tiếp đến sân để hỏi thông tin và kiểm tra tình trạng sân trước khi đặt sân.
+                            </p>
+                        </div>
+                        <div class="col-5 col-img">
+                            <img src="https://cdn.pixabay.com/photo/2017/08/10/01/38/grass-2616911_960_720.jpg" alt="" class="img-content img-fluid">
                         </div>
 
                         <div class="row mb-5">
                             <div class="col-5 col-img">
-                                <img src="https://cdn.pixabay.com/photo/2017/09/23/11/43/football-2778583__340.jpg"
-                                    alt="" class="img-content img-fluid ">
+                                <img src="https://cdn.pixabay.com/photo/2017/09/23/11/43/football-2778583__340.jpg" alt="" class="img-content img-fluid ">
                             </div>
                             <div class="col-7 text-col">
                                 <h1 class="text-content-title">
@@ -88,43 +81,49 @@
                             </div>
 
                             <div class="col-5  col-img">
-                                <img src="https://cdn.pixabay.com/photo/2020/04/02/11/37/football-pitch-4994688__340.jpg"
-                                    alt="" class="img-content img-fluid ">
+                                <img src="https://cdn.pixabay.com/photo/2020/04/02/11/37/football-pitch-4994688__340.jpg" alt="" class="img-content img-fluid ">
                             </div>
                         </div>
                     </div>
-                    <div class="row contact mb-5">
-                        <h1 class="section-title text-center my-5">
-                            <strong>Liên hệ với chúng tôi</strong>
-                        </h1>
-                        <div class="col-8 col-img">
-                            <img src="https://images.pexels.com/photos/399187/pexels-photo-399187.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                                alt="" class="img-content img-fluid">
-                        </div>
-                        <div class="col-4 text-center list-contact">
-                            <ul class="">
-                                <li class="contact-text"> Email: <span
-                                        class="badge rounded-pill text-bg-success">admin@gmail.com</span></li>
-                                <li class="contact-text"><span class="badge rounded-pill text-bg-success">SĐT:
-                                        0123456789</span></li>
-                                <li class="contact-text"><span class="badge rounded-pill text-bg-success">Địa chỉ: Khu
-                                        II, Đ. 3/2, Xuân Khánh, Ninh Kiều, Cần Thơ</span></li>
-                                <li class="contact-text"><span
-                                        class="badge rounded-pill text-bg-success">admin@gmail.com</span></li>
-                            </ul>
+                </div>
+                <div class="row contact mb-5">
+                    <h1 class="section-title text-center my-5">
+                        <strong>Liên hệ với chúng tôi</strong>
+                    </h1>
+                    <div class="col-7 col-img">
+                        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="https://images.pexels.com/photos/399187/pexels-photo-399187.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="d-block img-content img-fluid" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://images.pexels.com/photos/114296/pexels-photo-114296.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="d-block img-content img-fluid" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="d-block img-content img-fluid" alt="...">
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <div class="col-5 text-center list-contact">
+                        <ul class="">
+                            <li class="contact-text py-2"><i class="fa-sharp fa-solid fa-envelope"></i> Email: <span class="badge rounded-pill text-bg-success">admin@gmail.com</span></li>
+                            <li class="contact-text py-2"><i class="fa-sharp fa-solid fa-phone"></i> SĐT: <span class="badge rounded-pill text-bg-success">0123456789</span></li>
+                            <li class="contact-text py-2"><i class="fa-brands fa-facebook"></i> Facebook: <span class="badge rounded-pill text-bg-success">facebook.com/ctu</span></li>
+                            <li class="contact-text py-2"><i class="fa-sharp fa-solid fa-location-dot"></i> Địa chỉ: <span class="badge rounded-pill text-bg-success">Khu II, Đ. 3/2, Xuân Khánh, Ninh Kiều, Cần Thơ</span></li>
+                        </ul>
+                    </div>
                 </div>
-            </main>
-            <!-- TEST -->
-            <footer>
-                <div>
-                    <h1>Footer</h1>
-                </div>
-            </footer>
-        </div>
-    </body>
+            </div>
+        </main>
+        <!-- Footer -->
+        <footer>
+            <?php
+            include "./partials/footer.php"
+            ?>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
 
 </html>
-
-<!-- Pull LTV -->
