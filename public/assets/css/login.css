@@ -1,13 +1,13 @@
-#header {
+#main {
   /* background-image: url(../images/bg1-header.jpg); */
   background: linear-gradient(to right, #000000b4, #000000b4),
     url(../images/bg1-header.jpg) no-repeat center/cover;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-
   display: flex;
   align-items: center;
+  padding-top: 78px;
   min-height: 662px;
   font-size: 14px;
   box-shadow: -1px 0px 3px 1px rgba(0, 0, 0, 0.63);
@@ -21,4 +21,93 @@
     background: linear-gradient(to right, #000000b4, #000000b4),
       url(../images/bg2-header.jpg) no-repeat center/cover;
   }
+}
+
+form[name="form-login"] {
+  background-color: #fff;
+  min-height: 400px;
+  width: 100%;
+  padding: 20px 24px;
+  border-radius: 4px;
+}
+
+form[name="form-login"] h2 {
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: 500;
+  color: #000000be;
+}
+
+.text-hi {
+  color: orange;
+  font-size: 20px;
+}
+
+.form-inp {
+  margin-top: 10px;
+}
+
+.form-gr {
+  padding: 10px;
+}
+
+.form-gr label {
+  color: #868e96;
+  font-size: 16px;
+  width: 100%;
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+
+.form-gr input {
+  width: 100%;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  outline: none;
+  transition: all 0.3s linear;
+}
+
+.form-gr input:focus {
+  border: 1px solid #000;
+}
+
+.form-submit {
+  padding: 10px;
+}
+
+.btn-submit {
+  padding: 8px 0;
+  width: 100%;
+  font-size: 14px;
+}
+
+.form-miss {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-miss span {
+  font-size: 12px;
+  color: #868e96;
+}
+
+.img {
+  width: 100%;
+  max-height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #fff;
+  overflow: hidden;
+}
+
+.img > img {
+  width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.7;
 }
