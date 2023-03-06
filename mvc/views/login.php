@@ -40,12 +40,16 @@
                                 <div class="form-inp">
                                     <div class="form-gr">
                                         <label for='email'>Email: </label>
-                                        <input id="email" placeholder="vd: abcxyz123@gmail.com" required type="email">
+                                        <input id="email" name="email" placeholder="vd: abcxyz123@gmail.com" required
+                                            type="email">
+                                        <span><?php $errMessageEmail ?></span>
                                     </div>
 
                                     <div class="form-gr">
                                         <label for='pass'>Mật khẩu: </label>
-                                        <input id="pass" placeholder="***" type="password" required>
+                                        <input id="pass" name='pass' placeholder="***" type="password" required>
+                                        <span><?php $errMessagePass ?></span>
+
                                     </div>
                                 </div>
 

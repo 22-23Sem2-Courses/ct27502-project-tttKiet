@@ -1,7 +1,7 @@
 <?php 
 
     class DB {
-        public $connect;
+        public $pdo;
         protected $servername = "localhost";
         protected $username = "root";
         protected $password = "";
@@ -9,10 +9,8 @@
 
         function __construct() {
             try {
-                echo 'Bắt đầu kết nối đến CSDL! ------------- ';
-                $this -> connect = new PDO('mysql:host='. $this -> servername .';dbname='. $this -> dbname, $this -> username, $this -> password);
-                $this -> connect -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                echo 'Kết nối đến CSDL thành công!';
+                $this -> pdo = new PDO('mysql:host='. $this -> servername .';dbname='. $this -> dbname, $this -> username, $this -> password);
+                $this -> pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 
             } catch (PDOException $e) {
                 echo 'Không thể kết nối đến CSDL';

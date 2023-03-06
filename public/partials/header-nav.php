@@ -24,7 +24,41 @@
 
             </ul>
             <div class="authentication">
-                <a href="/user/login" class='login'>ĐĂNG NHẬP</a>
+
+                <?php
+                    if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+                        echo "
+                            <a href='/user/login' class='login'>
+                                ĐĂNG NHẬP
+                            </a>
+                        ";
+                    } else {
+                        if(isset($_SESSION['user'])) {
+                            echo "
+                                <div href='/user/login' class='user'>
+                                    {$_SESSION['user']['email']}
+            
+                                     <div class='icon-down'>
+                                        <i class='fa-solid fa-chevron-down'></i>
+                                        <div class='menu__user'>
+                                            <div class='menu__user--item'>
+                                                Tài khoản của tôi
+                                            </div>
+                                            <div class='menu__user--item'>
+                                                Xem lịch đặt sân
+                                            </div>
+                                            <div class='menu__user--item'>
+                                                <a href='/?logout=true'>Đăng xuất</a>
+                                            </div>
+                                         </div>
+                                     </div>
+                                 </div>
+                            ";
+                        }
+
+                    }
+                ?>
+
             </div>
         </div>
     </div>
