@@ -107,10 +107,10 @@
                     </div>
                     <div class="col-5 text-center list-contact">
                         <ul class="">
-                            <li class="contact-text py-2"><i class="fa-sharp fa-solid fa-envelope"></i> Email: <span class="badge rounded-pill text-bg-success">admin@gmail.com</span></li>
-                            <li class="contact-text py-2"><i class="fa-sharp fa-solid fa-phone"></i> SĐT: <span class="badge rounded-pill text-bg-success">0123456789</span></li>
-                            <li class="contact-text py-2"><i class="fa-brands fa-facebook"></i> Facebook: <span class="badge rounded-pill text-bg-success">facebook.com/ctu</span></li>
-                            <li class="contact-text py-2"><i class="fa-sharp fa-solid fa-location-dot"></i> Địa chỉ: <span class="badge rounded-pill text-bg-success">Khu II, Đ. 3/2, Xuân Khánh, Ninh Kiều, Cần Thơ</span></li>
+                            <li class="contact-text py-2 text-start"><i class="fa-sharp fa-solid fa-envelope"></i> Email: <span class="badge rounded-pill text-bg-success">admin@gmail.com</span></li>
+                            <li class="contact-text py-2 text-start"><i class="fa-sharp fa-solid fa-phone"></i> SĐT: <span class="badge rounded-pill text-bg-success">0123456789</span></li>
+                            <li class="contact-text py-2 text-start"><i class="fa-brands fa-facebook"></i> Facebook: <span class="badge rounded-pill text-bg-success">facebook.com/ctu</span></li>
+                            <li class="contact-text py-2 text-start"><i class="fa-sharp fa-solid fa-location-dot"></i> Địa chỉ: <span class="badge rounded-pill text-bg-success">Khu II, Đ. 3/2, Xuân Khánh, Ninh Kiều, Cần Thơ</span></li>
                         </ul>
                     </div>
                 </div>

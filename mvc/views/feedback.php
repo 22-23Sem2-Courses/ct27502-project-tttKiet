@@ -16,6 +16,7 @@
 
     <!-- Css -->
     <link rel="stylesheet" href="./assets/css/index.css">
+    <link rel="stylesheet" href="./assets/css/feedback.css">
     <link rel="stylesheet" href="./assets/css/header-nav.css">
     <link rel="stylesheet" href="./assets/css/footer.css">
 
@@ -30,13 +31,13 @@
         </header>
 
         <main id="main" class="">
-
+            <div class="feedback-content container">
+                <h1>TEST</h1>
+            </div>
         </main>
         <!-- Footer -->
         <footer>
-            <?php
-            include "./partials/footer.php"
-            ?>
+
         </footer>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
