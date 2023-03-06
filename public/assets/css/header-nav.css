@@ -159,6 +159,8 @@
   padding: 8px 16px;
   color: #000;
   transition: all 0.2s linear;
+  text-decoration: none;
+  display: block;
 }
 
 .menu__user--item:last-child {

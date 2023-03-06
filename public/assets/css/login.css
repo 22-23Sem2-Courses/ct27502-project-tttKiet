@@ -18,9 +18,77 @@
 
 @keyframes change-background {
   to {
-    background: linear-gradient(to right, #000000b4, #000000b4),
+    background: linear-gradient(to right, #000000b4, #00000067),
       url(../images/bg2-header.jpg) no-repeat center/cover;
   }
+}
+
+.model-done-reg {
+  position: fixed;
+  top: 2%;
+  left: 50%;
+  border-radius: 4px;
+  padding: 12px 24px;
+  transform: translateX(-50%);
+  min-width: 300px;
+  opacity: 0;
+  max-width: 340px;
+  min-height: 60px;
+  background: linear-gradient(to right, #fff, #fafafa);
+  border: 1px solid #fcfcff;
+  box-shadow: -1px 0px 3px 1px rgba(0, 0, 0, 0.25);
+  z-index: 15;
+  animation: show-model 0.2s linear 0.3s forwards;
+}
+
+@keyframes show-model {
+  0% {
+    top: 2%;
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    top: 20%;
+  }
+}
+
+.model-done-reg h2 {
+  font-size: 18px;
+  color: #000;
+  font-weight: 700;
+}
+
+.model-done-reg p {
+  color: #000000af;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.model-done-reg a {
+  color: #000000af;
+  font-size: 14px;
+  font-weight: 600;
+  display: block;
+  text-align: center;
+  position: relative;
+  padding: 12px;
+  transition: all 0.2s linear;
+}
+
+.model-done-reg a::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  height: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  display: block;
+  right: calc(100% - 4px);
+  background-color: rgb(45, 45, 243);
+}
+
+.model-done-reg a:hover {
+  color: rgb(45, 45, 243);
 }
 
 form[name="form-login"] {
@@ -28,6 +96,14 @@ form[name="form-login"] {
   min-height: 400px;
   width: 100%;
   padding: 20px 24px;
+  border-radius: 4px;
+}
+
+form[name="form-register"] {
+  background-color: #fff;
+  min-height: 400px;
+  width: 100%;
+  padding: 20px 120px;
   border-radius: 4px;
 }
 
@@ -47,8 +123,26 @@ form[name="form-login"] h2 {
   margin-top: 10px;
 }
 
+.label-err {
+  font-size: 14px;
+  color: red;
+}
+
+.form-inp.register {
+  display: flex;
+  align-items: flex-start;
+}
+
+.form-register {
+  width: 50%;
+}
+
 .form-gr {
   padding: 10px;
+}
+
+.form-gr textarea {
+  width: 100%;
 }
 
 .form-gr label {
@@ -70,6 +164,19 @@ form[name="form-login"] h2 {
 }
 
 .form-gr input:focus {
+  border: 1px solid #000;
+}
+
+textarea[name="address"] {
+  border: 1px solid #ccc;
+  width: 100%;
+  padding: 8px 16px;
+  border-radius: 4px;
+  outline: none;
+  transition: all 0.3s linear;
+}
+
+textarea[name="address"]:focus-within {
   border: 1px solid #000;
 }
 
