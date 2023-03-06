@@ -4,5 +4,7 @@
         function index() {
             $this -> view("home");
         }
+
+        
     }
 ?>

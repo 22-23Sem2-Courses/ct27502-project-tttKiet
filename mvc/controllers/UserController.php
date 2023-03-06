@@ -4,10 +4,9 @@ class UserController extends Controller
 {
     function index()
     {
-        $this->view("home");
+        $this->view("login");
 
     }
-
     function login()
     {
         $this->view("login");
