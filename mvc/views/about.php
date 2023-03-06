@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="./assets/css/index.css">
     <link rel="stylesheet" href="./assets/css/header-nav.css">
     <link rel="stylesheet" href="./assets/css/about.css">
+    <link rel="stylesheet" href="./assets/css/footer.css">
 
 </head>
 
@@ -90,14 +91,26 @@
                         <strong>Liên hệ với chúng tôi</strong>
                     </h1>
                     <div class="col-7 col-img">
-                        <img src="https://images.pexels.com/photos/399187/pexels-photo-399187.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" class="img-content img-fluid">
+                        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="https://images.pexels.com/photos/399187/pexels-photo-399187.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="d-block img-content img-fluid" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://images.pexels.com/photos/114296/pexels-photo-114296.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="d-block img-content img-fluid" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="d-block img-content img-fluid" alt="...">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-5 text-center list-contact">
                         <ul class="">
-                            <li class="contact-text py-1"><i class="fa-sharp fa-solid fa-envelope"></i> Email: <span class="badge rounded-pill text-bg-success">admin@gmail.com</span></li>
-                            <li class="contact-text py-1"><i class="fa-sharp fa-solid fa-phone"></i> SĐT: <span class="badge rounded-pill text-bg-success">0123456789</span></li>
-                            <li class="contact-text py-1"><i class="fa-brands fa-facebook"></i> Facebook: <span class="badge rounded-pill text-bg-success">facebook.com/ctu</span></li>
-                            <li class="contact-text py-1"><i class="fa-sharp fa-solid fa-location-dot"></i> Địa chỉ: <span class="badge rounded-pill text-bg-success">Khu II, Đ. 3/2, Xuân Khánh, Ninh Kiều, Cần Thơ</span></li>
+                            <li class="contact-text py-2"><i class="fa-sharp fa-solid fa-envelope"></i> Email: <span class="badge rounded-pill text-bg-success">admin@gmail.com</span></li>
+                            <li class="contact-text py-2"><i class="fa-sharp fa-solid fa-phone"></i> SĐT: <span class="badge rounded-pill text-bg-success">0123456789</span></li>
+                            <li class="contact-text py-2"><i class="fa-brands fa-facebook"></i> Facebook: <span class="badge rounded-pill text-bg-success">facebook.com/ctu</span></li>
+                            <li class="contact-text py-2"><i class="fa-sharp fa-solid fa-location-dot"></i> Địa chỉ: <span class="badge rounded-pill text-bg-success">Khu II, Đ. 3/2, Xuân Khánh, Ninh Kiều, Cần Thơ</span></li>
                         </ul>
                     </div>
                 </div>
@@ -105,24 +118,12 @@
         </main>
         <!-- Footer -->
         <footer>
-            <div class="footer-wrap container">
-                <div class="row ">
-                    <div class="list-link text-center">
-                        <a href="" class="link-item">Trang chủ</a>
-                        <a href="" class="link-item">Giới thiệu</a>
-                        <a href="" class="link-item">Đặt sân</a>
-                        <a href="" class="link-item">Đánh giá</a>
-                        <a href="" class="link-item">Đăng nhập</a>
-
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    icon
-                </div>
-            </div>
+            <?php
+            include "./partials/footer.php"
+            ?>
         </footer>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 
 </html>

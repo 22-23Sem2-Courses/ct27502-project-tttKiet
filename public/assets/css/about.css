@@ -31,6 +31,10 @@ ul {
   font-size: 35px;
 }
 
+.contact {
+  padding-bottom: 30px;
+}
+
 .contact-text {
   font-size: 20px;
 }
@@ -44,12 +48,7 @@ ul {
   align-items: center;
 }
 
-.list-link {
-}
-
-.link-item {
-  color: #000;
-  text-decoration: none;
-  padding: 5px 8px;
-  font-size: 14px;
+.carousel-item,
+.carousel-inner {
+  border-radius: 10px !important;
 }
