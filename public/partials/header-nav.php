@@ -16,7 +16,7 @@
                     <a href="/order" class='header__item--link'>Đặt sân</a>
                 </li>
                 <li class="header__list--item">
-                    <a href="#" class='header__item--link'>Đánh giá</a>
+                    <a href="/feedback" class='header__item--link'>Đánh giá</a>
                 </li>
                 <li class="header__list--item">
                     <a href="#" class='header__item--link'>Liên hệ</a>

@@ -20,17 +20,19 @@
 }
 
 .copyright {
-  font-size: 12px;
+  font-size: 13px;
   opacity: 0.7;
+  margin-top: 2px;
 }
 
 .social-item {
   text-decoration: none;
   color: #000000 !important;
-  font-size: 15px;
+  font-size: 19px;
   float: right;
   padding: 0 10px;
-  opacity: 0.6;
+  opacity: 0.5;
+  margin-bottom: 3px;
 }
 
 .social-item:hover {
