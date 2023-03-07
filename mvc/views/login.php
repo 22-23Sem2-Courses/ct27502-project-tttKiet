@@ -29,16 +29,18 @@
             <?php 
                 if(isset($data['regDone']) && $data['regDone'] == true) {
                     echo '
-                    <div class="model-done-reg">
-                    <h2>
-                        <i class="fa-regular fa-thumbs-up"></i>
-                        Đăng ký thành công!
-    
-                    </h2>
-                    <hr />
-                    <p>Giờ đây bạn đã có thể sử dụng tài khoản này đăng nhập vào FOOTBAL - ORDER</p>
-                    <a href="/user/login">Đăng nhập ngay</a>
-                </div>
+                   <div class="wrap-model-done-reg">
+                        <div class="model-done-reg">
+                        <h2>
+                            <i class="fa-regular fa-thumbs-up"></i>
+                            Đăng ký thành công!
+        
+                        </h2>
+                        <hr />
+                        <p>Giờ đây bạn đã có thể sử dụng tài khoản này đăng nhập vào FOOTBAL - ORDER</p>
+                        <a href="/user/login">Đăng nhập ngay</a>
+                    </div>
+                   </div>
                     ';
                 }
             ?>
@@ -91,7 +93,7 @@
                         <input id="repass" name="repass" placeholder="" type="password" required>
                     </div>
                     <div class="form-gr">
-                       <span class="label-err">' .  $data['errMessage'] . ' </span>
+                       <span class="label-err err-register">' .  $data['errMessage'] . ' </span>
                     </div>
                 </div>
 
@@ -122,13 +124,11 @@
                     <div class="form-gr">
                         <label for="email">Email: </label>
                         <input id="email" name="email" placeholder="vd: abcxyz123@gmail.com" required type="email">
-                        <span><?php $errMessageEmail ?></span>
                     </div>
 
                     <div class="form-gr">
                         <label for="pass">Mật khẩu: </label>
                         <input id="pass" name="pass" placeholder="***" type="password" required>
-                        <span><?php $errMessagePass ?></span>
                     </div>
                 </div>
 
@@ -157,11 +157,30 @@
 
 
 
-        </div>
-        </div>
-        </main>
+                    </div>
+                </div>
+            </main>
         </div>
 
+
+        <script>
+        const formElementRegister = document.querySelector('form[name="form-register"]');
+        const passElement = document.querySelector('input[name="pass"]');
+        const confirmPassElement = document.querySelector('input[name="repass"]');
+        const errRegister = document.querySelector('.err-register');
+
+        if (formElementRegister) {
+            formElementRegister.addEventListener('submit', (e) => {
+                if (passElement.value !== confirmPassElement.value) {
+                    e.preventDefault();
+                    errRegister.textContent = 'Mật khẩu nhập lại không chính xác!!!';
+                } else {
+                    errRegister.textContent = '';
+
+                }
+            })
+        }
+        </script>
     </body>
 
 </html>
