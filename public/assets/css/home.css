@@ -23,7 +23,6 @@
   }
 }
 
-
 /* header-desc */
 
 .header__desc {
@@ -100,6 +99,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-around;
+  margin-bottom: 20px;
 }
 
 .profit .profit__list .profit__list--item {
@@ -128,4 +128,16 @@
   line-height: 18px;
   font-weight: 500;
   color: #00000069;
+}
+
+.hr-custom {
+  border: 0;
+  height: 2px !important;
+  background-image: linear-gradient(
+    to right,
+    #f0f0f0,
+    #00b9ff,
+    #59d941,
+    #f0f0f0
+  );
 }
