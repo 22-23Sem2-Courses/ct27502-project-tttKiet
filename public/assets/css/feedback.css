@@ -78,8 +78,14 @@
 .feedback-row {
 }
 
-.btn-success {
-  font-size: 16px;
+.btn-success,
+.btn-secondary,
+.btn-warning {
+  font-size: 13px;
+}
+
+.modal-title {
+  font-size: 18px !important;
 }
 
 .form-row {
@@ -88,4 +94,40 @@
 
 .form-select {
   font-size: 14px !important;
+}
+
+textarea {
+  font-size: 16px !important;
+}
+
+/* rating */
+.rating {
+  display: inline-block;
+  position: relative;
+  height: 25px;
+  line-height: 25px;
+  font-size: 25px;
+}
+
+.rating input {
+  display: none;
+}
+
+.rating label {
+  color: #ddd;
+  float: right;
+}
+
+.rating label:before {
+  content: "\2605";
+  margin-right: 5px;
+}
+
+.rating input:checked ~ label {
+  color: #ffcc00;
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: #ffcc00;
 }
