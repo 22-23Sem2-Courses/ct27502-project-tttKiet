@@ -4,7 +4,11 @@ class Feedback extends DB
     public $id;
     public $star;
     public $description;
-    public $created_at;
+    public $createdAt;
+    public $updatedAt;
+    public $userId;
+    public $stadiumId;
+
     public function addFeedback($rating, $description)
     {
         try {
@@ -42,13 +46,27 @@ class Feedback extends DB
         }
     }
 
+    public function getAllStadium()
+    {
+        try {
+            $query = 'SELECT * FROM stadiums';
+            $sth = $this->pdo->query($query);
+            $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+
     public function fillFromDB(array $row)
     {
         [
             'id' => $this->id,
             'star' => $this->star,
             'description' => $this->description,
-            'created_at' => $this->created_at,
+            'createdAt' => $this->createdAt,
         ] = $row;
         return $this;
     }
