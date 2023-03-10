@@ -4,7 +4,6 @@ class FeedbackController extends Controller
 {
     function index()
     {
-
         $feedback = $this->model("Feedback");
         $allFeedbacks = $feedback->getFeedback();
         $this->view("feedback", ['feedbacks' => $allFeedbacks]);
