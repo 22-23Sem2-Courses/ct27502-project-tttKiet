@@ -24,9 +24,9 @@ class UserController extends Controller
                         'fullName' => $userDb -> fullName,
                         'type' =>  $userDb -> type
                     ];
+
                     $_SESSION['loggedin'] = true;
                     header("Location: /");
-                  
 
                 } else {
                     echo "<script type='text/javascript'>alert('sai');</script>";

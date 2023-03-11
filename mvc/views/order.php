@@ -71,17 +71,19 @@
                                 <div class="card__address">
                                     <span><?php echo $stadium['address'] ?></span>
                                 </div>
+                                <div class="card__price">
+                                    <span>Giá <span class="card__price--hightlight">150.000đ - 450.000đ </span>/
+                                        Trận</span>
+                                </div>
                                 <div class="card__book">
-                                    <a href="/order/book/'<?php echo $stadium['id']?>" class="yard">
+                                    <a href="/order/book/<?php echo $stadium['id']?>" class="yard">
                                         <span>
                                             <i class="uil uil-book-medical"></i></span>
-                                        Đặt sân</a>
+                                        Đặt ngay</a>
                                 </div>
                             </div>
                         </div>
                         <?php endforeach ?>
-
-
 
 
 

@@ -1,0 +1,106 @@
+#main {
+  padding-top: 118px;
+}
+
+.image {
+  border-radius: 4px;
+  box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 10px 13px -7px #000000,
+    3px 2px 7px 5px rgba(0, 0, 0, 0);
+  box-shadow: 0px 10px 13px -7px #000000, 3px 2px 7px 5px rgba(0, 0, 0, 0);
+}
+
+.image img {
+  border-radius: 4px;
+  width: 100%;
+  object-fit: cover;
+  object-position: bottom center;
+  max-height: 500px;
+}
+
+.title {
+  margin-bottom: 0;
+  margin-top: 20px;
+  font-size: 26px;
+  line-height: 30px;
+  color: #000000;
+  font-weight: 600;
+}
+
+.star {
+  font-size: 12px;
+  padding: 10px 0 12px 0;
+}
+
+.star-item {
+  color: #ff6700;
+}
+
+.star__report {
+  padding: 0 2px;
+  font-size: 14px;
+}
+
+.star__report a {
+  text-decoration: none;
+}
+
+.star-int {
+  font-weight: 600;
+  padding-left: 4px;
+}
+
+.location {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.641);
+}
+
+.time-open {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.641);
+  padding: 12px 0;
+}
+
+.hightLight {
+  font-weight: 500;
+  color: #000000;
+}
+
+/* description */
+
+.description {
+  border: 1px solid #00000052;
+  border-radius: 8px;
+  font-size: 18px;
+  padding: 12px 24px;
+}
+
+.search-time-yard {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 12px 0;
+}
+
+#date-booking-yard-day {
+  border-radius: 4px;
+  font-size: 14px;
+  padding: 4px 16px;
+  line-height: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.179);
+  transition: all 0.2s linear;
+}
+
+#date-booking-yard-day:active,
+#date-booking-yard-day:focus {
+  border: 1px solid rgba(0, 0, 0, 0.981);
+  outline: none;
+}
+
+.btn-cus {
+  display: inline-block;
+  font-size: 14px;
+  margin-left: 16px;
+  height: 100%;
+  padding: 2px 8px;
+}

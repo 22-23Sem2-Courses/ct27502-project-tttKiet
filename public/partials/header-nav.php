@@ -45,7 +45,7 @@
                                             <div class='menu__user--item'>
                                                 Xem lịch đặt sân
                                             </div>
-                                            <a href='/?logout=true' class='menu__user--item'>
+                                            <a href='?logout=true' class='menu__user--item'>
                                                Đăng xuất
                                             </a>
                                          </div>
