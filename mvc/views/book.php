@@ -38,13 +38,12 @@
                     <div class='row g-5'>
                         <div class="col-md-8 col-12">
                             <div class="image">
-                                <img src="https://res.cloudinary.com/djvlxywoe/image/upload/v1678202568/pexels-digital-buggu-186239_igt6wr.jpg"
-                                    alt="">
+                                <img src="<?php echo $data['stadium'] -> imgLink ?>" alt="">
                             </div>
 
                             <div class='content'>
                                 <div class='pt-4'>
-                                    <h1 class="title">Sân bóng đá Vui Vẽ</h1>
+                                    <h1 class="title"><?php echo $data['stadium'] -> name ?></h1>
                                 </div>
 
                                 <div class="star">
@@ -68,7 +67,7 @@
                                     </span>
 
                                     <span class="star-int">
-                                        4.5
+                                        <?php echo $data['stadium'] -> star ?>
                                     </span>
 
                                     <span class="star__report"><a href='/feedback/1'>(2 đánh giá)</a></span>
@@ -76,15 +75,15 @@
 
                                 <div class="location">
                                     <i class="fa-solid fa-location-dot"></i>
-                                    Cụm sân bóng đá cỏ nhân tạo Tiến Trường bao gồm 6 sân mini 5 người, 2 sân mini 7
-                                    người
-                                    tiêu chuẩn FIFA
+                                    <?php echo $data['stadium'] -> address ?>
                                 </div>
                                 <hr />
                                 <div>
                                     <h1 class="title">Khung giờ</h1>
                                     <div class="time-open">
-                                        Mở cửa từ <span class="hightLight">8h:30AM - 10h:30PM</span>
+                                        Mở cửa từ <span class="hightLight"><?php echo $data['stadium'] -> openTime ?>
+                                            -
+                                            <?php echo $data['stadium'] -> closeTime ?></span>
                                     </div>
                                 </div>
                             </div>
@@ -98,25 +97,13 @@
                                         <input type="date" value='<?php echo date('Y-m-d'); ?>' name="booking-yard-day"
                                             id="date-booking-yard-day">
 
-                                        <button class='btn btn-secondary btn-cus btn-search-date'>Tìm kiếm</button>
+                                        <button data-id="<?php echo $data['stadium'] -> id ?>"
+                                            class='btn btn-secondary btn-cus btn-search-date'>Tìm kiếm</button>
                                     </div>
                                 </div>
 
-                                <div class="free-time-yard">
-                                    <ul class="list-yard">
-                                        <li class="icon-yard">
-                                            <i class="fa-solid fa-angle-down"></i>
-                                            <h1 class="yard-name">Sân số 1 (sân 5)</h1>
-                                        </li>
-                                        <li class="list-yard-item">
-                                            <i class="fa-solid fa-circle"></i>
-                                            <span> Từ 4h - 6h</span>
-                                        </li>
-
-                                    </ul>
-
-
-                                </div>
+                                <!-- San trong -->
+                                <div class="free-time-yard"></div>
                             </div>
                         </div>
                     </div>
@@ -140,19 +127,19 @@
             const dateValue = dateBookingInput.val();
 
             searchElement.on('click', function(e) {
-                getData();
+                getData($(e.currentTarget).attr('data-id'));
             });
 
-            function getData() {
+            getData(searchElement.attr('data-id'));
+
+            function getData(id) {
                 const dateValue = dateBookingInput.val();
+
                 $.get({
-                    url: `/order/filterEmptyYard/1/${dateValue}`,
+                    url: `/order/filterEmptyYard/${id}/${dateValue}`,
                     dataType: 'json',
                     type: 'GET',
                     success: function(data, status) {
-                        console.log(data)
-                        console.log('--------------------------------')
-
                         renderHtml(data);
                     },
                     error: function(xhr, status, error) {
@@ -166,16 +153,27 @@
             function renderHtml(data) {
                 let html = '';
                 if (data.code === 0) {
-                    for (const key in data.order) {
-                        console.log('Order: ', data.order[key]);
+                    for (let i = 0; i < data.order.length; i++) {
                         html += `
-                            
+                            <ul class="list-yard">
+                                <li class="icon-yard">
+                                    <i class="fa-solid fa-angle-down"></i>
+                                    <h1 class="yard-name">Sân số ${i + 1} (sân ${data.order[i].type})</h1>
+                                </li>
+                                ${data.order[i].free.reduce((init, data) => {
+                                    return init + `
+                                        <li class="list-yard-item">
+                                            <i class="fa-solid fa-circle"></i>
+                                            <span> Trống từ ${data.from} - ${data.end}</span>
+                                        </li>
+                                    `;
+                                }, '')}
+
+                            </ul>
                         `;
                     }
 
-                    freeTimeYard.html(
-
-                    );
+                    freeTimeYard.html(html);
                 }
             }
         })

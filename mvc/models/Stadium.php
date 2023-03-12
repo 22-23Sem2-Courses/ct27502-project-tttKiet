@@ -46,7 +46,7 @@
         public function getStadiumChildrens() {
             $stadiumChildrens = [];
 
-            $query = 'SELECT `stadiumChildrens`.`id` as `id` from stadiumChildrens 
+            $query = 'SELECT `stadiumChildrens`.`id` as `id`, `stadiumChildrens`.`type` as `type` from stadiumChildrens 
             LEFT JOIN stadiums ON `stadiumChildrens`.`stadiumId` = `stadiums`.`id`
             where `stadiums`.`id` = ?
             ';
@@ -97,6 +97,12 @@
                         'end'=> $this -> closeTime,
                     ]
                 ];
+
+                $data[] = [
+                    'id' => $stadiumChildren['id'],
+                    'type' => $stadiumChildren['type'],
+                    'free' => []
+                ];
             }
             // $this -> bookTimeForYard($freeTimes, 1, '2023-03-16 13:00:00', 1.5);
 
@@ -106,7 +112,13 @@
                $this -> bookTimeForYard($freeTimes, $result['id'], $result['timeBook'],$result['numberHour']);
             }
 
-            return $freeTimes;
+            // print_r($freeTimes);
+            for($i = 0; $i < count($data); $i++) {
+                $data[$i]['free'] = array_values($freeTimes[$data[$i]['id']]);
+            }
+
+            // print_r()
+            return $data;
 
         }
 

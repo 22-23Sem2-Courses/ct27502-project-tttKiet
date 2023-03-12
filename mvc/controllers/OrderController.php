@@ -17,10 +17,14 @@ class OrderController extends Controller
 
     
     public function book($id) {
+        if($id <= 0 || filter_var($id, FILTER_VALIDATE_INT) == false) {
+            header('Location: /');
+        }
         $stadiumModel = $this -> model('Stadium');
         $filterStadium = $stadiumModel -> fillById($id);
-        
-        $this->view("book");
+        $this->view("book", [
+            'stadium' => $filterStadium,
+        ]);
     }
 
     public function filterEmptyYard($stadiumId, $dateValue) {
