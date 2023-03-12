@@ -66,20 +66,17 @@
             return $stadiumChildrens;
         }
 
-        public function findFreeYard() { 
-            $this -> openTime;
-            $this -> closeTime;
-
+        public function findFreeYard($date) { 
             $query = 'SELECT `stadiumchildrens`.`id` as `id`, `stadiumchildrens`.`type` as `type`, `stadiumchildrens`.`price` as `price`, `orders`.`id` as `order.id`, `orders`.`timeBook` as `timeBook`, `orders`.`hour` as `numberHour` 
             FROM `stadiums` 
             LEFT JOIN `stadiumchildrens` ON `stadiums`.`id` = `stadiumchildrens`.`stadiumId` 
             LEFT JOIN `orders` ON `orders`.`stadiumchildrenId` = `stadiumchildrens`.`id` 
-            WHERE `stadiums`.`id` = ?';
+            WHERE `stadiums`.`id` = ? AND DATE(`orders`.`timeBook`) = DATE(?)';
 
             $sth = $this -> pdo -> prepare($query);
             $sth->execute(
                 [
-                    1
+                    $this -> id, $date
                 ]
             );
 
@@ -90,28 +87,81 @@
                 $resultOrder[] = $row;
             } 
 
-            // print_r($stadiumChildrens);  
-            $freeTime = [];
+            $freeTimes = [];
+
+            // Khởi tạo thời gian trống từng sân là giờ bắt đầu mở cửa và kết thúc
             foreach($stadiumChildrens as $stadiumChildren ) {
-                $freeTime[$stadiumChildren['id']] = [
-                    'from'=> $this -> openTime,
-                    'end'=> $this -> closeTime,
+                $freeTimes[$stadiumChildren['id']] = [
+                    [
+                        'from'=> $this -> openTime,
+                        'end'=> $this -> closeTime,
+                    ]
                 ];
             }
+            // $this -> bookTimeForYard($freeTimes, 1, '2023-03-16 13:00:00', 1.5);
 
-            // print_r($freeTime);
+
             foreach($resultOrder as $result ) {
-               print_r($result);
                
-               $this -> bookTimeForYard($freeTime, $result['id'], $result['timeBook'],$result['numberHour']);
+               $this -> bookTimeForYard($freeTimes, $result['id'], $result['timeBook'],$result['numberHour']);
             }
+
+            return $freeTimes;
+
         }
 
-        public function bookTimeForYard(&$freeTime, $idYard, $timeBook, $numberHour) {
+        public function bookTimeForYard(&$freeTimes, $idYard, $timeBook, $numberHour) {
+            // echo '----' .$numberHour ;  
+            // echo $freeTimes['1']['from'];
+
             if($timeBook && $timeBook) {
-// ------------------------------dang xu ly
-                echo "Book: " . $timeBook;
-                echo "numberHour: " . $numberHour;
+                $numberMinute = $numberHour * 60;
+
+                // Thời gian bắt đầu thuê sân
+                $dateTimeBookingStart = new DateTime(); 
+                $dateTimeBookingStart -> setTimestamp(strtotime($timeBook));
+
+
+                // Thời gian trả sân
+                $endTimestamp = strtotime($timeBook . ' +' . $numberMinute . ' minutes');
+                $dateTimeBookingEnd = new DateTime(); 
+                $dateTimeBookingEnd -> setTimestamp($endTimestamp);
+
+                // 
+                // print_r($dateTimeBookingStart) ;
+                for($i = 0; $i < count($freeTimes[$idYard]); $i++) {
+                    $timeBookDate = new DateTime($timeBook);
+                    $timeBookFormat = $timeBookDate -> format('Y-m-d');
+                    // Thời gian bắt đầu trống trong lịch
+                    $from = $freeTimes[$idYard][$i]['from'];
+                    $dateTimeStart = new DateTime($timeBookFormat . $from); 
+
+                    // Thời gian kết thúc trống trong lịch
+                    $end = $freeTimes[$idYard][$i]['end'];
+                    $dateTimeEnd = new DateTime($timeBookFormat . $end); 
+
+                  
+
+                    if($dateTimeBookingStart >= $dateTimeStart  && $dateTimeEnd  >= $dateTimeBookingEnd  ) {
+                        $freeTimes[$idYard][$i]['end'] = $dateTimeBookingStart -> format('H:i:s');
+
+                        // Nếu thời gian còn trống nhỏ hơn 1h => không đủ để bắtd đầu trận mới
+                        $interval = $dateTimeBookingEnd -> diff($dateTimeEnd);
+                        // Lấy thời điểm của $dateTimeEnd dưới dạng Unix timestamp
+                        $timestampEnd = $dateTimeEnd->getTimestamp(); 
+                        $timestampBookingEnd = $dateTimeBookingEnd->getTimestamp(); 
+                        if($dateTimeEnd == $dateTimeBookingEnd || $timestampEnd - $timestampBookingEnd < 3600) {
+                        } else {
+                            $freeTimes[$idYard][] = [
+                                'from' => $dateTimeBookingEnd -> format('H:i:s'),
+                                'end' => $dateTimeEnd -> format('H:i:s'),
+                            ];
+                        }
+                        break;
+                       
+                    }
+                }
+
             }
             
         }

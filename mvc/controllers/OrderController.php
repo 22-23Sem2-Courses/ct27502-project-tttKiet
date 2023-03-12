@@ -23,42 +23,26 @@ class OrderController extends Controller
         $this->view("book");
     }
 
-    public function filterEmptyYard($dateValue) {
-        $date = isset($dateValue) ? $dateValue : null;
+    public function filterEmptyYard($stadiumId, $dateValue) {
+        if(!$stadiumId || !$dateValue) {
+            $jsonData = json_encode([
+                'code' => 1,
+                'message' => 'Error! Missing StadiumId and DateValue!',
+               ]);
+            echo $jsonData;
+            exit();
+        }
         $stadiumModel = $this -> model('Stadium');
-        $stadiumModel = $stadiumModel -> fillById(1);
-        $stadiumModel -> findFreeYard();
-        // echo json_encode($stadiumModel -> findFreeYard());
+        $stadiumModel = $stadiumModel -> fillById($stadiumId);
+        $freeTimes = $stadiumModel -> findFreeYard($dateValue);
 
-        // $orderArray = $orderModel -> getAllOrderInDay($date);
-        
-        // if(count($orderArray) == 0) {
-        //    echo json_encode([
-        //     'code' => 1,
-        //     'message' => 'Không có lịch nào trong ngày này!'
-        //    ]);
-        //    exit();
-        // }
-        
-        // $orderData = array();
-        // foreach ($orderArray as $order) {
-        //     $orderData[] = array(
-        //         'id' => $order->id,
-        //         'stadiumChildrenId' => $order->stadiumChildrenId,
-        //         'userId' => $order->userId,
-        //         'timeBook' => $order->timeBook,
-        //         'hour' => $order->hour,
-        //         'createdAt' => $order->createdAt
-        //     );
-        // }
-        
-        // $jsonData = json_encode([
-        //     'code' => 0,
-        //     'message' => 'Success!!!',
-        //     'order' => $orderData
-        //    ]);
-        // header('Content-Type: application/json');
-        // echo $jsonData;
+        $jsonData = json_encode([
+            'code' => 0,
+            'message' => 'Success!!!',
+            'order' => $freeTimes
+           ]);
+        header('Content-Type: application/json');
+        echo $jsonData;
 
         exit();
     }

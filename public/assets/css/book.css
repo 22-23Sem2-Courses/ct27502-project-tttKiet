@@ -104,3 +104,47 @@
   height: 100%;
   padding: 2px 8px;
 }
+
+/* free time yard */
+
+.free-time-yard {
+  margin-top: 12px;
+}
+
+.free-time-yard .list-yard {
+  list-style: none;
+  padding-left: 0;
+}
+
+.icon-yard,
+.list-yard-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.icon-yard > i {
+  font-size: 14px;
+}
+
+.list-yard-item > i {
+  font-size: 6px;
+}
+
+.yard-name {
+  font-size: 16px;
+  color: #000;
+  margin-left: 12px;
+  display: inline-block;
+}
+
+.list-yard-item {
+  padding-left: 26px;
+  margin-bottom: 8px;
+}
+
+.list-yard-item span {
+  font-size: 14px;
+  color: #383838;
+  margin-left: 12px;
+}

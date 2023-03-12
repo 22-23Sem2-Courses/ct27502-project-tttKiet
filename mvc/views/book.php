@@ -101,6 +101,22 @@
                                         <button class='btn btn-secondary btn-cus btn-search-date'>Tìm kiếm</button>
                                     </div>
                                 </div>
+
+                                <div class="free-time-yard">
+                                    <ul class="list-yard">
+                                        <li class="icon-yard">
+                                            <i class="fa-solid fa-angle-down"></i>
+                                            <h1 class="yard-name">Sân số 1 (sân 5)</h1>
+                                        </li>
+                                        <li class="list-yard-item">
+                                            <i class="fa-solid fa-circle"></i>
+                                            <span> Từ 4h - 6h</span>
+                                        </li>
+
+                                    </ul>
+
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -119,19 +135,25 @@
         <script>
         $(document).ready(function() {
             const searchElement = $('.btn-search-date');
+            const dateBookingInput = $('input[name="booking-yard-day"]');
+            const freeTimeYard = $('.free-time-yard');
+            const dateValue = dateBookingInput.val();
+
             searchElement.on('click', function(e) {
+                getData();
+            });
 
-                const dateBookingInput = $('input[name="booking-yard-day"]');
+            function getData() {
                 const dateValue = dateBookingInput.val();
-                console.log("-----log: ", dateValue)
-
                 $.get({
-                    url: `/order/filterEmptyYard/${dateValue}`,
+                    url: `/order/filterEmptyYard/1/${dateValue}`,
                     dataType: 'json',
                     type: 'GET',
                     success: function(data, status) {
-                        console.log('data--', data);
-                        console.log(status);
+                        console.log(data)
+                        console.log('--------------------------------')
+
+                        renderHtml(data);
                     },
                     error: function(xhr, status, error) {
                         console.log('XHR:', xhr);
@@ -139,8 +161,23 @@
                         console.log('Error:', [error]);
                     }
                 })
+            };
 
-            })
+            function renderHtml(data) {
+                let html = '';
+                if (data.code === 0) {
+                    for (const key in data.order) {
+                        console.log('Order: ', data.order[key]);
+                        html += `
+                            
+                        `;
+                    }
+
+                    freeTimeYard.html(
+
+                    );
+                }
+            }
         })
         </script>
     </body>
