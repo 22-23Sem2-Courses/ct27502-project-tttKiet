@@ -21,6 +21,7 @@ class UserController extends Controller
                     $_SESSION['user'] = [
                         'email' =>  $email,
                         'fullName' => $userDb['fullName'],
+                        'id' => $userDb['id'],
                         'type' =>  $userDb['type']
                     ];
                     $_SESSION['loggedin'] = true;
