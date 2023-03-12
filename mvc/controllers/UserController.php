@@ -5,46 +5,44 @@ class UserController extends Controller
     function index()
     {
         $this->view("login");
-
     }
     function login()
     {
-        if($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if(isset($_POST['email']) && isset($_POST['pass']) ) {
-               
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['email']) && isset($_POST['pass'])) {
+
                 // echo "<script type='text/javascript'>alert('ok');</script>";
                 $email = $_POST['email'];
                 $pass = $_POST['pass'];
                 $user = $this->model("User");
 
-                $userDb =  $user -> authenticate($email, $pass);
-                if(!empty($userDb)) {
+                $userDb =  $user->authenticate($email, $pass);
+                if (!empty($userDb)) {
                     $_SESSION['user'] = [
                         'email' =>  $email,
-                        'fullName' => $userDb -> fullName,
-                        'type' =>  $userDb -> type
+                        'fullName' => $userDb['fullName'],
+                        'id' => $userDb['id'],
+                        'type' =>  $userDb['type']
                     ];
 
                     $_SESSION['loggedin'] = true;
                     header("Location: /");
-
                 } else {
                     echo "<script type='text/javascript'>alert('sai');</script>";
                 }
-
-                
             }
-            
         } else {
             $this->view("login");
         }
     }
 
-    function register() {
+    function register()
+    {
         $errMessage = '';
 
-        if($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if(isset($_POST['name']) && isset($_POST['phone']) && isset($_POST['email'])  && isset($_POST['repass']) && isset($_POST['address'])
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (
+                isset($_POST['name']) && isset($_POST['phone']) && isset($_POST['email'])  && isset($_POST['repass']) && isset($_POST['address'])
                 && isset($_POST['pass'])
             ) {
                 $fullName = $_POST['name'];
@@ -54,9 +52,9 @@ class UserController extends Controller
                 $confirm = $_POST['repass'];
                 $address = $_POST['address'];
                 $type = 'user';
-                
 
-                if($pass !== $confirm ) {
+
+                if ($pass !== $confirm) {
                     $errMessage = 'Nhập lại mật khẩu không chính xác!';
                     $this->view("login", ['register' => true, 'errMessage' => $errMessage]);
                 } else {
@@ -65,11 +63,11 @@ class UserController extends Controller
 
 
                     try {
-                        $sth = $user -> pdo -> prepare($query);
-                        $sth -> execute(
+                        $sth = $user->pdo->prepare($query);
+                        $sth->execute(
                             [
                                 $fullName,
-                                $phone ,
+                                $phone,
                                 $email,
                                 $pass,
                                 $address,
@@ -77,17 +75,14 @@ class UserController extends Controller
                             ]
                         );
                     } catch (PDOException $e) {
-                        echo $e -> getMessage();
+                        echo $e->getMessage();
                     }
 
-                    $this -> view("login", ['register' => true,'regDone' => true,'errMessage' => $errMessage]);
-
+                    $this->view("login", ['register' => true, 'regDone' => true, 'errMessage' => $errMessage]);
                 }
-
             }
-       
         } else {
-            $this -> view("login", ['register' => true,'errMessage' => $errMessage]);
+            $this->view("login", ['register' => true, 'errMessage' => $errMessage]);
         }
     }
 }
