@@ -97,13 +97,42 @@
                                         <input type="date" value='<?php echo date('Y-m-d'); ?>' name="booking-yard-day"
                                             id="date-booking-yard-day">
 
-                                        <button data-id="<?php echo $data['stadium'] -> id ?>"
+                                        <button type="button" data-id="<?php echo $data['stadium'] -> id; ?>"
                                             class='btn btn-secondary btn-cus btn-search-date'>Tìm kiếm</button>
                                     </div>
                                 </div>
 
                                 <!-- San trong -->
                                 <div class="free-time-yard"></div>
+                                <hr />
+                                <div class="booking ">
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <div class='booking__input'>
+                                                <h3>Chọn giờ đá</h3>
+                                                <input required value='18:00:00' name='hour-booking' type="time">
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class='booking__input'>
+                                                <h3>Số giờ thuê</h3>
+                                                <select name="book" id="book">
+                                                    <option value="1" default>1h</option>
+                                                    <option value="1.5">1,5h</option>
+                                                    <option value="2">2h</option>
+                                                    <option value="2,5">2,5h</option>
+                                                    <option value="3">3h</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="book__submit">
+                                    <button type="submit" class='book-here btn btn-primary btn-cus'> Đặt
+                                        ngay</button>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -117,20 +146,62 @@
         </div>
         <!-- Jquery -->
 
-        <script src="https://code.jquery.com/jquery-3.6.4.js"
+        <script src=" https://code.jquery.com/jquery-3.6.4.js"
             integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
         <script>
         $(document).ready(function() {
             const searchElement = $('.btn-search-date');
             const dateBookingInput = $('input[name="booking-yard-day"]');
+            const hourBook = $('input[name="hour-booking"]');
+            const bookHere = $('.book-here');
             const freeTimeYard = $('.free-time-yard');
+            const numberHourSelect = $('#book');
             const dateValue = dateBookingInput.val();
 
             searchElement.on('click', function(e) {
                 getData($(e.currentTarget).attr('data-id'));
             });
 
+            bookHere.on('click', function(e) {
+                const dateValue = dateBookingInput.val();
+                const hourBooking = hourBook.val()
+                const numberHour = numberHourSelect.val();
+
+                // console.log(dateValue)
+                // console.log(hourBooking)
+                // console.log(numberHour)
+                if (!dateValue || !hourBook || !numberHour) {
+
+                } else {
+                    bookCalendar(dateValue, hourBooking, numberHour, 1, 1);
+                }
+            })
+
+
             getData(searchElement.attr('data-id'));
+
+            function bookCalendar(dateValue, hourTimeBook, hour, userId, stadiumChildrenId) {
+                $.post({
+                    url: `/order/booking`,
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        dateValue,
+                        hourTimeBook,
+                        numberHour: hour,
+                        userId,
+                        stadiumChildrenId
+                    },
+                    success: function(data, status) {
+                        console.log(data);
+                    },
+                    error: function(xhr, status, error) {
+                        console.log('XHR:', xhr);
+                        console.log('Status:', status);
+                        console.log('Error:', [error]);
+                    }
+                })
+            }
 
             function getData(id) {
                 const dateValue = dateBookingInput.val();
@@ -176,6 +247,8 @@
                     freeTimeYard.html(html);
                 }
             }
+
+
         })
         </script>
     </body>

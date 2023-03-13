@@ -66,6 +66,52 @@
             return $stadiumChildrens;
         }
 
+        public function checkBookingForChildren($idChildren, $date, $timeBook, $hour) {
+            $query = 'SELECT `stadiumchildrens`.`id` as `id`, `stadiumchildrens`.`type` as `type`, `stadiumchildrens`.`price` as `price`, `orders`.`id` as `order.id`, `orders`.`timeBook` as `timeBook`, `orders`.`hour` as `numberHour` 
+            FROM `stadiums` 
+            LEFT JOIN `stadiumchildrens` ON `stadiums`.`id` = `stadiumchildrens`.`stadiumId` 
+            LEFT JOIN `orders` ON `orders`.`stadiumchildrenId` = `stadiumchildrens`.`id` 
+            WHERE `stadiumchildrens`.`id` = ? AND DATE(`orders`.`timeBook`) = DATE(?)';
+
+
+            try {
+                $sth = $this -> pdo -> prepare($query);
+                $sth->execute(
+                    [
+                        $idChildren,  $date
+                    ]
+                );
+
+                $resultOrder = [];
+                
+                while($row = $sth -> fetch()) {
+                    $resultOrder[] = $row;
+                } 
+
+
+                $freeTimes[$idChildren] = [
+                    [
+                        'from'=> $this -> openTime,
+                        'end'=> $this -> closeTime,
+                    ]
+                ];
+
+                foreach($resultOrder as $result ) {
+                    $this -> bookTimeForYard($freeTimes, $idChildren, $result['timeBook'], $result['numberHour']);
+                };
+
+                $isOrder = $this -> bookTimeForYard($freeTimes, $idChildren, $timeBook, $hour);
+
+
+                return $isOrder;
+
+            } catch(Exception $e) {
+                echo $e -> getMessage();
+            }
+            
+
+        }
+
         public function findFreeYard($date) { 
             $query = 'SELECT `stadiumchildrens`.`id` as `id`, `stadiumchildrens`.`type` as `type`, `stadiumchildrens`.`price` as `price`, `orders`.`id` as `order.id`, `orders`.`timeBook` as `timeBook`, `orders`.`hour` as `numberHour` 
             FROM `stadiums` 
@@ -104,28 +150,19 @@
                     'free' => []
                 ];
             }
-            // $this -> bookTimeForYard($freeTimes, 1, '2023-03-16 13:00:00', 1.5);
-
 
             foreach($resultOrder as $result ) {
-               
                $this -> bookTimeForYard($freeTimes, $result['id'], $result['timeBook'],$result['numberHour']);
             }
 
-            // print_r($freeTimes);
             for($i = 0; $i < count($data); $i++) {
                 $data[$i]['free'] = array_values($freeTimes[$data[$i]['id']]);
             }
-
-            // print_r()
             return $data;
 
         }
 
         public function bookTimeForYard(&$freeTimes, $idYard, $timeBook, $numberHour) {
-            // echo '----' .$numberHour ;  
-            // echo $freeTimes['1']['from'];
-
             if($timeBook && $timeBook) {
                 $numberMinute = $numberHour * 60;
 
@@ -152,22 +189,31 @@
                     $end = $freeTimes[$idYard][$i]['end'];
                     $dateTimeEnd = new DateTime($timeBookFormat . $end); 
 
-                  
-
                     if($dateTimeBookingStart >= $dateTimeStart  && $dateTimeEnd  >= $dateTimeBookingEnd  ) {
                         $freeTimes[$idYard][$i]['end'] = $dateTimeBookingStart -> format('H:i:s');
 
                         // Nếu thời gian còn trống nhỏ hơn 1h => không đủ để bắtd đầu trận mới
-                        $interval = $dateTimeBookingEnd -> diff($dateTimeEnd);
                         // Lấy thời điểm của $dateTimeEnd dưới dạng Unix timestamp
-                        $timestampEnd = $dateTimeEnd->getTimestamp(); 
+                        $dateTimeClose  = new DateTime($timeBookFormat . $this -> closeTime); 
+                        $timestampEnd = $dateTimeClose->getTimestamp(); 
                         $timestampBookingEnd = $dateTimeBookingEnd->getTimestamp(); 
-                        if($dateTimeEnd == $dateTimeBookingEnd || $timestampEnd - $timestampBookingEnd < 3600) {
-                        } else {
+                        if($dateTimeEnd == $dateTimeBookingEnd && $dateTimeStart == $dateTimeBookingStart ) {
+                            $this -> clearArrayOrderFree($freeTimes, $idYard, $i);
+                            return true;
+                        }  else if($timestampEnd - $timestampBookingEnd < 3600) {
+                            $freeTimes[$idYard][$i] = [
+                                'from' => $dateTimeStart -> format('H:i:s'),
+                                'end' => $dateTimeBookingStart -> format('H:i:s'),
+                            ];
+                            $this -> clearArrayOrderFree($freeTimes, $idYard, -1);
+                            return true;
+                        }else {
                             $freeTimes[$idYard][] = [
                                 'from' => $dateTimeBookingEnd -> format('H:i:s'),
                                 'end' => $dateTimeEnd -> format('H:i:s'),
                             ];
+                            $this -> clearArrayOrderFree($freeTimes, $idYard, -1);
+                            return true;
                         }
                         break;
                        
@@ -175,7 +221,24 @@
                 }
 
             }
+            return false;
+
             
+        }
+
+        public function clearArrayOrderFree(&$freeTimes, $idYard, $j) {
+            if($j == -1) {
+                for($i = 0; $i < count($freeTimes[$idYard]); $i++) {
+                    if ($freeTimes[$idYard][$i]['from'] === $freeTimes[$idYard][$i]['end']) {
+                        
+                        unset($freeTimes[$idYard][$i]);
+                        $freeTimes[$idYard] = array_values($freeTimes[$idYard]);
+                    }
+                 }
+            } else {
+                unset($freeTimes[$idYard][$j]);
+                $freeTimes[$idYard] = array_values($freeTimes[$idYard]);
+            }
         }
 
         public function fillFromDB(array $row)

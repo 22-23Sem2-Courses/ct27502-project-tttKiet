@@ -27,7 +27,22 @@
     
             // Params
             $this -> params = $arr ? array_values($arr) : [];
-            call_user_func_array([$this -> controller, $this -> action], $this -> params );
+            if(!empty($_POST)) {
+                $pa = [];
+                foreach($_POST as $key => $value) {
+                    $pa[$key] = $value;
+                }
+
+                // header('Content-Type: application/json');
+                // echo (json_encode($pa));
+
+                // exit();
+                call_user_func_array([$this -> controller, $this -> action], [$pa] );
+            
+            } else {
+
+                call_user_func_array([$this -> controller, $this -> action], $this -> params );
+            }
     
         }
 

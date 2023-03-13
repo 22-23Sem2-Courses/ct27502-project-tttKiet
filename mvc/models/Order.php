@@ -8,6 +8,12 @@ class Order extends DB
     public $hour;
     public $createdAt;
     
+    public function addDataOrder($stadiumChildrenId, $userId, $timeBook, $hour) {
+        $this -> stadiumChildrenId = $stadiumChildrenId;
+        $this -> userId = $userId;
+        $this -> timeBook = $timeBook;
+        $this -> hour = $hour;
+    }
 
     public function fillFromDB(array $row)
     {
@@ -44,5 +50,29 @@ class Order extends DB
         } catch (PDOException $e) { 
             echo $e -> getMessage();
         }
+    }
+
+    public function createOrder() {
+        try {
+            $query = "INSERT INTO orders (stadiumChildrenId, userId, timeBook, hour) VALUES (?, ?, ?, ?);";
+            $sth = $this -> pdo -> prepare($query);
+            $sth->execute(
+                [
+                    $this -> stadiumChildrenId,
+                    $this -> userId,
+                    $this -> timeBook,
+                    $this -> hour,
+                ]
+            );
+
+            $rowCount = $sth -> rowCount();
+            if ($rowCount > 0) {
+                return true;
+            } 
+
+        } catch (PDOException $e) { 
+            echo $e -> getMessage();
+        }
+        return false;
     }
 }

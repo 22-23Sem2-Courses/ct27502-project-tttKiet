@@ -53,14 +53,12 @@ class UserController extends Controller
                 $address = $_POST['address'];
                 $type = 'user';
 
-
                 if ($pass !== $confirm) {
                     $errMessage = 'Nhập lại mật khẩu không chính xác!';
                     $this->view("login", ['register' => true, 'errMessage' => $errMessage]);
                 } else {
                     $query = 'INSERT INTO users (fullName, phone, email, passWord, address, type) VALUES (?, ?, ?, ?, ?, ?)';
                     $user = $this->model("User");
-
 
                     try {
                         $sth = $user->pdo->prepare($query);
