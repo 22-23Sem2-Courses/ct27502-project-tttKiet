@@ -32,11 +32,7 @@
                 foreach($_POST as $key => $value) {
                     $pa[$key] = $value;
                 }
-
-                // header('Content-Type: application/json');
-                // echo (json_encode($pa));
-
-                // exit();
+                
                 call_user_func_array([$this -> controller, $this -> action], [$pa] );
             
             } else {

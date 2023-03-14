@@ -92,13 +92,12 @@
                         <div class="col-md-4 col-12">
                             <div class="description">
                                 <div class="time">
-                                    <h2>Tìm kiếm sân trống</h2>
+                                    <h3 class='book-title book-title-pri'>Tìm kiếm sân trống</h3>
                                     <div class="search-time-yard">
+                                        <label for="date-booking-yard-day">Xem ngày: </label>
                                         <input type="date" value='<?php echo date('Y-m-d'); ?>' name="booking-yard-day"
-                                            id="date-booking-yard-day">
+                                            id="date-booking-yard-day" data-id="<?php echo $data['stadium'] -> id; ?>">
 
-                                        <button type="button" data-id="<?php echo $data['stadium'] -> id; ?>"
-                                            class='btn btn-secondary btn-cus btn-search-date'>Tìm kiếm</button>
                                     </div>
                                 </div>
 
@@ -107,15 +106,16 @@
                                 <hr />
                                 <div class="booking ">
                                     <div class="row">
-                                        <div class="col-4">
+                                        <div class="col-12">
                                             <div class='booking__input'>
-                                                <h3>Chọn giờ đá</h3>
-                                                <input required value='18:00:00' name='hour-booking' type="time">
+                                                <label for="hour-booking" class='book-title'>Chọn giờ đá: </label>
+                                                <input required value='18:00:00' name='hour-booking' id="hour-booking"
+                                                    type="time">
                                             </div>
                                         </div>
-                                        <div class="col-4">
+                                        <div class="col-12">
                                             <div class='booking__input'>
-                                                <h3>Số giờ thuê</h3>
+                                                <label for="book" class='book-title'>Số giờ thuê: </label>
                                                 <select name="book" id="book">
                                                     <option value="1" default>1h</option>
                                                     <option value="1.5">1,5h</option>
@@ -125,15 +125,101 @@
                                                 </select>
                                             </div>
                                         </div>
+                                        <div class="col-12">
+                                            <div class='booking__input' id='book-yard'>
+                                                <!-- Chọn sân -->
+                                            </div>
+                                        </div>
                                     </div>
 
                                 </div>
                                 <div class="book__submit">
-                                    <button type="submit" class='book-here btn btn-primary btn-cus'> Đặt
+                                    <button type="submit" class='book-here btn btn-primary btn-submit-booking'> Đặt
                                         ngay</button>
                                 </div>
 
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="model-auth">
+                    <div id="model-auth__container">
+                        <div class="container">
+                            <div class="row g-5">
+                                <div class="col-md-12 col-12">
+                                    <div class='row g-5'>
+                                        <div class="col-12">
+                                            <h3 class="title1">Xác nhận Bill đặt sân của bạn</h3>
+                                        </div>
+                                        <div class="col-md-9 border-r ">
+                                            <div class="model-auth__bill">
+                                                <div>
+                                                    <div class="model-auth__bill--decs">
+                                                        <div class="wrap-detai">
+                                                            <h3>Sân bóng:</h3>
+                                                            <span
+                                                                id='model__name__yard'><?php echo $data['stadium'] -> name ?></span>
+                                                        </div>
+                                                        <div class="wrap-detai">
+                                                            <h3>Địa chỉ:</h3>
+                                                            <span id='model__address'>
+                                                                <?php echo $data['stadium'] -> address ?>
+                                                            </span>
+                                                        </div>
+                                                        <div class="wrap-detai">
+                                                            <h3>Mã sân:</h3>
+                                                            <span id='model__stadiumChildrenId'>S4</span>
+                                                        </div>
+                                                        <div class="wrap-detai">
+                                                            <h3>Số người chơi tối đa:</h3>
+                                                            <span id='model__type'>5</span>
+                                                        </div>
+                                                        <div class="wrap-detai">
+                                                            <h3>Ngày thuê:</h3>
+                                                            <span id='model__date__book'>14/2/2002</span>
+                                                        </div>
+
+                                                        <div class="wrap-detai">
+                                                            <h3>Số giờ thuê:</h3>
+                                                            <span id='model__number__booking'>3 Giờ</span>
+                                                        </div>
+
+                                                        <div class="wrap-detai">
+                                                            <h3>Đơn giá:</h3>
+                                                            <span id='model__price'>100k / h</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 left-align">
+                                            <div class="wrap-detai">
+                                                <h3>Tổng thiệt hại:</h3>
+                                                <span id='model__price__danger'>100k x 3 = 300k</span>
+                                            </div>
+                                            <div class="wrap-detai">
+                                                <h3>Thành tiền:</h3>
+                                                <span id='model__price__sum'>300k</span>
+                                            </div>
+
+                                            <div class="authen">
+                                                <button class="btn btn-auth btn-agree btn-primary">Đồng ý</button>
+                                                <button class="btn btn-auth btn-back btn-danger">Hủy</button>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <span class="please">**Vui lòng thanh toán sau khi thuê sân và không hủy
+                                                lịch đã
+                                                đặt!</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="close">
+                            <i class="fa-solid fa-x"></i>
                         </div>
                     </div>
                 </div>
@@ -150,35 +236,72 @@
             integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
         <script>
         $(document).ready(function() {
-            const searchElement = $('.btn-search-date');
             const dateBookingInput = $('input[name="booking-yard-day"]');
             const hourBook = $('input[name="hour-booking"]');
             const bookHere = $('.book-here');
             const freeTimeYard = $('.free-time-yard');
             const numberHourSelect = $('#book');
-            const dateValue = dateBookingInput.val();
+            const modelAuth = $('#model-auth');
+            const modelAuthX = $('.close');
 
-            searchElement.on('click', function(e) {
-                getData($(e.currentTarget).attr('data-id'));
+            // model
+            const btnBack = $('.btn-back');
+            const btnAgree = $('.btn-agree');
+
+            // Element Jquery model-auth
+            const model__stadiumChildrenId = $('#model__stadiumChildrenId');
+            const model__type = $('#model__type');
+            const model__date__book = $('#model__date__book');
+            const model__number__booking = $('#model__number__booking');
+            const model__price = $('#model__price');
+            const model__price__danger = $('#model__price__danger');
+            const model__price__sum = $('#model__price__sum');
+
+
+            const dateValue = dateBookingInput.val();
+            let arrayYardChildren = [];
+
+            dateBookingInput.on('change', function(e) {
+                getData(<?php echo $data['stadium'] -> id; ?>);
+                model__date__book.text($(this).val())
+
+            })
+            // handle model
+            bookHere.on('click', function(e) {
+                if (modelAuth) {
+                    modelAuth.addClass('show')
+                    $('body').css('overflow', 'hidden');
+                }
             });
 
-            bookHere.on('click', function(e) {
+            // Click nút hủy
+            btnBack.on('click', function() {
+                modelAuth.removeClass('show')
+                $('body').css('overflow', 'auto');
+            })
+
+            // Click nút xác thực
+            btnAgree.on('click', function() {
                 const dateValue = dateBookingInput.val();
                 const hourBooking = hourBook.val()
                 const numberHour = numberHourSelect.val();
-
-                // console.log(dateValue)
-                // console.log(hourBooking)
-                // console.log(numberHour)
+                const yard = $('#yard');
+                const yardId = yard.val();
                 if (!dateValue || !hourBook || !numberHour) {
 
                 } else {
-                    bookCalendar(dateValue, hourBooking, numberHour, 1, 1);
+                    bookCalendar(dateValue, hourBooking, numberHour,
+                        <?php echo $_SESSION['user']['id']?>,
+                        yardId);
                 }
             })
 
+            modelAuthX.on('click', function() {
+                modelAuth.removeClass('show')
+                $('body').css('overflow', 'auto');
+            })
 
-            getData(searchElement.attr('data-id'));
+            getData(<?php echo $data['stadium'] -> id; ?>);
 
             function bookCalendar(dateValue, hourTimeBook, hour, userId, stadiumChildrenId) {
                 $.post({
@@ -194,6 +317,8 @@
                     },
                     success: function(data, status) {
                         console.log(data);
+                        getData(<?php echo $data['stadium'] -> id; ?>);
+
                     },
                     error: function(xhr, status, error) {
                         console.log('XHR:', xhr);
@@ -203,9 +328,23 @@
                 })
             }
 
+            numberHourSelect.on('change', function(e) {
+                const value = e.target.value;
+                model__number__booking.text(value + ' giờ');
+                sumPrice()
+            })
+
+            function sumPrice() {
+                const yard = $('#yard');
+                let value = yard.val();
+                const currYard = arrayYardChildren.find((e) => e.id == value)
+                const sum = currYard.price * numberHourSelect.val();
+                model__price__danger.text(`${currYard.price}.000đ X ${numberHourSelect.val()} = ${sum}.000đ`)
+                model__price__sum.text(`${sum}.000đ`)
+            }
+
             function getData(id) {
                 const dateValue = dateBookingInput.val();
-
                 $.get({
                     url: `/order/filterEmptyYard/${id}/${dateValue}`,
                     dataType: 'json',
@@ -221,26 +360,90 @@
                 })
             };
 
+            function renderHtmlForChooseYard(arrayYardChildren) {
+                const yardChildren = document.querySelector('#book-yard');
+                let html = `
+                <label for="yard" class='book-title'>Chọn sân: </label>
+                    <select name="yard" id="yard">
+                `;
+                html += arrayYardChildren.reduce((init, val) => {
+                    return init + `
+                        <option value="${val.id}">S${val.id}</option>
+                    `;
+                }, '');
+
+                html += '</select>\
+                <span class="price"></span>\
+                ';
+                yardChildren.innerHTML = html;
+
+                const yard = $('#yard');
+                const price = $('.price');
+
+
+
+                let value = yard.val();
+                const currYard = arrayYardChildren.find((e) => e.id == value)
+
+                // default value
+                let htmlDefault = `
+                        <span class="hlight">${currYard.price}.000đ </span> / 1h
+                    `;
+                price.html(htmlDefault);
+                model__type.text(currYard.type)
+                model__price.html(`${currYard.price}.000đ / 1h`);
+                model__date__book.text(dateBookingInput.val());
+                model__stadiumChildrenId.text('S' + value);
+                model__number__booking.text(numberHourSelect.val() + ' giờ')
+                sumPrice()
+
+                yard.on('change', function(e) {
+                    const price = $('.price');
+                    let value = e.target.value;
+                    model__stadiumChildrenId.text('S' + value);
+                    const currYard = arrayYardChildren.find((e) => e.id == value)
+                    let html = `
+                        ${currYard.price}.000đ / 1h
+                    `;
+
+                    model__price.html(html)
+                    model__type.text(currYard.type)
+                    price.html(html);
+                    sumPrice()
+                })
+            }
+
             function renderHtml(data) {
+                arrayYardChildren = [...data.order.map((v, i) => {
+                    return {
+                        id: v.id,
+                        price: v.price,
+                        type: v.type
+                    }
+                })];
+
+                renderHtmlForChooseYard(arrayYardChildren);
                 let html = '';
                 if (data.code === 0) {
                     for (let i = 0; i < data.order.length; i++) {
                         html += `
-                            <ul class="list-yard">
-                                <li class="icon-yard">
+                            <div>
+                                <div class="icon-yard">
                                     <i class="fa-solid fa-angle-down"></i>
-                                    <h1 class="yard-name">Sân số ${i + 1} (sân ${data.order[i].type})</h1>
-                                </li>
-                                ${data.order[i].free.reduce((init, data) => {
-                                    return init + `
-                                        <li class="list-yard-item">
-                                            <i class="fa-solid fa-circle"></i>
-                                            <span> Trống từ ${data.from} - ${data.end}</span>
-                                        </li>
-                                    `;
-                                }, '')}
-
-                            </ul>
+                                    <h1 class="yard-name">Sân ${data.order[i].type} - S${data.order[i].id} </h1>
+                                </div>
+                                <ul class="list-yard">
+                                    ${data.order[i].free.reduce((init, data) => {
+                                        return init + `
+                                            <li class="list-yard-item">
+                                                <i class="fa-solid fa-circle"></i>
+                                                <span> Trống từ  <span>${data.from} - ${data.end}</span></span>
+                                            </li>
+                                        `;
+                                    }, '')}
+    
+                                </ul>
+                            </div>
                         `;
                     }
 

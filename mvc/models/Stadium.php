@@ -45,8 +45,7 @@
 
         public function getStadiumChildrens() {
             $stadiumChildrens = [];
-
-            $query = 'SELECT `stadiumChildrens`.`id` as `id`, `stadiumChildrens`.`type` as `type` from stadiumChildrens 
+            $query = 'SELECT `stadiumChildrens`.`id` as `id`, `stadiumChildrens`.`price` as `price`, `stadiumChildrens`.`type` as `type` from stadiumChildrens 
             LEFT JOIN stadiums ON `stadiumChildrens`.`stadiumId` = `stadiums`.`id`
             where `stadiums`.`id` = ?
             ';
@@ -57,7 +56,6 @@
                     $this -> id
                 ]
             );
-
 
             while($row = $sth -> fetch()) {
                 $stadiumChildrens[] = $row;
@@ -113,7 +111,7 @@
         }
 
         public function findFreeYard($date) { 
-            $query = 'SELECT `stadiumchildrens`.`id` as `id`, `stadiumchildrens`.`type` as `type`, `stadiumchildrens`.`price` as `price`, `orders`.`id` as `order.id`, `orders`.`timeBook` as `timeBook`, `orders`.`hour` as `numberHour` 
+            $query = 'SELECT `stadiumchildrens`.`id` as `id`, `stadiumChildrens`.`price` as `price`, `stadiumchildrens`.`type` as `type`, `stadiumchildrens`.`price` as `price`, `orders`.`id` as `order.id`, `orders`.`timeBook` as `timeBook`, `orders`.`hour` as `numberHour` 
             FROM `stadiums` 
             LEFT JOIN `stadiumchildrens` ON `stadiums`.`id` = `stadiumchildrens`.`stadiumId` 
             LEFT JOIN `orders` ON `orders`.`stadiumchildrenId` = `stadiumchildrens`.`id` 
@@ -147,6 +145,7 @@
                 $data[] = [
                     'id' => $stadiumChildren['id'],
                     'type' => $stadiumChildren['type'],
+                    'price' => $stadiumChildren['price'],
                     'free' => []
                 ];
             }
@@ -215,7 +214,7 @@
                             $this -> clearArrayOrderFree($freeTimes, $idYard, -1);
                             return true;
                         }
-                        break;
+                        
                        
                     }
                 }
