@@ -11,15 +11,6 @@ class Feedback extends DB
 
     public function addFeedback($rating, $description, $stadiumId, $userId)
     {
-        // Check if user already added feedback
-        $query = "SELECT * FROM feedbacks WHERE stadiumId = ? AND userId = ?";
-        $sth = $this->pdo->prepare($query);
-        $sth->execute([$stadiumId, $userId]);
-        $result = $sth->fetchAll(PDO::FETCH_ASSOC);
-        if (!empty($result)) {
-            return false;
-        }
-
         try {
             $query = 'INSERT INTO feedbacks ( star, description, userId, stadiumId) VALUES ( ?, ?, ?, ?)';
             $sth = $this->pdo->prepare($query);
@@ -89,5 +80,27 @@ class Feedback extends DB
             'createdAt' => $this->createdAt,
         ] = $row;
         return $this;
+    }
+
+    public function checkAlreadyFeedback($stadiumId, $userId)
+    {
+        // Check if user already added feedback
+        $query = "SELECT * FROM feedbacks WHERE stadiumId = ? AND userId = ?";
+        $sth = $this->pdo->prepare($query);
+        $sth->execute([$stadiumId, $userId]);
+        $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+        if (empty($result)) {
+            return false;
+        }
+        return true;
+    }
+
+    public function updateFeedback($id, $rating, $description)
+    {
+        $query = "UPDATE feedbacks SET star = ?, description = ?, updatedAt = NOW() WHERE id = ?";
+        $sth = $this->pdo->prepare($query);
+        $sth->execute([$rating, $description, $id]);
+        // returns true if update was successful
+        return $sth->rowCount() > 0;
     }
 }

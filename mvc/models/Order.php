@@ -7,13 +7,7 @@ class Order extends DB
     public $timeBook;
     public $hour;
     public $createdAt;
-    
-    public function addDataOrder($stadiumChildrenId, $userId, $timeBook, $hour) {
-        $this -> stadiumChildrenId = $stadiumChildrenId;
-        $this -> userId = $userId;
-        $this -> timeBook = $timeBook;
-        $this -> hour = $hour;
-    }
+
 
     public function fillFromDB(array $row)
     {
@@ -28,10 +22,11 @@ class Order extends DB
         return $this;
     }
 
-    public function getAllOrderInDay($date) {
+    public function getAllOrderInDay($date)
+    {
         try {
             $query = "SELECT * FROM orders WHERE DATE(timeBook) = DATE(?)";
-            $sth = $this -> pdo -> prepare($query);
+            $sth = $this->pdo->prepare($query);
             $sth->execute(
                 [
                     $date,
@@ -39,39 +34,38 @@ class Order extends DB
             );
 
             $result = [];
-            while($row = $sth->fetch()) {
+            while ($row = $sth->fetch()) {
                 // var_dump($row);
                 $order = new Order();
-                $order  -> fillFromDB($row);
+                $order->fillFromDB($row);
                 $result[] = $order;
             }
             return $result;
-
-        } catch (PDOException $e) { 
-            echo $e -> getMessage();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
         }
     }
 
-    public function createOrder() {
+    public function createOrder()
+    {
         try {
             $query = "INSERT INTO orders (stadiumChildrenId, userId, timeBook, hour) VALUES (?, ?, ?, ?);";
-            $sth = $this -> pdo -> prepare($query);
+            $sth = $this->pdo->prepare($query);
             $sth->execute(
                 [
-                    $this -> stadiumChildrenId,
-                    $this -> userId,
-                    $this -> timeBook,
-                    $this -> hour,
+                    $this->stadiumChildrenId,
+                    $this->userId,
+                    $this->timeBook,
+                    $this->hour,
                 ]
             );
 
-            $rowCount = $sth -> rowCount();
+            $rowCount = $sth->rowCount();
             if ($rowCount > 0) {
                 return true;
-            } 
-
-        } catch (PDOException $e) { 
-            echo $e -> getMessage();
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
         }
         return false;
     }
