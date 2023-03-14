@@ -7,7 +7,7 @@ class Order extends DB
     public $timeBook;
     public $hour;
     public $createdAt;
-    
+
 
     public function fillFromDB(array $row)
     {
@@ -22,10 +22,11 @@ class Order extends DB
         return $this;
     }
 
-    public function getAllOrderInDay($date) {
+    public function getAllOrderInDay($date)
+    {
         try {
             $query = "SELECT * FROM orders WHERE DATE(timeBook) = DATE(?)";
-            $sth = $this -> pdo -> prepare($query);
+            $sth = $this->pdo->prepare($query);
             $sth->execute(
                 [
                     $date,
@@ -33,16 +34,15 @@ class Order extends DB
             );
 
             $result = [];
-            while($row = $sth->fetch()) {
+            while ($row = $sth->fetch()) {
                 // var_dump($row);
                 $order = new Order();
-                $order  -> fillFromDB($row);
+                $order->fillFromDB($row);
                 $result[] = $order;
             }
             return $result;
-
-        } catch (PDOException $e) { 
-            echo $e -> getMessage();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
         }
     }
 }

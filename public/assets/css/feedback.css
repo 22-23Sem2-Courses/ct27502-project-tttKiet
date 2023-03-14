@@ -209,3 +209,23 @@ input {
     color-stop(0.6, #54de5d)
   );
 }
+
+.btn-action {
+  font-size: 14px;
+  margin: 0 2px;
+}
+
+.title-wrapper {
+  position: relative;
+}
+
+.back-btn {
+  position: absolute;
+  font-size: 32px;
+  margin-top: 2px;
+  opacity: 0.6;
+}
+
+.back-btn:hover {
+  opacity: 1;
+}
