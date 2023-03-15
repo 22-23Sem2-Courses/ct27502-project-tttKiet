@@ -103,4 +103,17 @@ class Feedback extends DB
         // returns true if update was successful
         return $sth->rowCount() > 0;
     }
+
+    public function deleteFeedback($id)
+    {
+        $query = "DELETE FROM feedbacks WHERE id = ?";
+        $sth = $this->pdo->prepare($query);
+        $result = $sth->execute([$id]);
+        if ($result && $sth->rowCount() > 0) {
+            return true;
+        } else {
+            // delete operation failed
+            return false;
+        }
+    }
 }

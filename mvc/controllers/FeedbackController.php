@@ -47,7 +47,7 @@ class FeedbackController extends Controller
             $feedback = $this->model("Feedback");
             if ($feedback->addFeedback($rating, $description, $stadiumId, $userId)) {
                 echo "<script type='text/javascript'>alert('Thêm feedback thành công');</script>";
-                header("Location: /feedback");
+                header("Location: /feedback/stadium/{$stadiumId}");
             } else {
                 echo "<script type='text/javascript'>alert('Bạn đã thêm feedback cho sân này rồi');</script>";
             }
@@ -89,7 +89,15 @@ class FeedbackController extends Controller
 
     public function delete()
     {
-        $data = $_POST['name'];
-        echo "$data";
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['feedbackId'];
+            $stadiumId = $_POST['stadiumId'];
+            $feedback = $this->model("Feedback");
+            if ($feedback->deleteFeedback($id)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 }

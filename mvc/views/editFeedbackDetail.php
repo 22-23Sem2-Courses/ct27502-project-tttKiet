@@ -105,10 +105,10 @@
                             echo '
                 <!-- Write feedback -->
                             <div class="col-6">
-                                
+                            
                                 <div class="form-wrapper">
                                 
-                                <form action="/feedback/update/' . $data['stadium']['id'] . '" name="form-edit-feedback" class="form-add-feedback" method="post"> 
+                                <form action="/feedback/update/' . $data['stadium']['id'] . '" name="form-edit-feedback" id="form-edit-feedback" class="form-add-feedback" method="post"> 
                                         <div class="row py-3">
                                             <h1 class="modal-title fs-5 text-center" >Sửa đánh giá của bạn
                                                 về sân ' . $data['stadium']['name'] . '
@@ -131,14 +131,24 @@
                                         </div>
                                         <div class="row form-row mb-3">
                                             <div class="col">
+                                            
                                                 <div class="rating">
-                                                    <input type="radio" id="star5" name="rating" value="5" required/><label for="star5"></label>
-                                                    <input type="radio" id="star4" name="rating" value="4" required/><label for="star4"></label>
-                                                    <input type="radio" id="star3" name="rating" value="3" required/><label for="star3"></label>
-                                                    <input type="radio" id="star2" name="rating" value="2" required/><label for="star2"></label>
-                                                    <input type="radio" id="star1" name="rating" value="1" required/><label for="star1"></label>
-                                                </div>
-    
+                                                <input type="radio" id="star5" name="rating" value="5" required/><label for="star5"></label>
+                                                <input type="radio" id="star4" name="rating" value="4" required/><label for="star4"></label>
+                                                <input type="radio" id="star3" name="rating" value="3" required/><label for="star3"></label>
+                                                <input type="radio" id="star2" name="rating" value="2" required/><label for="star2"></label>
+                                                <input type="radio" id="star1" name="rating" value="1" required/><label for="star1"></label>
+                                            
+                                                ';
+
+
+
+
+
+
+
+                            echo '
+                                                    </div>
                                             </div>
                                         </div>
     
@@ -153,6 +163,7 @@
                                         <input type="hidden" name="stadiumId" value="' . $data["stadium"]['id'] . '">
                                         <input type="hidden" name="userId" value="' . $_SESSION['user']['id'] . '">
                                         <input type="hidden" name="feedbackId" value="' . $feedback['id'] . '">
+                                        <input type="hidden" name="feedbackStar" id="feedbackStar" value="' . $feedback['star'] . '">
 
     
                                     
@@ -240,8 +251,19 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
     </script>
+    <!-- Jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+        integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
+    jQuery.noConflict();
+    jQuery(document).ready(function($) {
+        const feedbackStarInput = $('#feedbackStar')
+        const valueToCheck = feedbackStarInput.val();
+        console.log(valueToCheck)
+        $('input:radio[name="rating"]').filter(`[value="${valueToCheck}"]`).prop('checked', true);
 
+    });
     </script>
 </body>
 

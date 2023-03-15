@@ -229,3 +229,7 @@ input {
 .back-btn:hover {
   opacity: 1;
 }
+
+.check-star {
+  display: none;
+}
