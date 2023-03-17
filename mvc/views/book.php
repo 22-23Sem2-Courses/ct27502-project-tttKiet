@@ -47,30 +47,30 @@
                                 </div>
 
                                 <div class="star">
-                                    <span class="star-item">
-                                        <i class="fa-solid fa-star"></i>
-                                    </span>
-                                    <span class="star-item">
-                                        <i class="fa-solid fa-star"></i>
-                                    </span>
-                                    <span class="star-item">
-                                        <i class="fa-solid fa-star"></i>
-                                    </span>
-                                    <span class="star-item">
-                                        <i class="fa-solid fa-star"></i>
-                                    </span>
-                                    <span class="star-item">
-                                        <i class="fa-regular fa-star"></i>
-                                    </span>
-                                    <span class="star-item">
-                                        <i class="fa-regular fa-star"></i>
-                                    </span>
+
+                                    <?php 
+                                        for($i = 1; $i <= 5; $i++)
+                                            if(round($data['stadium'] -> star) < $i) {
+                                                echo '<span class="star-item">
+                                                         <i class="fa-regular fa-star"></i>
+                                                     </span>';
+                                            } else {
+                                                echo '
+                                                    <span class="star-item">
+                                                        <i class="fa-solid fa-star"></i>
+                                                    </span>
+                                                ';
+                                            }
+                                    ?>
 
                                     <span class="star-int">
                                         <?php echo $data['stadium'] -> star ?>
                                     </span>
 
-                                    <span class="star__report"><a href='/feedback/1'>(2 đánh giá)</a></span>
+                                    <span class="star__report"><a
+                                            href='/feedback/stadium/<?= $data['stadium'] -> id ?>'>(<?= $data['stadium'] -> star ?>
+                                            đánh
+                                            giá)</a></span>
                                 </div>
 
                                 <div class="location">
@@ -129,6 +129,12 @@
                                             <div class='booking__input' id='book-yard'>
                                                 <!-- Chọn sân -->
                                             </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <span class='err'>
+                                                <!-- Lỗi-->
+                                            </span>
                                         </div>
                                     </div>
 
@@ -229,13 +235,37 @@
                     include "./partials/footer.php"
                 ?>
             </div>
-        </div>
-        <!-- Jquery -->
+            <!-- toast -->
+            <?php
+                $bootstrap['message'] = 'Ok! Bạn đã đặt sân thành công.';
+                include "./partials/toast.php";
+            ?>
 
+        </div>
+
+
+        <!-- Jquery -->
         <script src=" https://code.jquery.com/jquery-3.6.4.js"
-            integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+            integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous">
+        </script>
+
+        <!-- bootstrap -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+            integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+        </script>
+
+
+
         <script>
         $(document).ready(function() {
+
             const dateBookingInput = $('input[name="booking-yard-day"]');
             const hourBook = $('input[name="hour-booking"]');
             const bookHere = $('.book-here');
@@ -266,18 +296,26 @@
                 model__date__book.text($(this).val())
 
             })
+
             // handle model
             bookHere.on('click', function(e) {
                 if (modelAuth) {
-                    modelAuth.addClass('show')
-                    $('body').css('overflow', 'hidden');
+                    const dateValue = dateBookingInput.val();
+                    const hourBooking = hourBook.val()
+                    const numberHour = numberHourSelect.val();
+                    const yard = $('#yard');
+                    const yardId = yard.val();
+                    if (!dateValue || !hourBook || !numberHour) {
+
+                    } else {
+                        isAddOrder(dateValue, hourBooking, numberHour, yardId)
+                    }
                 }
             });
 
             // Click nút hủy
             btnBack.on('click', function() {
                 modelAuth.removeClass('show')
-                $('body').css('overflow', 'auto');
             })
 
             // Click nút xác thực
@@ -303,6 +341,7 @@
 
             getData(<?php echo $data['stadium'] -> id; ?>);
 
+
             function bookCalendar(dateValue, hourTimeBook, hour, userId, stadiumChildrenId) {
                 $.post({
                     url: `/order/booking`,
@@ -316,9 +355,41 @@
                         stadiumChildrenId
                     },
                     success: function(data, status) {
-                        console.log(data);
-                        getData(<?php echo $data['stadium'] -> id; ?>);
+                        if (data.code === 0) {
+                            getData(<?php echo $data['stadium'] -> id; ?>);
 
+                            showToast();
+                            setTimeout(() => {
+                                hideToast();
+                            }, 3000)
+                            modelAuth.removeClass('show')
+                        }
+
+                    },
+
+                    error: function(xhr, status, error) {
+                        console.log('XHR:', xhr);
+                        console.log('Status:', status);
+                        console.log('Error:', [error]);
+                    }
+                })
+            }
+
+
+            function isAddOrder(dateValue, hourTimeBook, hour, stadiumChildrenId) {
+                $.get({
+                    url: `/order/canAddOrder/${dateValue}/${hourTimeBook}/${hour}/${stadiumChildrenId}`,
+                    dataType: 'json',
+                    type: 'GET',
+                    success: function(data, status) {
+                        let err = $('.err');
+                        if (data.code === 0) {
+                            modelAuth.addClass('show')
+                            err.text('')
+
+                        } else if (data.code === 1) {
+                            err.text('Thời gian đặt sân của bạn nằm ngoài giờ sân trống!')
+                        }
                     },
                     error: function(xhr, status, error) {
                         console.log('XHR:', xhr);
@@ -332,7 +403,7 @@
                 const value = e.target.value;
                 model__number__booking.text(value + ' giờ');
                 sumPrice()
-            })
+            });
 
             function sumPrice() {
                 const yard = $('#yard');
@@ -341,7 +412,7 @@
                 const sum = currYard.price * numberHourSelect.val();
                 model__price__danger.text(`${currYard.price}.000đ X ${numberHourSelect.val()} = ${sum}.000đ`)
                 model__price__sum.text(`${sum}.000đ`)
-            }
+            };
 
             function getData(id) {
                 const dateValue = dateBookingInput.val();
@@ -380,8 +451,6 @@
                 const yard = $('#yard');
                 const price = $('.price');
 
-
-
                 let value = yard.val();
                 const currYard = arrayYardChildren.find((e) => e.id == value)
 
@@ -411,7 +480,7 @@
                     price.html(html);
                     sumPrice()
                 })
-            }
+            };
 
             function renderHtml(data) {
                 arrayYardChildren = [...data.order.map((v, i) => {
@@ -449,11 +518,36 @@
 
                     freeTimeYard.html(html);
                 }
-            }
-
+            };
 
         })
+
+
+
+        function showToast() {
+            var myToastEl = $('#toast-message');
+            myToastEl.addClass('show', 'fade');
+            if (myToastEl.hasClass('hide')) {
+                myToastEl.removeClass('hide');
+
+            }
+        }
+
+        function hideToast() {
+            var myToastEl = $('#toast-message');
+            myToastEl.removeClass('hide');
+            if (myToastEl.hasClass('show')) {
+                myToastEl.removeClass('show');
+
+            }
+        }
+        $('.btn-close').on('click', function() {
+            hideToast();
+        })
         </script>
+
+
+
     </body>
 
 </html>

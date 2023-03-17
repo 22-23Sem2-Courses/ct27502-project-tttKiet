@@ -17,6 +17,9 @@ class OrderController extends Controller
 
     
     public function book($id) {
+        if(!isset($_SESSION['user']) || empty($_SESSION['user'])) {
+            header('Location: /user/login');
+        }
         if($id <= 0 || filter_var($id, FILTER_VALIDATE_INT) == false) {
             header('Location: /');
         }
@@ -54,7 +57,7 @@ class OrderController extends Controller
     // Post request
 
     public function booking($pa) {
-
+        // Lấy giá trị ra từ biến post
         [
             'dateValue' => $dateValue,
             'hourTimeBook' => $hourTimeBook,
@@ -63,27 +66,32 @@ class OrderController extends Controller
             'userId' => $userId,
         ] = $pa;
 
+        // Tạo model sân con
         $stadiumChildren = $this -> model('StadiumChildren');
         $stadiumChildren = $stadiumChildren -> fillById($stadiumChildrenId);
         
+        // Tạo type là JSON
         header('Content-Type: application/json');
 
+        // Nếu tìm thấy sân con thì làm tiếp
         if($stadiumChildren !== -1) {
             $stadium = $this -> model('Stadium');
             $stadium = $stadium -> fillById($stadiumChildren -> stadiumId);
+
+            // Tìm sân cha
             if($stadium !== -1) {
+                // Kiểm tra xem có thể thêm giờ này vào CSDL không
                 $isOrder = $stadium -> checkBookingForChildren($stadiumChildrenId, $dateValue, $hourTimeBook, $numberHour);
-               if($isOrder) {
+               
+                if($isOrder) {
+
                     $Order = $this -> model('Order');
                     $dateFormat = new DateTime($dateValue . $hourTimeBook);
                     $date = $dateFormat -> format('Y-m-d H:i:s');
                     
                     $Order -> addDataOrder($stadiumChildrenId, $userId, $date, $numberHour);
-                    
-                    // $test = $Order -> createOrder();
-                    // $jsonData = json_encode($test);
-                    // echo $jsonData;
-                    // exit();
+
+                    // Tạo order, đặt sân
                     $isSuccess  = $Order -> createOrder();
                     if($isSuccess) {
                         $jsonData = json_encode([
@@ -112,5 +120,53 @@ class OrderController extends Controller
         echo $jsonData;
         exit();
     }
+
+
+    function canAddOrder($dateValue, $hourTimeBook, $hour, $stadiumChildrenId) {
+        // Tạo model sân con
+        $stadiumChildren = $this -> model('StadiumChildren');
+        $stadiumChildren = $stadiumChildren -> fillById($stadiumChildrenId);
+        
+        // Tạo type là JSON
+        header('Content-Type: application/json');
+
+        // Nếu tìm thấy sân con thì làm tiếp
+        if($stadiumChildren !== -1) {
+            $stadium = $this -> model('Stadium');
+            $stadium = $stadium -> fillById($stadiumChildren -> stadiumId);
+
+            // Tìm sân cha
+            if($stadium !== -1) {
+                // Kiểm tra xem có thể thêm giờ này vào CSDL không
+                $isOrder = $stadium -> checkBookingForChildren($stadiumChildrenId, $dateValue, $hourTimeBook, $hour);
+                
+                if($isOrder ) {
+
+                    $jsonData = json_encode([
+                        'code' => 0,
+                        'message' => 'Có thể thêm!',
+                    ]);
+                     echo $jsonData;
+                     exit();
+                } else {
+                    $jsonData = json_encode([
+                        'code' => 1,
+                        'message' => 'Không  thể thêm!',
+                    ]);
+                     echo $jsonData;
+                     exit();
+                }
+            } else {
+                $jsonData = json_encode([
+                    'code' => 2,
+                    'message' => 'Không tìm thấy sân cha!',
+                ]);
+                 echo $jsonData;
+                 exit();
+
+            }
+        }
+    }
+
 
 }
