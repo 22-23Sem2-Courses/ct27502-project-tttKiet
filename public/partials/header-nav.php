@@ -42,9 +42,9 @@
                                             <div class='menu__user--item'>
                                                 Tài khoản của tôi
                                             </div>
-                                            <div class='menu__user--item'>
+                                            <a href='/user/soccer-field-booking-calendar' class='menu__user--item'>
                                                 Xem lịch đặt sân
-                                            </div>
+                                            </a>
                                             <a href='/?logout=true' class='menu__user--item'>
                                                Đăng xuất
                                             </a>

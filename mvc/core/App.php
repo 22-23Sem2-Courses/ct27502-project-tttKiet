@@ -19,6 +19,7 @@
     
             // Action
             if(isset($arr[1])){
+                $arr[1] = $this -> convertStringToAction($arr[1]);
                 if( method_exists( $this -> controller , $arr[1]) ){
                     $this -> action = (string)$arr[1];
                 }
@@ -48,6 +49,15 @@
             } 
                 else return ['Home', 'index'];
 
+        }
+
+        function convertStringToAction($string) {
+            // view-token => viewToken
+            $stringslice = explode("-", $string);
+            $newString = implode("", array_map('ucfirst', $stringslice));
+            $newString = lcfirst($newString);
+
+            return $newString; 
         }
     }
 ?>

@@ -68,9 +68,8 @@
                                     </span>
 
                                     <span class="star__report"><a
-                                            href='/feedback/stadium/<?= $data['stadium'] -> id ?>'>(<?= $data['stadium'] -> star ?>
-                                            đánh
-                                            giá)</a></span>
+                                            href='/feedback/stadium/<?= $data['stadium'] -> id ?>'>( Xem đánh giá
+                                            )</a></span>
                                 </div>
 
                                 <div class="location">

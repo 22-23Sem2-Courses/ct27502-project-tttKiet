@@ -55,7 +55,6 @@ class OrderController extends Controller
     }
 
     // Post request
-
     public function booking($pa) {
         // Lấy giá trị ra từ biến post
         [

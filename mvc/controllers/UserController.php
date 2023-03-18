@@ -20,8 +20,10 @@ class UserController extends Controller
                 if (!empty($userDb)) {
                     $_SESSION['user'] = [
                         'email' =>  $email,
-                        'fullName' => $userDb['fullName'],
                         'id' => $userDb['id'],
+                        'phone' => $userDb['phone'],
+                        'fullName' => $userDb['fullName'],
+                        'address' => $userDb['address'],
                         'type' =>  $userDb['type']
                     ];
 
@@ -82,5 +84,32 @@ class UserController extends Controller
         } else {
             $this->view("login", ['register' => true, 'errMessage' => $errMessage]);
         }
+    }
+
+    
+
+    function soccerFieldBookingCalendar() {
+        $user = $this -> model("User");
+        if (!isset( $_SESSION['user']) || empty( $_SESSION['user'])) {
+            header("Location: /");
+            exit();
+        } 
+        $user -> fillFormDb(
+                $_SESSION['user']['id'], 
+                $_SESSION['user']['fullName'],
+                $_SESSION['user']['phone'], 
+                $_SESSION['user']['address'], 
+                $_SESSION['user']['email'], 
+                $_SESSION['user']['type']
+        );
+        $orderViews = [];
+        $numberStadiumBooked = $user -> fillOrderWithStadiumIdDISTINCT();
+        foreach ($numberStadiumBooked as $stadiumId) {
+            // print_r($stadiumId);
+            $orderOfUser = $user -> getOrderByStadiumId($stadiumId['stadiumId']);
+            $orderViews[] = $orderOfUser;
+        }
+        // $orderOfUser
+        $this -> view('myCalendar', ['order' => $orderViews]);
     }
 }
