@@ -47,7 +47,7 @@
                             </div>
                         <!-- item -->
                         <div class="row feedback-row my-5">
-                            <div class="col-6 card-stadium">
+                            <div class="col-12 col-md-6 card-stadium">
                                 <!-- Stadium -->
                                 <div class=" card card-wrapper">
                                     <img src="' . $data["stadium"]['imgLink'] . '" class="card-img-top img-content img-fluid" alt="...">
@@ -104,12 +104,12 @@
 
                             echo '
                 <!-- Write feedback -->
-                            <div class="col-6">
+                            <div class="col-12 col-md-6">
                             
                                 <div class="form-wrapper">
                                 
                                 <form action="/feedback/update/' . $data['stadium']['id'] . '" name="form-edit-feedback" id="form-edit-feedback" class="form-add-feedback" method="post"> 
-                                        <div class="row py-3">
+                                        <div class="row py-3 pt-5">
                                             <h1 class="modal-title fs-5 text-center" >Sửa đánh giá của bạn
                                                 về sân ' . $data['stadium']['name'] . '
                                             </h1>

@@ -51,11 +51,11 @@
   height: 100%;
 }
 
-.user-feedback {
+/* .user-feedback {
   overflow-y: scroll;
-}
+} */
 
-.user-feedback::-webkit-scrollbar-track {
+/* .user-feedback::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 }
@@ -83,7 +83,7 @@
     to(#19911d),
     color-stop(0.6, #54de5d)
   );
-}
+} */
 
 .btn-success,
 .btn-secondary,
@@ -232,4 +232,18 @@ input {
 
 .check-star {
   display: none;
+}
+
+.title-no-feedback {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Reponsive */
+@media screen and (max-width: 992px) {
+  .back-btn {
+    position: inherit !important;
+  }
 }
