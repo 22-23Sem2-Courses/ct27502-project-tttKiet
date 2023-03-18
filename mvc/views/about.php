@@ -37,24 +37,33 @@
                         <strong>Tổng quan về Football Order</strong>
                     </h1>
                     <div class="row mb-5">
-                        <div class="col-7 text-col">
-                            <h1 class="text-content-title">
-                                Bạn có biết ?
-                            </h1>
-                            <p class="text-content-description">
-                                Trước khi có các trang web đặt sân bóng online như hiện nay, việc đặt sân bóng đá thường gặp phải nhiều khó khăn và phiền toái. Đầu tiên, người chơi phải tốn nhiều thời gian và công sức để tìm kiếm các sân bóng đá phù hợp với nhu cầu và yêu cầu của mình. Thường xuyên phải liên lạc và trực tiếp đến sân để hỏi thông tin và kiểm tra tình trạng sân trước khi đặt sân.
-                            </p>
-                        </div>
-                        <div class="col-5 col-img">
-                            <img src="https://cdn.pixabay.com/photo/2017/08/10/01/38/grass-2616911_960_720.jpg" alt="" class="img-content img-fluid">
+                        <div class="row my-3">
+
+                            <div class="col-12 col-md-7 text-col">
+                                <h1 class="text-content-title text-center">
+                                    Bạn có biết ?
+                                </h1>
+                                <p class="text-content-description">
+                                    Trước khi có các trang web đặt sân bóng online như hiện nay, việc đặt sân bóng đá
+                                    thường
+                                    gặp phải nhiều khó khăn và phiền toái. Đầu tiên, người chơi phải tốn nhiều thời gian
+                                    và
+                                    công sức để tìm kiếm các sân bóng đá phù hợp với nhu cầu và yêu cầu của mình. Thường
+                                    xuyên phải liên lạc và trực tiếp đến sân để hỏi thông tin và kiểm tra tình trạng sân
+                                    trước khi đặt sân.
+                                </p>
+                            </div>
+                            <div class="col-12 col-md-5 col-img">
+                                <img src="https://cdn.pixabay.com/photo/2017/08/10/01/38/grass-2616911_960_720.jpg" alt="" class="img-content img-fluid">
+                            </div>
                         </div>
 
-                        <div class="row mb-5">
-                            <div class="col-5 col-img">
+                        <div class="row my-3">
+                            <div class="col-12 col-md-5 col-img" id="col-order">
                                 <img src="https://cdn.pixabay.com/photo/2017/09/23/11/43/football-2778583__340.jpg" alt="" class="img-content img-fluid ">
                             </div>
-                            <div class="col-7 text-col">
-                                <h1 class="text-content-title">
+                            <div class="col-12 col-md-7 text-col">
+                                <h1 class="text-content-title text-center">
                                     Giới thiệu về Football Order
                                 </h1>
                                 <p class="text-content-description">
@@ -63,11 +72,13 @@
                                     bất kỳ địa điểm nào với chất lượng tốt nhất và giá cả hợp lý.
                                 </p>
                             </div>
+
+
                         </div>
 
-                        <div class="row mb-5">
-                            <div class="col-7 text-col">
-                                <h1 class="text-content-title">
+                        <div class="row my-3">
+                            <div class="col-12 col-md-7 text-col">
+                                <h1 class="text-content-title text-center">
                                     Bạn nhận được gì từ Fooball Order
                                 </h1>
                                 <p class="text-content-description">
@@ -80,7 +91,7 @@
                                 </p>
                             </div>
 
-                            <div class="col-5  col-img">
+                            <div class="col-12 col-md-5  col-img">
                                 <img src="https://cdn.pixabay.com/photo/2020/04/02/11/37/football-pitch-4994688__340.jpg" alt="" class="img-content img-fluid ">
                             </div>
                         </div>
@@ -90,7 +101,7 @@
                     <h1 class="section-title text-center my-5">
                         <strong>Liên hệ với chúng tôi</strong>
                     </h1>
-                    <div class="col-7 col-img">
+                    <div class="col-12 col-lg-7 col-img">
                         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
@@ -105,12 +116,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-5 text-center list-contact">
+                    <div class="col-12 col-lg-5 text-center list-contact pt-2">
                         <ul class="">
-                            <li class="contact-text py-2 text-start"><i class="fa-sharp fa-solid fa-envelope"></i> Email: <span class="badge rounded-pill text-bg-success">admin@gmail.com</span></li>
-                            <li class="contact-text py-2 text-start"><i class="fa-sharp fa-solid fa-phone"></i> SĐT: <span class="badge rounded-pill text-bg-success">0123456789</span></li>
-                            <li class="contact-text py-2 text-start"><i class="fa-brands fa-facebook"></i> Facebook: <span class="badge rounded-pill text-bg-success">facebook.com/ctu</span></li>
-                            <li class="contact-text py-2 text-start"><i class="fa-sharp fa-solid fa-location-dot"></i> Địa chỉ: <span class="badge rounded-pill text-bg-success">Khu II, Đ. 3/2, Xuân Khánh, Ninh Kiều, Cần Thơ</span></li>
+                            <li class="contact-text py-2 text-start"><i class="fa-sharp fa-solid fa-envelope"></i>
+                                Email: <span class="badge rounded-pill text-bg-success">admin@gmail.com</span></li>
+                            <li class="contact-text py-2 text-start"><i class="fa-sharp fa-solid fa-phone"></i> SĐT:
+                                <span class="badge rounded-pill text-bg-success">0123456789</span>
+                            </li>
+                            <li class="contact-text py-2 text-start"><i class="fa-brands fa-facebook"></i> Facebook:
+                                <span class="badge rounded-pill text-bg-success">facebook.com/ctu</span>
+                            </li>
+                            <li class="contact-text py-2 text-start"><i class="fa-sharp fa-solid fa-location-dot"></i>
+                                Địa chỉ: <span class="badge rounded-pill text-bg-success">Khu II, Đ. 3/2, Xuân Khánh,
+                                    Ninh Kiều, Cần Thơ</span></li>
                         </ul>
                     </div>
                 </div>
@@ -123,7 +141,10 @@
             ?>
         </footer>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+    </script>
+    <script>
+    </script>
 </body>
 
 </html>
