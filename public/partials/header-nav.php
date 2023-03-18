@@ -16,7 +16,7 @@
                             <a href="/about" class="header__item--link">Giới thiệu</a>
                         </li>
                         <li class="header__list--item">
-                            <a href="/listOrder" class="header__item--link">Xem lịch</a>
+                            <a href="/admin/list-order" class="header__item--link">Xem lịch</a>
                         </li>
                         <li class="header__list--item">
                             <a href="/feedback" class="header__item--link">Đánh giá</a>
