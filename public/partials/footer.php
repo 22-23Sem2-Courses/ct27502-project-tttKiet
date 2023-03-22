@@ -1,7 +1,5 @@
 <div class="footer-wrap">
-    <div class="container pb-2 pt-3">
-
-        <hr>
+    <div class="container py-3">
         <div class="row">
             <div class="col">
                 <p class="copyright">

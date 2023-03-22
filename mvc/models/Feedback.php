@@ -116,4 +116,27 @@ class Feedback extends DB
             return false;
         }
     }
+
+    public function countStar($stadiumId)
+    {
+        $query = 'SELECT star FROM feedbacks WHERE stadiumId = ?';
+        $sth = $this->pdo->prepare($query);
+        $sth->execute([$stadiumId]);
+        $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+
+        // Count star from feedbacks
+        $total = 0;
+        $count = count($result);
+        if (count($result) == 0) {
+            return 5;
+        }
+        foreach ($result as $feedback) {
+            $total += $feedback['star'];
+        }
+        $average = $total / $count;
+
+        // Round average (làm tròng giá trị trung bình)
+        $rounded_average = round($average, 0);
+        return $rounded_average;
+    }
 }

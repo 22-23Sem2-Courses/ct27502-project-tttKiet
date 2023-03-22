@@ -5,43 +5,33 @@
         </a>
 
         <div class="header__list">
-            <?php
-            if (isset($_SESSION['loggedin']) && $_SESSION['user']['type'] == 'admin') {
-                echo '
-                    <ul class="header__list--nav">
+            <ul class="header__list--nav">
+                <li class="header__list--item">
+                    <a href="/" class="header__item--link">Trang chủ</a>
+                </li>
+                <li class="header__list--item">
+                    <a href="/about" class="header__item--link">Giới thiệu</a>
+                </li>
+                <?php
+                $currentDate = date('Y-m-d');
+                if (isset($_SESSION['loggedin']) && $_SESSION['user']['type'] == 'admin') {
+                    echo '
                         <li class="header__list--item">
-                            <a href="/" class="header__item--link">Trang chủ</a>
+                            <a href="/admin/view-by-date/' . $currentDate . '" class="header__item--link">Xem lịch</a>
                         </li>
-                        <li class="header__list--item">
-                            <a href="/about" class="header__item--link">Giới thiệu</a>
-                        </li>
-                        <li class="header__list--item">
-                            <a href="/admin/list-order" class="header__item--link">Xem lịch</a>
-                        </li>
-                        <li class="header__list--item">
-                            <a href="/feedback" class="header__item--link">Đánh giá</a>
-                        </li>
-                    </ul>
                     ';
-            } else {
-                echo '
-                <ul class="header__list--nav">
-                    <li class="header__list--item">
-                        <a href="/" class="header__item--link">Trang chủ</a>
-                    </li>
-                    <li class="header__list--item">
-                        <a href="/about" class="header__item--link">Giới thiệu</a>
-                    </li>
-                    <li class="header__list--item">
-                        <a href="/order" class="header__item--link">Đặt sân</a>
-                    </li>
-                    <li class="header__list--item">
-                        <a href="/feedback" class="header__item--link">Đánh giá</a>
-                    </li>
-                </ul>
-                ';
-            }
-            ?>
+                } else {
+                    echo '                                        
+                        <li class="header__list--item">
+                            <a href="/order" class="header__item--link">Đặt sân</a>
+                        </li>                                            
+                    ';
+                }
+                ?>
+                <li class="header__list--item">
+                    <a href="/feedback" class="header__item--link">Đánh giá</a>
+                </li>
+            </ul>
 
             <div class="authentication">
 

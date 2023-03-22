@@ -2,13 +2,12 @@
   margin-top: 110px;
 }
 
-/* .feedback-row {
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-} */
+.feedback-row {
+  margin-bottom: 30px;
+}
 
 .section-title {
-  font-size: 35px;
+  font-size: 30px;
 }
 
 .img-content {
@@ -25,11 +24,16 @@
 }
 
 .card-title {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .card-text {
-  font-size: 16px;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.card-text-feedback {
+  opacity: 0.85;
 }
 
 .list-group-item {
@@ -47,7 +51,7 @@
 }
 
 .card-stadium {
-  padding-top: 29px;
+  padding-top: 22px;
   height: 100%;
 }
 
@@ -105,9 +109,10 @@
 
 textarea,
 input {
-  font-size: 16px !important;
+  font-size: 14px !important;
 }
 .view-feedback-detail {
+  font-size: 11px;
   text-decoration: none;
   color: white;
 }
@@ -184,6 +189,7 @@ input {
   margin-top: 20px;
   overflow-y: scroll;
   max-height: 480px;
+  margin-bottom: 30px;
 }
 
 .feedback-detail::-webkit-scrollbar-track {
@@ -217,6 +223,7 @@ input {
 
 .title-wrapper {
   position: relative;
+  height: 38px;
 }
 
 .back-btn {
@@ -239,6 +246,18 @@ input {
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.feedback-title {
+  font-size: 18px;
+}
+
+.login-require {
+  font-size: 14px !important;
+}
+
+hr:last-child {
+  opacity: 0;
 }
 
 /* Reponsive */

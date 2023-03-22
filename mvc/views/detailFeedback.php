@@ -12,8 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 
     <!-- Bootstrap 5-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
     <!-- Css -->
     <link rel="stylesheet" href="/assets/css/index.css">
@@ -43,7 +42,7 @@
                         <a href="/feedback" class="text-dark back-btn "><i class="fa-solid fa-arrow-left"></i></a>
                         </div>
                         
-                        <h1 class="section-title text-center mb-5">Tất cả đánh giá chi tiết về sân ' . $data["stadium"]['name'] . '</h1>
+                        <h3 class="section-title text-center mb-5">Đánh giá chi tiết về sân ' . $data["stadium"]['name'] . '</h3>
                         
                         
                         </div>
@@ -55,7 +54,7 @@
                                 <div class=" card card-wrapper">
                                     <img src="' . $data["stadium"]['imgLink'] . '" class="card-img-top img-content img-fluid" alt="...">
                                     <div class="card-body">
-                                        <h5 class="card-title">Tên sân bóng: ' . $data["stadium"]['name'] . '</h5>
+                                        <h5 class="card-title"> ' . $data["stadium"]['name'] . '</h5>
                                         <p class="card-text">Địa chỉ: ' . $data["stadium"]['address'] . '</p>
                                         <p class="card-text">SDT: ' . $data["stadium"]['phone'] . '</p>
                                         <hr>
@@ -65,7 +64,7 @@
     
                                                 ';
 
-                for ($i = 0; $i < $data["stadium"]["star"]; $i++) {
+                for ($i = 0; $i <  $data['rating'][$data["stadium"]['id']]; $i++) {
                     echo '<i class="fa-solid fa-star px-1"></i>';
                 }
 
@@ -86,8 +85,8 @@
                 // check user
                 if (!isset($_SESSION['loggedin'])) {
                     echo '<div class="col-12 col-md-6 d-flex justify-content-center align-items-center flex-column pt-5">
-                    <span class="badge text-bg-success mb-3"><h3 class=" ">Bạn hãy đăng nhập để viết đánh giá <i class="fa-sharp fa-solid fa-arrow-down mt-2"></i> </h3> </span>
-                    <h3 ><a class="text-decoration-none ms-4" href="/user/login">Đăng nhập ngay</a></h3>
+                    <span class="badge text-bg-success mb-3 "><h3 class="login-require">Bạn hãy đăng nhập để viết đánh giá <i class="fa-sharp fa-solid fa-arrow-down mt-2"></i> </h3> </span>
+                    <h3 class="login-require"><a class="text-decoration-none ms-4 " href="/user/login">Đăng nhập ngay</a></h3>
                     </div>';
                 }
                 ?>
@@ -108,12 +107,12 @@
                             echo '
                             <div class="col-12 col-md-6">
                                 <div class="row mt-3 mx-3">
-                                <h1 class=" fs-10 py-4 text-center" >Đây là đánh giá của bạn
+                                <h1 class="feedback-title py-4 text-center" >Đây là đánh giá của bạn
                                                 về sân ' . $data['stadium']['name'] . '
                                             </h1>
                                 <div class="card">
                                 
-                                    <div class="card-header card-title bg-success text-white">
+                                    <div class="card-header card-title text-bg-success  rounded-top-4">
                                         - ' . $feedback['userName'] . ' - 
                                     </div>
 
@@ -186,8 +185,8 @@
                                         <div class="row form-row">
                                             <div class="col">
                                                 <div class="mb-3">
-                                                    <label for="email" class="form-label">Địa chỉ email:</label>
-                                                    <input type="email" name="email" class="form-control" id="email" placeholder="' . $_SESSION['user']['email'] . '" disabled>
+                                                    <label for="email" class="form-label ">Địa chỉ email:</label>
+                                                    <input type="email" name="email" class="form-control " id="email" placeholder="' . $_SESSION['user']['email'] . '" disabled>
                                                 </div>
                                             </div>
                                             <div class="col">
@@ -238,7 +237,7 @@
                 echo '</div>';
                 echo '<div class="row">
                         <div class="row">
-                            <h2 class="text-center mt-4">Tất cả đánh giá của các cầu thủ về
+                            <h2 class="feedback-title text-center mt-4">Tất cả đánh giá của các cầu thủ về
                                 ' . $data["stadium"]['name'] . '
                             </h2>
                         </div>
@@ -352,58 +351,55 @@
     </footer>
     </div>
     <!-- bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
     </script>
 
     <!-- Jquery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
-        integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
-    jQuery.noConflict();
-    jQuery(document).ready(function($) {
-        const feedbackIdInput = $('input[name="feedbackId"]');
-        const liveToast = $('#liveToast');
-        // Delete feedback
-        if (feedbackIdInput) {
-            const feedbackId = feedbackIdInput.val();
-            const stadiumIdInput = $('input[name="stadiumId"]');
-            const stadiumId = stadiumIdInput.val();
-            const toastMessage = $('.toast');
-            $('#btn-delete-feedback').click(function() {
-                // Send the POST request using jQuery
-                $.ajax({
-                    url: '/feedback/delete',
-                    method: 'POST',
-                    data: {
-                        feedbackId,
-                        stadiumId,
-                    },
-                    success: function(response) {
+        jQuery.noConflict();
+        jQuery(document).ready(function($) {
+            const feedbackIdInput = $('input[name="feedbackId"]');
+            const liveToast = $('#liveToast');
+            // Delete feedback
+            if (feedbackIdInput) {
+                const feedbackId = feedbackIdInput.val();
+                const stadiumIdInput = $('input[name="stadiumId"]');
+                const stadiumId = stadiumIdInput.val();
+                const toastMessage = $('.toast');
+                $('#btn-delete-feedback').click(function() {
+                    // Send the POST request using jQuery
+                    $.ajax({
+                        url: '/feedback/delete',
+                        method: 'POST',
+                        data: {
+                            feedbackId,
+                            stadiumId,
+                        },
+                        success: function(response) {
 
-                        liveToast.addClass('fade show');
-                        setTimeout(function() {
-                            location.reload();
-                        }, 1000);
+                            liveToast.addClass('fade show');
+                            setTimeout(function() {
+                                location.reload();
+                            }, 1000);
 
-                    },
-                    error: function(xhr, status, error) {
-                        console.error(error);
-                    }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(error);
+                        }
+                    });
+
                 });
-
-            });
-        }
-
-        $('#form-add-feedback').submit(function(event) {
-            const rating = $('input[name="rating"]:checked').val();
-            if (!rating) {
-                event.preventDefault(); // Prevent form submission
-                $('#check-star').removeClass('check-star');
             }
+
+            $('#form-add-feedback').submit(function(event) {
+                const rating = $('input[name="rating"]:checked').val();
+                if (!rating) {
+                    event.preventDefault(); // Prevent form submission
+                    $('#check-star').removeClass('check-star');
+                }
+            });
         });
-    });
     </script>
 </body>
 

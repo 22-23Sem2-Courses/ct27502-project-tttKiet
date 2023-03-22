@@ -9,14 +9,19 @@ class FeedbackController extends Controller
         $allFeedbacks = $feedback->getFeedback();
 
         // Stadium
-        $stadiumsModel = $this->model('stadium');
+        $stadiumsModel = $this->model('Stadium');
         $sth = $stadiumsModel->getAll();
         $stadiums = [];
         while ($row = $sth->fetch()) {
             $stadiums[] = $row;
         }
 
-        $this->view("feedback", ['feedbacks' => $allFeedbacks, 'stadiums' =>  $stadiums]);
+        $rating = [];
+        foreach ($stadiums as $stadium) {
+            $rating[$stadium['id']] = $feedback->countStar($stadium['id']);
+        }
+
+        $this->view("feedback", ['feedbacks' => $allFeedbacks, 'stadiums' =>  $stadiums, 'allRating' => $rating]);
     }
 
     function stadium($id)
@@ -31,7 +36,13 @@ class FeedbackController extends Controller
         while ($row = $sth->fetch()) {
             $stadiums[] = $row;
         }
-        $this->view("detailFeedback", ['stadium' =>  $stadiums[$id - 1]]);
+
+        $feedback = $this->model("Feedback");
+        $rating = [];
+        foreach ($stadiums as $stadium) {
+            $rating[$stadium['id']] = $feedback->countStar($stadium['id']);
+        }
+        $this->view("detailFeedback", ['stadium' =>  $stadiums[$id - 1], 'rating' => $rating]);
     }
 
 
@@ -75,16 +86,17 @@ class FeedbackController extends Controller
             $stadiumId = $_POST['stadiumId'];
             $feedback = $this->model("Feedback");
             if ($feedback->updateFeedback($feebackId, $rating, $description)) {
-                // $_SESSION['updatedFeeback'] = [
-                //     'id' =>  $feebackId,
-                //     'updated' => true,
-                // ];
                 header("Location: /feedback/stadium/{$stadiumId}");
             } else {
                 echo "<script type='text/javascript'>alert('Sửa đánh giá không thành công');</script>";
             }
         }
-        $this->view("editFeedbackDetail", ['stadium' =>  $stadiums[$id - 1]]);
+        $feedback = $this->model("Feedback");
+        $rating = [];
+        foreach ($stadiums as $stadium) {
+            $rating[$stadium['id']] = $feedback->countStar($stadium['id']);
+        }
+        $this->view("editFeedbackDetail", ['stadium' =>  $stadiums[$id - 1], 'rating' => $rating]);
     }
 
     public function delete()

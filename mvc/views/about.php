@@ -41,7 +41,7 @@
 
                             <div class="col-12 col-md-7 text-col">
                                 <h1 class="text-content-title text-center">
-                                    Bạn có biết ?
+                                    Bạn có biết <i class="fa-solid fa-question fa-flip"></i>
                                 </h1>
                                 <p class="text-content-description">
                                     Trước khi có các trang web đặt sân bóng online như hiện nay, việc đặt sân bóng đá
@@ -64,7 +64,7 @@
                             </div>
                             <div class="col-12 col-md-7 text-col">
                                 <h1 class="text-content-title text-center">
-                                    Giới thiệu về Football Order
+                                    Giới thiệu về Football Order <i class="fa-regular fa-comment fa-shake"></i>
                                 </h1>
                                 <p class="text-content-description">
                                     Football Order là một trang web đặt sân bóng đá online cho người chơi yêu thích môn
@@ -79,7 +79,7 @@
                         <div class="row my-3">
                             <div class="col-12 col-md-7 text-col">
                                 <h1 class="text-content-title text-center">
-                                    Bạn nhận được gì từ Fooball Order
+                                    Bạn nhận được gì từ Fooball Order <i class="fa-regular fa-star fa-beat"></i>
                                 </h1>
                                 <p class="text-content-description">
                                     Chúng tôi cung cấp cho người dùng các tính năng tiện lợi và đơn giản như tìm kiếm,
@@ -118,8 +118,9 @@
                     </div>
                     <div class="col-12 col-lg-5 text-center list-contact pt-2">
                         <ul class="">
-                            <li class="contact-text py-2 text-start"><i class="fa-sharp fa-solid fa-envelope"></i>
-                                Email: <span class="badge rounded-pill text-bg-success">admin@gmail.com</span></li>
+                            <li class="contact-text py-2 text-start "><i class="fa-sharp fa-solid fa-envelope"></i>
+                                Email: <span class="badge rounded-pill text-bg-success">admin@gmail.com</span>
+                            </li>
                             <li class="contact-text py-2 text-start"><i class="fa-sharp fa-solid fa-phone"></i> SĐT:
                                 <span class="badge rounded-pill text-bg-success">0123456789</span>
                             </li>

@@ -19,8 +19,9 @@
 }
 
 .text-content-description {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 30px;
+  opacity: 0.85;
 }
 
 ul {
@@ -28,7 +29,12 @@ ul {
 }
 
 .section-title {
-  font-size: 35px;
+  font-size: 30px;
+}
+
+.text-content-title {
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .contact {
@@ -36,7 +42,7 @@ ul {
 }
 
 .contact-text {
-  font-size: 20px;
+  font-size: 18px;
 }
 /* body {
   background-color: rgba(3, 99, 3, 0.205);
@@ -51,4 +57,9 @@ ul {
 .carousel-item,
 .carousel-inner {
   border-radius: 10px !important;
+}
+
+.text-bg-success {
+  font-size: 14px;
+  font-weight: 500;
 }
