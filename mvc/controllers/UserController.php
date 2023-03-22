@@ -38,6 +38,8 @@ class UserController extends Controller
         }
     }
 
+   
+
     function register()
     {
         $errMessage = '';
@@ -86,7 +88,58 @@ class UserController extends Controller
         }
     }
 
-    
+    function details($idBill) {
+        $user = $this -> model("User");
+        if (!isset( $_SESSION['user']) || empty( $_SESSION['user'])) {
+            header("Location: /");
+            exit();
+        } 
+ 
+        $user -> fillFormDb(
+            $_SESSION['user']['id'], 
+            $_SESSION['user']['fullName'],
+            $_SESSION['user']['phone'], 
+            $_SESSION['user']['address'], 
+            $_SESSION['user']['email'], 
+            $_SESSION['user']['type']
+        );
+        header('Content-Type: application/json');
+
+        $orderViews = [];
+        $numberStadiumBooked = $user -> fillOrderWithStadiumIdDISTINCT();
+        
+        foreach ($numberStadiumBooked as $stadiumId) {
+            $orderOfUser = $user -> getOrderByStadiumId($stadiumId['stadiumId']);
+            $orderViews[] = $orderOfUser;
+        }
+
+        $foundOrder = [];
+
+        foreach ( $orderViews as $orderView) {
+            $foundOrder =  array_values(array_filter($orderView, function($order) use ($idBill) {
+                return $order['order.id'] == $idBill;
+            }));
+            if (!empty($foundOrder)) {
+                $jsonData = json_encode([
+                    'code' => 0,
+                    'message' => 'Success!!!',
+                    'data' => $foundOrder
+                ]);
+                echo $jsonData;
+                exit();
+            }
+            
+        }
+       
+        $jsonData = json_encode([
+            'code' => 1,
+            'message' => 'Error!!!',
+        ]);
+        echo $jsonData;
+        exit();
+        
+    }
+
 
     function soccerFieldBookingCalendar() {
         $user = $this -> model("User");
@@ -94,6 +147,7 @@ class UserController extends Controller
             header("Location: /");
             exit();
         } 
+        
         $user -> fillFormDb(
                 $_SESSION['user']['id'], 
                 $_SESSION['user']['fullName'],
@@ -102,14 +156,91 @@ class UserController extends Controller
                 $_SESSION['user']['email'], 
                 $_SESSION['user']['type']
         );
+
         $orderViews = [];
         $numberStadiumBooked = $user -> fillOrderWithStadiumIdDISTINCT();
+        // [['stadiumId'] => 1]
         foreach ($numberStadiumBooked as $stadiumId) {
-            // print_r($stadiumId);
             $orderOfUser = $user -> getOrderByStadiumId($stadiumId['stadiumId']);
             $orderViews[] = $orderOfUser;
         }
-        // $orderOfUser
+        // print_r($orderViews );  
         $this -> view('myCalendar', ['order' => $orderViews]);
+    }
+
+    function changeInfo($post) {
+        
+        header('Content-Type: application/json');
+        if( isset($post['phone']) && isset($post['address'])) {
+            $user =  $this -> model('user');
+            $user -> fillFromDb($_SESSION['user']['email']);
+            $user -> changeInfo($post['phone'], $post['address']);
+            $jsonData = json_encode([
+                'code' => 0,
+                'message' => 'Đã thay đổi thông tin thành công!',
+                
+            ]);
+            echo $jsonData;
+            exit();
+        } else {
+            $jsonData = json_encode([
+                'code' => 2,
+                'message' => 'Có lỗi cuối cùng xảy ra!',
+            ]);
+            echo $jsonData;
+            exit();
+        }
+    }
+
+    function changePassword($post) {
+        
+        header('Content-Type: application/json');
+        
+        if( isset($post['password']) && isset($post['new-password'])  ) {
+            $user =  $this -> model('user');
+            $user -> fillFromDb($_SESSION['user']['email']);
+            $result = $user -> changePassword($post['password'], $post['new-password']);
+           
+            if($result == 1) {
+
+                $jsonData = json_encode([
+                    'code' => 0,
+                    'message' => 'Đổi mật khẩu thành công!',
+                    
+                ]);
+                echo $jsonData;
+                exit();
+            } else if($result == 0) {
+                $jsonData = json_encode([
+                    'code' => 2,
+                    'message' => 'Mật khẩu mới không được trùng với mật khẩu cũ!',
+                    
+                ]);
+                echo $jsonData;
+                exit();
+            } else if($result == -1) {
+                $jsonData = json_encode([
+                    'code' => 3,
+                    'message' => 'Mật khẩu nhập không chính xác!',
+                    
+                ]);
+                echo $jsonData;
+                exit();
+            }
+        } else {
+        }
+        $jsonData = json_encode([
+            'code' => 1,
+            'message' => 'Có lỗi cuối cùng xảy ra!',
+        ]);
+        echo $jsonData;
+        exit();
+    }
+
+    function account() {
+        if(!isset($_SESSION['user']) || empty($_SESSION['user'])) {
+         header('Location: /');
+        }
+        $this -> view('myAccount');
     }
 }

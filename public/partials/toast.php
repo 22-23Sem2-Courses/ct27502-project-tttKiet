@@ -1,10 +1,15 @@
 <div class="toast-cus p-3">
 
     <style>
+    #toast-message {
+        z-index: 10000;
+    }
+
     .toast-cus {
         position: fixed;
         bottom: 16px;
         right: 20px;
+        z-index: 10000;
     }
 
     .toast-body {
@@ -22,7 +27,7 @@
     <div id="toast-message" class="toast toast-cus align-items-center text-white bg-primary border-0" role="alert"
         aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
-            <div class="toast-body">
+            <div class="toast-body message-model">
                 <?php 
                        if(isset($bootstrap['message'])) {
                            echo $bootstrap['message'];
