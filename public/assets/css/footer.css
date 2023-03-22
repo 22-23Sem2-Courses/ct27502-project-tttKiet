@@ -1,40 +1,116 @@
-.list-link {
-}
-
-.link-item {
-  color: #000000 !important;
-  text-decoration: none;
-  margin: 0px 23px;
-  font-size: 15px;
-  opacity: 0.7;
-}
-
-.link-item:hover {
-  opacity: 0.9;
-  font-weight: 500;
-  /* text-transform: uppercase; */
-}
-
 .footer-wrap {
-  box-shadow: 0 0 1rem rgb(0 0 0 / 15%);
+  padding: 30px 0 4px 0;
+  background-color: #222222;
+}
+.bor1 {
+  padding-bottom: 40px;
+  border-bottom: 1px solid #fff;
 }
 
-.copyright {
-  font-size: 13px;
-  opacity: 0.7;
-  margin-top: 2px;
+.icon {
+  font-size: 18px;
+  color: red;
 }
 
-.social-item {
-  text-decoration: none;
-  color: #000000 !important;
-  font-size: 19px;
-  float: right;
-  padding: 0 10px;
-  opacity: 0.5;
-  margin-bottom: 3px;
+.footer__box2 h3 {
+  color: #fff;
+  font-size: 14px;
+  padding: 24px 0;
 }
 
-.social-item:hover {
-  opacity: 0.9;
+.footer__title {
+  font-size: 18px;
+  color: #fff;
+}
+
+.footer__decs {
+  max-width: 400px;
+  font-size: 16px;
+  line-height: 22px;
+  color: #fff;
+  margin-top: 20px;
+}
+
+.footer__social {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #fff;
+  margin-top: 20px;
+}
+.footer__social div {
+  padding: 8px;
+  background-color: #fff;
+  border-radius: 4px;
+  margin-right: 12px;
+  transition: 0.3s;
+}
+
+.footer__social div svg {
+  color: #fbad15;
+}
+
+.footer__social div:hover {
+  background-color: #ffffff2b;
+  color: #fff;
+  animation: scaleM 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+@keyframes scaleM {
+  50% {
+    transform: scale(1.2);
+  }
+}
+.footer__title2 {
+  font-size: 23px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.footer__list1 {
+  font-size: 14px;
+  color: #fff;
+  margin-top: 20px;
+}
+.footer__list1 li {
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+.footer__list1 li:hover {
+  color: #fbad15;
+}
+
+.footer__list2 li {
+  margin-bottom: 22px;
+}
+.footer__list2-wrap {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #fff;
+}
+.footer__list2-wrap .footer__title3 {
+  font-size: 14px;
+  font-weight: 600;
+}
+.footer__list2-icon {
+  padding: 10px 0;
+  display: flex;
+  min-width: 36px;
+  max-width: 36px;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 4px;
+  margin-right: 14px;
+}
+.footer__list2-icon svg {
+  color: #fbad15;
+}
+
+.footer__list2-icon span {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 400;
 }

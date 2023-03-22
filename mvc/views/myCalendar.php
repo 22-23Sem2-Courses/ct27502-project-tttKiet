@@ -214,7 +214,6 @@
                         billId: billId
                     },
                     success: function(data) {
-
                         if (data.code === 0) {
                             showModeldetails(...data.data);
                         }

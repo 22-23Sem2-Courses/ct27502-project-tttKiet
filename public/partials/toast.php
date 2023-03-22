@@ -1,32 +1,33 @@
 <div class="toast-cus p-3">
 
     <style>
-        #toast-message {
-            z-index: 10000;
-        }
+    #toast-message {
+        z-index: 10000;
+    }
 
-        .toast-cus {
-            position: fixed;
-            bottom: 16px;
-            right: 20px;
-            z-index: 10000;
-        }
+    .toast-cus {
+        position: fixed;
+        bottom: 16px;
+        right: 20px;
+        z-index: 10000;
+    }
 
-        .toast-body {
-            font-size: 14px;
-            padding: 8px 22px;
-        }
+    .toast-body {
+        font-size: 14px;
+        padding: 8px 22px;
+    }
 
-        .toast {
-            background-color: #fafafa;
-            color: #383838;
-            font-weight: 500;
-        }
+    .toast {
+        background-color: #fafafa;
+        color: #383838;
+        font-weight: 500;
+    }
     </style>
 
-    <div id="toast-message" class="toast toast-cus align-items-center text-white bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+    <div id="toast-message" class="toast toast-cus align-items-center text-white bg-primary border-0" role="alert"
+        aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
-            <div class="toast-body">
+            <div class="toast-body message-model">
                 <?php
                 if (isset($bootstrap['message'])) {
                     echo $bootstrap['message'];
@@ -34,7 +35,8 @@
                 }
                 ?>
             </div>
-            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                aria-label="Close"></button>
         </div>
     </div>
 </div>

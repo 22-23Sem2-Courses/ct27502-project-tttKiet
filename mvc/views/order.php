@@ -47,24 +47,21 @@
                                     <div class="card__title">
                                         <h1 class="title__name"> <?php echo $stadium['name'] ?> </h1>
                                         <div class="star">
-                                            <span class="star-item">
-                                                <i class="fa-solid fa-star"></i>
-                                            </span>
-                                            <span class="star-item">
-                                                <i class="fa-solid fa-star"></i>
-                                            </span>
-                                            <span class="star-item">
-                                                <i class="fa-solid fa-star"></i>
-                                            </span>
-                                            <span class="star-item">
-                                                <i class="fa-solid fa-star"></i>
-                                            </span>
-                                            <span class="star-item">
-                                                <i class="fa-regular fa-star"></i>
-                                            </span>
-                                            <span class="star-item">
-                                                <i class="fa-regular fa-star"></i>
-                                            </span>
+                                            <?php
+                                                for ($i = 1; $i <= 5; $i++)
+                                                    if (round($stadium['star']) < $i) {
+                                                        echo '<span class="star-item">
+                                                                        <i class="fa-regular fa-star"></i>
+                                                                    </span>';
+                                                    } else {
+                                                        echo '
+                                                                    <span class="star-item">
+                                                                        <i class="fa-solid fa-star"></i>
+                                                                    </span>
+                                                                ';
+                                                    }
+                                            ?>
+
                                         </div>
                                     </div>
                                 </div>

@@ -1,5 +1,6 @@
 #main {
   padding-top: 108px;
+  min-height: calc(100vh - 52px);
 }
 
 body {

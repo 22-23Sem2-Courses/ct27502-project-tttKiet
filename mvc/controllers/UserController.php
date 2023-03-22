@@ -14,9 +14,8 @@ class UserController extends Controller
                 // echo "<script type='text/javascript'>alert('ok');</script>";
                 $email = $_POST['email'];
                 $pass = $_POST['pass'];
-                $user = $this->model("User");
-
-                $userDb =  $user->authenticate($email, $pass);
+                $user = $this -> model("User");
+                $userDb =  $user -> authenticate($email, $pass);
                 if (!empty($userDb)) {
                     $_SESSION['user'] = [
                         'email' =>  $email,
@@ -26,11 +25,12 @@ class UserController extends Controller
                         'address' => $userDb['address'],
                         'type' =>  $userDb['type']
                     ];
-
                     $_SESSION['loggedin'] = true;
                     header("Location: /");
                 } else {
-                    echo "<script type='text/javascript'>alert('sai');</script>";
+                    $this -> view('login',[ 
+                        'error' => 'Email hoặc mật khẩu không chính xác!'
+                    ]);
                 }
             }
         } else {
@@ -95,13 +95,8 @@ class UserController extends Controller
             exit();
         } 
  
-        $user -> fillFormDb(
-            $_SESSION['user']['id'], 
-            $_SESSION['user']['fullName'],
-            $_SESSION['user']['phone'], 
-            $_SESSION['user']['address'], 
-            $_SESSION['user']['email'], 
-            $_SESSION['user']['type']
+        $user -> fillFromDb(
+            $_SESSION['user']['email']
         );
         header('Content-Type: application/json');
 
@@ -148,13 +143,8 @@ class UserController extends Controller
             exit();
         } 
         
-        $user -> fillFormDb(
-                $_SESSION['user']['id'], 
-                $_SESSION['user']['fullName'],
-                $_SESSION['user']['phone'], 
-                $_SESSION['user']['address'], 
-                $_SESSION['user']['email'], 
-                $_SESSION['user']['type']
+        $user -> fillFromDb(
+            $_SESSION['user']['email']
         );
 
         $orderViews = [];
