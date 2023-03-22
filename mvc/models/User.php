@@ -23,13 +23,95 @@ class User extends DB
         }
     }
 
-    public function fillFormDb($id, $fullName, $phone, $address, $email, $type) {
-        $this -> id = $id;
-        $this -> fullName = $fullName;
-        $this -> phone = $phone;
-        $this -> address = $address;
-        $this -> email = $email;
-        $this -> type = $type;
+    public function fillFromDb($email) {
+        $query = "SELECT * FROM `users` WHERE `email`='{$email}'";
+
+        try {
+            $sth = $this -> pdo -> query($query);
+
+            if($sth -> rowCount() == 1) {
+                $row = $sth -> fetch();
+
+                $this -> id = $row['id'];
+                $this -> fullName = $row['fullName'];
+                $this -> phone = $row['phone'];
+                $this -> address = $row['address'];
+                $this -> email = $row['email'];
+                $this -> type = $row['type'];
+            }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+
+        
+    }
+
+    function saveWithSession() {
+        $_SESSION['user'] = [
+            'email' =>  $this -> email,
+            'id' => $this -> id,
+            'phone' => $this -> phone,
+            'fullName' => $this -> fullName,
+            'address' => $this -> address,
+            'type' =>  $this -> type,
+        ];
+    }
+
+    function changeInfo($phone, $address) {
+        $query = "UPDATE `users` SET `phone` = ?, `address` = ? where `id` = ?";
+
+        try {
+            $sth = $this -> pdo -> prepare($query);
+            $sth -> execute([
+                $phone,
+                $address,
+                $this -> id,
+            ]);
+            $this -> phone = $phone;
+            $this -> address = $address;
+            $this -> saveWithSession();
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+    function changePassword($password, $newPassword) {
+        $query = "SELECT * FROM `users` WHERE `id`= ? AND `passWord` = ? ";
+
+        try {
+            $sth = $this -> pdo -> prepare($query);
+            $sth -> execute([
+                $this -> id,
+                $password
+            ]);
+            if($sth -> rowCount() == 1) {
+                $query = "UPDATE `users` SET `passWord` = ? where `id` = ?";
+                $sth = $this -> pdo -> prepare($query);
+
+                try {
+                    $sth -> execute([
+                        $newPassword,
+                        $this -> id,
+                    ]);
+                    if($sth -> rowCount() == 1) {
+                        return 1;
+                    } else {
+                        return 0;
+                    }
+
+                } catch (PDOException $e) {
+                    echo "Error: " . $e->getMessage();
+                }
+
+            } else {
+                return -1;
+            }
+
+            return 0;
+           
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
     }
 
     public function fillOrderWithStadiumIdDISTINCT() {
@@ -40,7 +122,7 @@ class User extends DB
                     LEFT JOIN `users` ON `users`.`id` = `orders`.`userId` 
                     WHERE `orders`.`timeBook` BETWEEN NOW() AND DATE_ADD(NOW(), INTERVAL 5 DAY) 
                     AND `users`.`id` = ?
-                    ORDER BY `orders`.`timeBook` ASC;
+                    ORDER BY STR_TO_DATE(`orders`.`timeBook`, "%Y-%m-%d %H:%i:%s") ASC
                 ';
 
                 
@@ -77,7 +159,7 @@ class User extends DB
              WHERE `orders`.`timeBook` BETWEEN NOW() AND DATE_ADD(NOW(), INTERVAL 5 DAY) 
                 AND `users`.`id` = ?
                 AND `stadiums`.`id` = ?
-             ORDER BY `orders`.`timeBook` ASC
+             ORDER BY STR_TO_DATE(`orders`.`timeBook`, "%Y-%m-%d %H:%i:%s") ASC
              ;';
 
         

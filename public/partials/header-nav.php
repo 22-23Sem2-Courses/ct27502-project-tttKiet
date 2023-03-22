@@ -51,9 +51,9 @@
                                      <div class='icon-down'>
                                         <i class='fa-solid fa-chevron-down'></i>
                                         <div class='menu__user'>
-                                            <div class='menu__user--item'>
+                                            <a  href='/user/account' class='menu__user--item'>
                                                 Tài khoản của tôi
-                                            </div>
+                                            </a>
                                             <a href='/user/soccer-field-booking-calendar' class='menu__user--item'>
                                                 Xem lịch đặt sân
                                             </a>
