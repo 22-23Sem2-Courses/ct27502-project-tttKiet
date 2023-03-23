@@ -15,13 +15,7 @@ class FeedbackController extends Controller
         while ($row = $sth->fetch()) {
             $stadiums[] = $row;
         }
-
-        $rating = [];
-        foreach ($stadiums as $stadium) {
-            $rating[$stadium['id']] = $feedback->countStar($stadium['id']);
-        }
-
-        $this->view("feedback", ['feedbacks' => $allFeedbacks, 'stadiums' =>  $stadiums, 'allRating' => $rating]);
+        $this->view("feedback", ['feedbacks' => $allFeedbacks, 'stadiums' =>  $stadiums]);
     }
 
     function stadium($id)
@@ -32,17 +26,22 @@ class FeedbackController extends Controller
         // Stadium
         $stadiumsModel = $this->model('stadium');
         $sth = $stadiumsModel->getAll();
-        $stadiums = [];
+        $stadium = [];
         while ($row = $sth->fetch()) {
-            $stadiums[] = $row;
+            if ($row['id'] == $id) {
+                $stadium = $row;
+                break;
+            }
         }
-
-        $feedback = $this->model("Feedback");
-        $rating = [];
-        foreach ($stadiums as $stadium) {
-            $rating[$stadium['id']] = $feedback->countStar($stadium['id']);
+        $orders = $stadiumsModel->getHoursOrderFromStadiumId($stadium['id']);
+        $sumHours = 0.0;
+        $sumOrders = count($orders);
+        foreach ($orders as $order) {
+            $sumHours += $order['hour'];
         }
-        $this->view("detailFeedback", ['stadium' =>  $stadiums[$id - 1], 'rating' => $rating]);
+        // print_r($sumOrders);
+        // print_r($sumHours);
+        $this->view("detailFeedback", ['stadium' =>  $stadium, 'sumOrders' => $sumOrders, 'sumHours' => $sumHours]);
     }
 
 
@@ -57,7 +56,7 @@ class FeedbackController extends Controller
             $userId = $_POST['userId'];
             $feedback = $this->model("Feedback");
             if ($feedback->addFeedback($rating, $description, $stadiumId, $userId)) {
-                echo "<script type='text/javascript'>alert('Thêm feedback thành công');</script>";
+                $feedback->countStar($stadiumId);
                 header("Location: /feedback/stadium/{$stadiumId}");
             } else {
                 echo "<script type='text/javascript'>alert('Bạn đã thêm feedback cho sân này rồi');</script>";
@@ -86,6 +85,7 @@ class FeedbackController extends Controller
             $stadiumId = $_POST['stadiumId'];
             $feedback = $this->model("Feedback");
             if ($feedback->updateFeedback($feebackId, $rating, $description)) {
+                $feedback->countStar($stadiumId);
                 header("Location: /feedback/stadium/{$stadiumId}");
             } else {
                 echo "<script type='text/javascript'>alert('Sửa đánh giá không thành công');</script>";
@@ -96,7 +96,7 @@ class FeedbackController extends Controller
         foreach ($stadiums as $stadium) {
             $rating[$stadium['id']] = $feedback->countStar($stadium['id']);
         }
-        $this->view("editFeedbackDetail", ['stadium' =>  $stadiums[$id - 1], 'rating' => $rating]);
+        $this->view("editFeedbackDetail", ['stadium' =>  $stadiums[$id - 1]]);
     }
 
     public function delete()
@@ -106,6 +106,7 @@ class FeedbackController extends Controller
             $stadiumId = $_POST['stadiumId'];
             $feedback = $this->model("Feedback");
             if ($feedback->deleteFeedback($id)) {
+                $feedback->countStar($stadiumId);
                 return true;
             } else {
                 return false;

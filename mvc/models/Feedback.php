@@ -51,8 +51,6 @@ class Feedback extends DB
 
     public function getFeedbackWithStadiumId($stadiumId)
     {
-        // $query = "SELECT * FROM feedbacks WHERE stadiumId = ?";
-
         $query = "SELECT f.*, u.fullName as userName 
               FROM feedbacks f
               JOIN users u ON f.userId = u.id
@@ -135,8 +133,19 @@ class Feedback extends DB
         }
         $average = $total / $count;
 
-        // Round average (làm tròng giá trị trung bình)
+        // Round average (làm tròn giá trị trung bình)
         $rounded_average = round($average, 0);
-        return $rounded_average;
+
+        // if stadium not exist feedback, set star = 5
+        if (!$rounded_average) {
+            $rounded_average = 5;
+        }
+
+        $update_query = "UPDATE stadiums SET star = ? WHERE id = ?";
+        $update_sth = $this->pdo->prepare($update_query);
+        $update_sth->execute([$rounded_average, $stadiumId]);
+
+        // returns true if update was successful
+        return $update_sth->rowCount() > 0;
     }
 }

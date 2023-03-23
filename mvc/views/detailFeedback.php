@@ -64,7 +64,7 @@
     
                                                 ';
 
-                for ($i = 0; $i <  $data['rating'][$data["stadium"]['id']]; $i++) {
+                for ($i = 0; $i <  $data["stadium"]['star']; $i++) {
                     echo '<i class="fa-solid fa-star px-1"></i>';
                 }
 
@@ -169,6 +169,32 @@
                                 ';
                         }
                     }
+                }
+                // Check admin
+                else if (isset($_SESSION['loggedin']) && $_SESSION['user']['type'] == 'admin' && $data["stadium"]['userId'] == $_SESSION['user']['id']) {
+                    echo '<div class="col-12 col-md-6 pt-5">
+                            <div class="row">
+                                <h2 class="feedback-title text-center pb-2 group-box" >Một số thông tin về sân của bạn</h2>
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                <div class="card">
+                                    <div class="card-body">
+                                    <h5 class="card-title">Tổng số đánh giá</h5>
+                                    <p class="card-text fs-14">Sân của bạn được được đánh giá ' . $data["stadium"]['star'] . '/5 <i class="fa-solid fa-star px-1"  <i class="fa-brands fa-facebook" style="color: #ffcc00;"></i> </p> 
+                                    <p class="card-text fs-14">Hiện tại đã có ' . count($feedbacks) . ' đánh giá</p> 
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="col-sm-6">
+                                <div class="card" style="height: 117px;">
+                                    <div class="card-body">
+                                    <h5 class="card-title">Tổng số giờ đã thuê</h5>
+                                    <p class="card-text">Số giờ đã thuê: ' . $data['sumHours'] . ' giờ</p>
+                                    <p class="card-text">Số lượt thuê sân: ' . $data['sumOrders'] . ' lượt</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>';
                 } else if (isset($_SESSION['loggedin'])) {
                     echo '
                     <!-- Write feedback -->
@@ -237,7 +263,7 @@
                 echo '</div>';
                 echo '<div class="row">
                         <div class="row">
-                            <h2 class="feedback-title text-center mt-4">Tất cả đánh giá của các cầu thủ về
+                            <h2 class="feedback-title text-center mt-4 group-box">Tất cả đánh giá của các cầu thủ về
                                 ' . $data["stadium"]['name'] . '
                             </h2>
                         </div>

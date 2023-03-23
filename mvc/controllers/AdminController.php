@@ -35,7 +35,6 @@ class AdminController extends Controller
             });
 
             $emptyStadium = $admin->findFreeYard($viewByDate, $openTime, $closeTime, $stadiumId);
-            print_r($emptyStadium[0]);
 
             $this->view("listOrder", ['stadium' => $ownerStadium, 'allOrder' => $orderInDay, 'currentDate' => $viewByDate, 'emptyStadium' => $emptyStadium]);
         }

@@ -69,8 +69,8 @@
 
                                 <div>
                                     <h2 class='footer__title3'>EMAIL OF OUR</h2>
-                                    <span style="display: block;"> kietb2014754@gmail.com</span>
-                                    <span>vanb2014754@gmail.com</span>
+                                    <span style="display: block;"> kietb2014754@student.ctu.edu.vn</span>
+                                    <span>vanb2014805@student.ctu.edu.vn</span>
                                 </div>
                             </div>
                         </li>
@@ -90,7 +90,7 @@
             </div>
         </div>
         <div class='footer__box2'>
-            <h3> Copyright &#169; 2023 , All rights reserved. Powered by Bui Tuan Kiet.</h3>
+            <h3> Copyright &#169; 2023 , All rights reserved. Powered by Bui Tuan Kiet & Lai The Van.</h3>
         </div>
     </div>
 </div>

@@ -33,13 +33,13 @@
         <main id="main" class="">
             <div class="content container ">
                 <div class="row intro-content">
-                    <h1 class="section-title text-center mb-5">
+                    <h3 class="section-title text-center mb-5 ">
                         <strong>Tổng quan về Football Order</strong>
-                    </h1>
+                    </h3>
                     <div class="row mb-5">
                         <div class="row my-3">
 
-                            <div class="col-12 col-md-7 text-col">
+                            <div class="col-12 col-md-7 text-col mt-4">
                                 <h1 class="text-content-title text-center">
                                     Bạn có biết <i class="fa-solid fa-question fa-flip"></i>
                                 </h1>
@@ -62,7 +62,7 @@
                             <div class="col-12 col-md-5 col-img" id="col-order">
                                 <img src="https://cdn.pixabay.com/photo/2017/09/23/11/43/football-2778583__340.jpg" alt="" class="img-content img-fluid ">
                             </div>
-                            <div class="col-12 col-md-7 text-col">
+                            <div class="col-12 col-md-7 text-col mt-4">
                                 <h1 class="text-content-title text-center">
                                     Giới thiệu về Football Order <i class="fa-regular fa-comment fa-shake"></i>
                                 </h1>
@@ -77,7 +77,7 @@
                         </div>
 
                         <div class="row my-3">
-                            <div class="col-12 col-md-7 text-col">
+                            <div class="col-12 col-md-7 text-col mt-4">
                                 <h1 class="text-content-title text-center">
                                     Bạn nhận được gì từ Fooball Order <i class="fa-regular fa-star fa-beat"></i>
                                 </h1>
@@ -118,18 +118,20 @@
                     </div>
                     <div class="col-12 col-lg-5 text-center list-contact pt-2">
                         <ul class="">
-                            <li class="contact-text py-2 text-start "><i class="fa-sharp fa-solid fa-envelope"></i>
-                                Email: <span class="badge rounded-pill text-bg-success">admin@gmail.com</span>
+                            <li class="contact-text py-2 text-start " style="font-size: 14px;"><i class="fa-sharp fa-solid fa-envelope"></i>
+                                <span style="margin-right: 33px;">Email:</span> <span class="badge rounded-pill text-bg-success">b201480@student.ctu.edu.vn</span>
                             </li>
-                            <li class="contact-text py-2 text-start"><i class="fa-sharp fa-solid fa-phone"></i> SĐT:
-                                <span class="badge rounded-pill text-bg-success">0123456789</span>
+                            <li class="contact-text py-2 text-start" style="font-size: 14px;"><i class="fa-sharp fa-solid fa-phone"></i>
+                                <span style="margin-right: 46px;">SĐT:</span> <span class="badge rounded-pill text-bg-success">0123456789</span>
                             </li>
-                            <li class="contact-text py-2 text-start"><i class="fa-brands fa-facebook"></i> Facebook:
-                                <span class="badge rounded-pill text-bg-success">facebook.com/ctu</span>
+                            <li class="contact-text py-2 text-start" style="font-size: 14px;"><i class="fa-brands fa-facebook"></i> <span style="margin-right: 5px;">Facebook:</span>
+                                <span class="badge rounded-pill text-bg-success">facebook.com/ltv.1805</span>
                             </li>
-                            <li class="contact-text py-2 text-start"><i class="fa-sharp fa-solid fa-location-dot"></i>
-                                Địa chỉ: <span class="badge rounded-pill text-bg-success">Khu II, Đ. 3/2, Xuân Khánh,
-                                    Ninh Kiều, Cần Thơ</span></li>
+                            <li class="contact-text py-2 text-start" style="font-size: 14px;"><i class="fa-sharp fa-solid fa-location-dot"></i> <span style="margin-right: 29px;">Địa
+                                    chỉ:</span>
+                                <span class="badge rounded-pill text-bg-success">Khu II, Đ. 3/2, Xuân Khánh,
+                                    Ninh Kiều, Cần Thơ</span>
+                            </li>
                         </ul>
                     </div>
                 </div>

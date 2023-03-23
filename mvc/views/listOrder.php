@@ -63,7 +63,7 @@
                                     <h5 class="card-title name fs-16"><?= $data['stadium'][0]['name'] ?></h5>
                                     <p class="card-text title fs-14">Địa chỉ: <?= $data['stadium'][0]['address'] ?></p>
                                     <a href="/feedback/stadium/<?= $data['stadium'][0]['id'] ?>" class="btn btn-primary"
-                                        target="_blank">Xem tất cả đánh giá về sân của bạn</a>
+                                        style="font-size: 11px;" target="_blank">Xem tất cả đánh giá về sân của bạn</a>
                                 </div>
                             </div>
                         </div>
@@ -132,7 +132,7 @@
                                                                     style="width: 45px; height: 45px"
                                                                     class="rounded-circle" />
                                                                 <div class="ms-3">
-                                                                    <p class="fw-normal mb-1 fs-16">
+                                                                    <p class="fw-normal mb-1 fs-14">
                                                                         <?= $order['userName'] ?>
                                                                     </p>
                                                                     <p class="text-muted mb-0 fs-14">
@@ -143,14 +143,14 @@
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <p class="fw-normal mb-1 fs-16">Sân số <?= $order['id'] ?>
+                                                            <p class="fw-normal mb-1 fs-14">Sân số <?= $order['id'] ?>
                                                             </p>
                                                             <p class="text-muted mb-0 fs-14">Sân <?= $order['type'] ?>
                                                                 người
                                                             </p>
                                                         </td>
                                                         <td>
-                                                            <p class="fw-normal mb-1 fs-16"><?= $order['numberHour'] ?>
+                                                            <p class="fw-normal mb-1 fs-14"><?= $order['numberHour'] ?>
                                                                 tiếng
                                                             </p>
 
@@ -161,7 +161,7 @@
                                                             </p>
                                                         </td>
                                                         <td>
-                                                            <p class="fw-normal mb-1 fs-16">
+                                                            <p class="fw-normal mb-1 fs-14">
                                                                 <?= $order['price'] *  $order['numberHour'] ?>.000 VNĐ
                                                             </p>
                                                         </td>
@@ -169,7 +169,7 @@
                                                             <input type="checkbox" class="btn-check"
                                                                 id="btn-check-2-outlined-<?= $order['order.id'] ?>"
                                                                 autocomplete="off">
-                                                            <label class="btn btn-outline-secondary title fs-16"
+                                                            <label class="btn btn-outline-secondary title fs-14"
                                                                 for="btn-check-2-outlined-<?= $order['order.id'] ?>">Đã
                                                                 thanh toán</label><br>
                                                         </td>

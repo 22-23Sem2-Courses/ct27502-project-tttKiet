@@ -1,6 +1,7 @@
 .feedback-content {
   background-color: #f5f5f5;
   padding-top: 115px;
+  padding-bottom: 30px;
 }
 
 .feedback-row {
@@ -8,7 +9,7 @@
 }
 
 .section-title {
-  font-size: 30px;
+  font-size: 22px;
 }
 
 .img-content {
@@ -257,8 +258,28 @@ input {
   font-size: 14px !important;
 }
 
+.fs-16 {
+  font-size: 16px !important;
+}
+
+.fs-14 {
+  font-size: 14px !important;
+}
+
 hr:last-child {
   opacity: 0;
+}
+
+.group-box {
+  background-color: #fff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+main {
+  background-color: #f5f5f5;
 }
 
 /* Reponsive */
