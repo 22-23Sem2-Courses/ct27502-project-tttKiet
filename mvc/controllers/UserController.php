@@ -143,9 +143,7 @@ class UserController extends Controller
             exit();
         } 
         
-        $user -> fillFromDb(
-            $_SESSION['user']['email']
-        );
+        $user -> fillFromDb($_SESSION['user']['email']);
 
         $orderViews = [];
         $numberStadiumBooked = $user -> fillOrderWithStadiumIdDISTINCT();
@@ -154,7 +152,7 @@ class UserController extends Controller
             $orderOfUser = $user -> getOrderByStadiumId($stadiumId['stadiumId']);
             $orderViews[] = $orderOfUser;
         }
-        // print_r($orderViews );  
+        // print_r($numberStadiumBooked );  
         $this -> view('myCalendar', ['order' => $orderViews]);
     }
 
