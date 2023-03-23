@@ -129,6 +129,9 @@
                                         <label for="pass">Mật khẩu: </label>
                                         <input id="pass" name="pass" placeholder="***" type="password" required>
                                     </div>
+                                    <span class="label-err err-login">
+                                        <?= isset($data['error']) ? $data['error'] : ""?>
+                                    </span>
                                 </div>
 
                                 <div class="form-submit">
@@ -136,7 +139,7 @@
                                 </div>
 
                                 <div class="form-miss">
-                                    <span>Quên mật khẩu?</span>
+                                    <a href='#'>Quên mật khẩu?</a>
                                     <span>Bạn chưa có tài khoản?
                                         <a href="/user/register">Đăng ký</a>
                                         ngay?</span>
