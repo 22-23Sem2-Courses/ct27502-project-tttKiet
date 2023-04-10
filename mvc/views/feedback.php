@@ -9,13 +9,10 @@
 
 
     <!-- Icon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Bootstrap 5-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
     <!-- Css -->
     <link rel="stylesheet" href="./assets/css/index.css">
@@ -40,54 +37,52 @@
                 <h3 class="section-title text-center mb-3 group-box">Đánh giá về các sân bóng ở địa bàn TP Cần Thơ</h3>
                 <!-- item -->
                 <?php foreach ($data['stadiums'] as $stadium) : ?>
-                <div class="row feedback-row py-3">
-                    <div class="col-12 col-lg-5 card-stadium">
-                        <!-- Stadium -->
-                        <div class="card card-wrapper">
-                            <img src="<?php echo $stadium['imgLink']; ?>" class="card-img-top img-content img-fluid"
-                                alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title"><i class="fa-solid fa-futbol"></i>
-                                    <?php echo $stadium['name']; ?></h5>
-                                <p class="card-text"><i class="fa-solid fa-location-dot"></i> </i> Địa chỉ:
-                                    <?php echo $stadium['address']; ?></p>
-                                <p class="card-text"><i class="fa-solid fa-phone"></i> SDT:
-                                    <?php echo $stadium['phone']; ?></p>
-                                <hr>
-                                <div class="row">
-                                    <div class="col pt-1">
-                                        <div class="star-review list-group-item">
+                    <div class="row feedback-row py-3">
+                        <div class="col-12 col-lg-5 card-stadium">
+                            <!-- Stadium -->
+                            <div class="card card-wrapper">
+                                <img src="<?php echo $stadium['imgLink']; ?>" class="card-img-top img-content img-fluid" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title"><i class="fa-solid fa-futbol"></i>
+                                        <?php echo $stadium['name']; ?></h5>
+                                    <p class="card-text"><i class="fa-solid fa-location-dot"></i> </i> Địa chỉ:
+                                        <?php echo $stadium['address']; ?></p>
+                                    <p class="card-text"><i class="fa-solid fa-phone"></i> SDT:
+                                        <?php echo $stadium['phone']; ?></p>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col pt-1">
+                                            <div class="star-review list-group-item">
 
-                                            <?php for ($i = 0; $i < $stadium['star']; $i++) : ?>
-                                            <i class="fa-solid fa-star"></i>
-                                            <?php endfor; ?>
+                                                <?php for ($i = 0; $i < $stadium['star']; $i++) : ?>
+                                                    <i class="fa-solid fa-star"></i>
+                                                <?php endfor; ?>
+                                            </div>
+                                        </div>
+                                        <div class="col text-end">
+                                            <button type="button" class="btn btn-success rounded-pill">
+                                                <a href="/feedback/stadium/<?php echo $stadium['id'] ?>" class="view-feedback-detail">Xem tất cả đánh
+                                                    giá</a>
+                                            </button>
                                         </div>
                                     </div>
-                                    <div class="col text-end">
-                                        <button type="button" class="btn btn-success rounded-pill">
-                                            <a href="/feedback/stadium/<?php echo $stadium['id'] ?>"
-                                                class="view-feedback-detail">Xem tất cả đánh
-                                                giá</a>
-                                        </button>
-                                    </div>
                                 </div>
+
+                            </div>
+                        </div>
+
+
+                        <!-- Feedback -->
+                        <div class="col-12 col-lg-7 user-feedback ">
+                            <div class="row pt-2 mt-3 d-flex justify-content-center align-items-center">
+                                <h2 class="feedback-title text-center group-box" style="width: 95%;">Một số đánh giá của
+                                    các
+                                    cầu thủ về
+                                    <?php echo $stadium['name']; ?>
+                                </h2>
                             </div>
 
-                        </div>
-                    </div>
-
-
-                    <!-- Feedback -->
-                    <div class="col-12 col-lg-7 user-feedback">
-                        <div class="row pt-2 mt-3 d-flex justify-content-center align-items-center">
-                            <h2 class="feedback-title text-center group-box" style="width: 628px;">Một số đánh giá của
-                                các
-                                cầu thủ về
-                                <?php echo $stadium['name']; ?>
-                            </h2>
-                        </div>
-
-                        <?php
+                            <?php
 
 
                             $feedbacksBySId = $this->model("feedback");
@@ -98,6 +93,7 @@
                                 <div class="row pt-5 mt-5 title-no-feedback">
                                 <h3 class="text-center text-light  w-50 bg-success py-3 shadow-lg rounded " style="font-size: 14px;">Sân này hiện tại chưa có đánh giá nào</h3>
                             </div>
+                            
                     ';
                             } else {
                                 foreach ($feedbacks as $feedback) {
@@ -106,6 +102,7 @@
                                     }
                                     include_once "./partials/timeAgo.php";
                                     echo '
+                        
                         <div class="row mt-3 mx-3">
                             <div class="card">
                                 <div class="card-header card-title ">
@@ -148,17 +145,21 @@
                                             </div>
                                             </div>
                                             </div>
-                                            </div>';
+                                            </div>
+                                            
+                                            ';
                                     $count++;
                                 }
                             }
                             ?>
 
+                        </div>
                     </div>
-                </div>
-                <hr>
+
+                    <hr class="hr-custom">
 
                 <?php endforeach; ?>
+
             </div>
         </main>
         <!-- Footer -->
@@ -168,8 +169,7 @@
             ?>
         </footer>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
     </script>
     <script>
 

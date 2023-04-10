@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 
     <!-- Bootstrap 5-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
     <!-- Css -->
     <link rel="stylesheet" href="/assets/css/index.css">
@@ -42,7 +43,7 @@
                         <a href="/feedback" class="text-dark back-btn "><i class="fa-solid fa-arrow-left"></i></a>
                         </div>
                         
-                        <h3 class="section-title text-center mb-5">Đánh giá chi tiết về sân ' . $data["stadium"]['name'] . '</h3>
+                        <h3 class="section-title text-center mb-5 group-box pt-4" >Đánh giá chi tiết về sân ' . $data["stadium"]['name'] . '</h3>
                         
                         
                         </div>
@@ -107,7 +108,7 @@
                             echo '
                             <div class="col-12 col-md-6">
                                 <div class="row mt-3 mx-3">
-                                <h1 class="feedback-title py-4 text-center" >Đây là đánh giá của bạn
+                                <h1 class="feedback-title py-3 text-center group-box" >Đánh giá của bạn
                                                 về sân ' . $data['stadium']['name'] . '
                                             </h1>
                                 <div class="card">
@@ -202,13 +203,13 @@
                                 
                                 <div class="form-wrapper">
                                 
-                                <form action="/feedback/add" name="form-add-feedback" id="form-add-feedback" class="form-add-feedback" method="post"> 
+                                <form action="/feedback/add" name="form-add-feedback" id="form-add-feedback" class="form-add-feedback group-box" method="post"> 
                                         <div class="row py-3">
-                                            <h1 class="modal-title fs-5 text-center" >Viết đánh giá của bạn
+                                            <h1 class="modal-title  text-center " >Viết đánh giá của bạn
                                                 về sân ' . $data['stadium']['name'] . '
                                             </h1>
                                         </div>
-                                        <div class="row form-row">
+                                        <div class="row form-row ">
                                             <div class="col">
                                                 <div class="mb-3">
                                                     <label for="email" class="form-label ">Địa chỉ email:</label>
@@ -262,12 +263,12 @@
                 }
                 echo '</div>';
                 echo '<div class="row">
-                        <div class="row">
-                            <h2 class="feedback-title text-center mt-4 group-box">Tất cả đánh giá của các cầu thủ về
+                        <div class="row d-flex justify-content-center align-items-center">
+                            <h2 class="feedback-title text-center mt-4 group-box " style="width: 100%;">Tất cả đánh giá của các cầu thủ về
                                 ' . $data["stadium"]['name'] . '
                             </h2>
                         </div>
-                        <div class="feedback-detail">';
+                        <div class="feedback-detail group-box">';
 
 
                 // Another feedback
@@ -355,7 +356,7 @@
     </div>
 
     <!-- Toast -->
-    <div class="toast-container position-fixed top-0 end-0 p-5 ">
+    <!-- <div class="toast-container position-fixed top-0 end-0 p-5 ">
         <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header">
                 <strong class="me-auto fs-4">Football Order</strong>
@@ -367,7 +368,7 @@
 
             </div>
         </div>
-    </div>
+    </div> -->
     </main>
     <!-- Footer -->
     <footer>
@@ -376,56 +377,65 @@
         ?>
     </footer>
     </div>
+    </div>
+    <!-- toast -->
+    <?php
+    $bootstrap['message'] = 'Bạn đã xoá feedback thành công';
+    include "./partials/toast.php";
+    ?>
+    </div>
     <!-- bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
     </script>
 
     <!-- Jquery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+        integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
-        jQuery.noConflict();
-        jQuery(document).ready(function($) {
-            const feedbackIdInput = $('input[name="feedbackId"]');
-            const liveToast = $('#liveToast');
-            // Delete feedback
-            if (feedbackIdInput) {
-                const feedbackId = feedbackIdInput.val();
-                const stadiumIdInput = $('input[name="stadiumId"]');
-                const stadiumId = stadiumIdInput.val();
-                const toastMessage = $('.toast');
-                $('#btn-delete-feedback').click(function() {
-                    // Send the POST request using jQuery
-                    $.ajax({
-                        url: '/feedback/delete',
-                        method: 'POST',
-                        data: {
-                            feedbackId,
-                            stadiumId,
-                        },
-                        success: function(response) {
+    jQuery.noConflict();
+    jQuery(document).ready(function($) {
+        const feedbackIdInput = $('input[name="feedbackId"]');
+        const liveToast = $('#toast-message');
+        // Delete feedback
+        if (feedbackIdInput) {
+            const feedbackId = feedbackIdInput.val();
+            const stadiumIdInput = $('input[name="stadiumId"]');
+            const stadiumId = stadiumIdInput.val();
+            const toastMessage = $('.toast');
+            $('#btn-delete-feedback').click(function() {
+                // Send the POST request using jQuery
+                $.ajax({
+                    url: '/feedback/delete',
+                    method: 'POST',
+                    data: {
+                        feedbackId,
+                        stadiumId,
+                    },
+                    success: function(response) {
+                        liveToast.addClass('fade show');
+                        setTimeout(function() {
+                            location.reload();
+                        }, 1000);
 
-                            liveToast.addClass('fade show');
-                            setTimeout(function() {
-                                location.reload();
-                            }, 1000);
-
-                        },
-                        error: function(xhr, status, error) {
-                            console.error(error);
-                        }
-                    });
-
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                    }
                 });
-            }
 
-            $('#form-add-feedback').submit(function(event) {
-                const rating = $('input[name="rating"]:checked').val();
-                if (!rating) {
-                    event.preventDefault(); // Prevent form submission
-                    $('#check-star').removeClass('check-star');
-                }
             });
+        }
+
+        $('#form-add-feedback').submit(function(event) {
+            const rating = $('input[name="rating"]:checked').val();
+            if (!rating) {
+                event.preventDefault(); // Prevent form submission
+                $('#check-star').removeClass('check-star');
+            }
         });
+    });
     </script>
 </body>
 

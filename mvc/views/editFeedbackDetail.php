@@ -41,7 +41,7 @@
                             <a href="/feedback" class="text-dark back-btn "><i class="fa-solid fa-arrow-left"></i></a>
                             </div>
                             
-                            <h1 class="section-title text-center mb-5">Tất cả đánh giá chi tiết về sân ' . $data["stadium"]['name'] . '</h1>
+                            <h1 class="section-title text-center mb-5 group-box" style="height: 45px">Tất cả đánh giá chi tiết về sân ' . $data["stadium"]['name'] . '</h1>
                             
                             
                             </div>
@@ -62,7 +62,7 @@
     
                                                 ';
 
-                for ($i = 0; $i < $data["stadium"]['star'] ; $i++) {
+                for ($i = 0; $i < $data["stadium"]['star']; $i++) {
                     echo '<i class="fa-solid fa-star px-1"></i>';
                 }
 
@@ -108,8 +108,8 @@
                             
                                 <div class="form-wrapper">
                                 
-                                <form action="/feedback/update/' . $data['stadium']['id'] . '" name="form-edit-feedback" id="form-edit-feedback" class="form-add-feedback" method="post"> 
-                                        <div class="row py-3 pt-5">
+                                <form action="/feedback/update/' . $data['stadium']['id'] . '" name="form-edit-feedback " id="form-edit-feedback" class="form-add-feedback group-box" method="post"> 
+                                        <div class="row py-3">
                                             <h1 class="modal-title fs-5 text-center" >Sửa đánh giá của bạn
                                                 về sân ' . $data['stadium']['name'] . '
                                             </h1>
@@ -184,11 +184,11 @@
                 echo '</div>';
                 echo '<div class="row">
                         <div class="row">
-                            <h2 class="text-center mt-4">Tất cả đánh giá của các cầu thủ về
+                            <h2 class="feedback-title text-center mt-4 group-box " style="width: 100%;">Tất cả đánh giá của các cầu thủ về
                                 ' . $data["stadium"]['name'] . '
                             </h2>
                         </div>
-                        <div class="feedback-detail">';
+                        <div class="feedback-detail group-box">';
 
 
                 // Another feedback

@@ -58,19 +58,27 @@
                                                 <a  href='/user/account' class='menu__user--item'>
                                                     Tài khoản của tôi
                                                 </a>
-                                                <a href='/user/soccer-field-booking-calendar' class='menu__user--item'>
-                                                    Xem lịch đặt sân
-                                                </a>
-                                                <a href='/?logout=true' class='menu__user--item'>
-                                                   Đăng xuất
-                                                </a>
-                                             </div>
-                                         </div>
-                                     </div>
+                                                
                                 ";
                         }
+                        if (isset($_SESSION['user']) && $_SESSION['user']['type'] == 'user') {
+                            echo "<a href='/user/soccer-field-booking-calendar' class='menu__user--item'>
+                            Xem lịch đặt sân
+                        </a>";
+                        }
+
+                        echo "
+                                    
+                            <a href='/?logout=true' class='menu__user--item'>
+                            Đăng xuất
+                         </a>
+                      </div>
+                  </div>
+              </div>         
+                                ";
                     }
                     ?>
+
 
                 </div>
             </div>
@@ -81,9 +89,9 @@
 <!-- script -->
 
 <script>
-const more = document.querySelector('.more');
-const headerList = document.querySelector('.header__list');
-more.onclick = () => {
-    headerList.classList.toggle('active')
-}
+    const more = document.querySelector('.more');
+    const headerList = document.querySelector('.header__list');
+    more.onclick = () => {
+        headerList.classList.toggle('active')
+    }
 </script>

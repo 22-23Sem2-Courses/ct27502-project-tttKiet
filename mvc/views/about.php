@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 
     <!-- Bootstrap 5-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
     <!-- Css -->
     <link rel="stylesheet" href="./assets/css/index.css">
@@ -34,7 +35,7 @@
             <div class="content container ">
                 <div class="row intro-content">
                     <h3 class="section-title text-center mb-5 ">
-                        <strong>Tổng quan về Football Order</strong>
+                        Tổng quan về Football Order
                     </h3>
                     <div class="row mb-5">
                         <div class="row my-3">
@@ -54,13 +55,15 @@
                                 </p>
                             </div>
                             <div class="col-12 col-md-5 col-img">
-                                <img src="https://cdn.pixabay.com/photo/2017/08/10/01/38/grass-2616911_960_720.jpg" alt="" class="img-content img-fluid">
+                                <img src="https://cdn.pixabay.com/photo/2017/08/10/01/38/grass-2616911_960_720.jpg"
+                                    alt="" class="img-content img-fluid">
                             </div>
                         </div>
 
                         <div class="row my-3">
                             <div class="col-12 col-md-5 col-img" id="col-order">
-                                <img src="https://cdn.pixabay.com/photo/2017/09/23/11/43/football-2778583__340.jpg" alt="" class="img-content img-fluid ">
+                                <img src="https://cdn.pixabay.com/photo/2017/09/23/11/43/football-2778583__340.jpg"
+                                    alt="" class="img-content img-fluid ">
                             </div>
                             <div class="col-12 col-md-7 text-col mt-4">
                                 <h1 class="text-content-title text-center">
@@ -92,42 +95,52 @@
                             </div>
 
                             <div class="col-12 col-md-5  col-img">
-                                <img src="https://cdn.pixabay.com/photo/2020/04/02/11/37/football-pitch-4994688__340.jpg" alt="" class="img-content img-fluid ">
+                                <img src="https://cdn.pixabay.com/photo/2020/04/02/11/37/football-pitch-4994688__340.jpg"
+                                    alt="" class="img-content img-fluid ">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row contact mb-5">
                     <h1 class="section-title text-center my-5">
-                        <strong>Liên hệ với chúng tôi</strong>
+                        Liên hệ với chúng tôi
                     </h1>
                     <div class="col-12 col-lg-7 col-img">
                         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img src="https://images.pexels.com/photos/399187/pexels-photo-399187.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="d-block img-content img-fluid" alt="...">
+                                    <img src="https://images.pexels.com/photos/399187/pexels-photo-399187.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                                        class="d-block img-content img-fluid" alt="...">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="https://images.pexels.com/photos/114296/pexels-photo-114296.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="d-block img-content img-fluid" alt="...">
+                                    <img src="https://images.pexels.com/photos/114296/pexels-photo-114296.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                                        class="d-block img-content img-fluid" alt="...">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="d-block img-content img-fluid" alt="...">
+                                    <img src="https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                                        class="d-block img-content img-fluid" alt="...">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-lg-5 text-center list-contact pt-2">
                         <ul class="">
-                            <li class="contact-text py-2 text-start " style="font-size: 14px;"><i class="fa-sharp fa-solid fa-envelope"></i>
-                                <span style="margin-right: 33px;">Email:</span> <span class="badge rounded-pill text-bg-success">b201480@student.ctu.edu.vn</span>
+                            <li class="contact-text py-2 text-start " style="font-size: 14px;"><i
+                                    class="fa-sharp fa-solid fa-envelope"></i>
+                                <span style="margin-right: 33px;">Email:</span> <span
+                                    class="badge rounded-pill text-bg-success">b201480@student.ctu.edu.vn</span>
                             </li>
-                            <li class="contact-text py-2 text-start" style="font-size: 14px;"><i class="fa-sharp fa-solid fa-phone"></i>
-                                <span style="margin-right: 46px;">SĐT:</span> <span class="badge rounded-pill text-bg-success">0123456789</span>
+                            <li class="contact-text py-2 text-start" style="font-size: 14px;"><i
+                                    class="fa-sharp fa-solid fa-phone"></i>
+                                <span style="margin-right: 46px;">SĐT:</span> <span
+                                    class="badge rounded-pill text-bg-success">0123456789</span>
                             </li>
-                            <li class="contact-text py-2 text-start" style="font-size: 14px;"><i class="fa-brands fa-facebook"></i> <span style="margin-right: 5px;">Facebook:</span>
+                            <li class="contact-text py-2 text-start" style="font-size: 14px;"><i
+                                    class="fa-brands fa-facebook"></i> <span style="margin-right: 5px;">Facebook:</span>
                                 <span class="badge rounded-pill text-bg-success">facebook.com/ltv.1805</span>
                             </li>
-                            <li class="contact-text py-2 text-start" style="font-size: 14px;"><i class="fa-sharp fa-solid fa-location-dot"></i> <span style="margin-right: 29px;">Địa
+                            <li class="contact-text py-2 text-start" style="font-size: 14px;"><i
+                                    class="fa-sharp fa-solid fa-location-dot"></i> <span style="margin-right: 29px;">Địa
                                     chỉ:</span>
                                 <span class="badge rounded-pill text-bg-success">Khu II, Đ. 3/2, Xuân Khánh,
                                     Ninh Kiều, Cần Thơ</span>
@@ -144,7 +157,8 @@
             ?>
         </footer>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
     </script>
     <script>
     </script>
