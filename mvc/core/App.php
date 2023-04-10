@@ -1,6 +1,6 @@
 <?php
     class App {
-        protected $controller = 'Home';
+        protected $controller = 'HomeController';
         protected $action = 'index';
         protected $params = [];
 
@@ -37,7 +37,6 @@
                 call_user_func_array([$this -> controller, $this -> action], [$pa] );
             
             } else {
-
                 call_user_func_array([$this -> controller, $this -> action], $this -> params );
             }
     
