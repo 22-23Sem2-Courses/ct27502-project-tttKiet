@@ -93,7 +93,7 @@
                                             <input id="repass" name="repass" placeholder="" type="password" required>
                                         </div>
                                         <div class="form-gr">
-                                            <span class="label-err err-register"> <?php $data['errMessage'] ?> </span>
+                                            <span class="label-err err-register"> <?= $data['errMessage'] ?> </span>
                                         </div>
                                     </div>
 

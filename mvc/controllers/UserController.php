@@ -61,26 +61,24 @@ class UserController extends Controller
                     $errMessage = 'Nhập lại mật khẩu không chính xác!';
                     $this->view("login", ['register' => true, 'errMessage' => $errMessage]);
                 } else {
-                    $query = 'INSERT INTO users (fullName, phone, email, passWord, address, type) VALUES (?, ?, ?, ?, ?, ?)';
                     $user = $this->model("User");
+                    $user -> addDataUser( 
+                        $fullName,
+                        $phone,
+                        $email,
+                        $pass,
+                        $address
+                    );
+                    
+                    $isSuccess = $user -> create();
+                   
+                    if($isSuccess) {
+                        $this->view("login", ['register' => true, 'regDone' => true, 'errMessage' => $errMessage]);
+                    } else {
+                        $errMessage = 'Email đã tồn tại!';
+                        $this->view("login", ['register' => true, 'errMessage' => $errMessage]);
 
-                    try {
-                        $sth = $user->pdo->prepare($query);
-                        $sth->execute(
-                            [
-                                $fullName,
-                                $phone,
-                                $email,
-                                $pass,
-                                $address,
-                                $type
-                            ]
-                        );
-                    } catch (PDOException $e) {
-                        echo $e->getMessage();
                     }
-
-                    $this->view("login", ['register' => true, 'regDone' => true, 'errMessage' => $errMessage]);
                 }
             }
         } else {
@@ -88,6 +86,7 @@ class UserController extends Controller
         }
     }
 
+  
     function details($idBill) {
         $user = $this -> model("User");
         if (!isset( $_SESSION['user']) || empty( $_SESSION['user'])) {

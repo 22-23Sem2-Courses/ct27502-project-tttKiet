@@ -5,16 +5,20 @@ class User extends DB
     public int $id;
     public string $fullName;
     public string $phone;
+    public string $passwork;
     public string $address;
     public string $email;
     public string $type;
 
     public function authenticate($email, $password) { 
     
-        $query = "SELECT `id`, `fullName`, `phone`, `email`, `address`, `type`, `phone` FROM `users` WHERE `email`='{$email}' AND passWord='{$password}'";
+        $query = "SELECT `id`, `fullName`, `phone`, `email`, `address`, `type`, `phone` FROM `users` WHERE `email`=? AND passWord=?";
 
         try {
-            $sth = $this->pdo->query($query);
+            $sth = $this->pdo->prepare($query);
+            $sth -> execute([
+                $email, $password
+            ]);
             $row = $sth->fetch();
 
             return $row;
@@ -22,6 +26,22 @@ class User extends DB
             echo "Error: " . $e->getMessage();
         }
     }
+
+    function addDataUser(
+        $fullName,
+        $phone,
+        $email,
+        $pass,
+        $address,
+    ) {
+        $this -> fullName = $fullName;
+        $this -> phone = $phone;
+        $this -> email = $email;
+        $this -> passwork = $pass;
+        $this ->  address = $address;
+        $this ->  type = 'user';
+    }
+
 
     public function fillFromDb($email) {
         $query = "SELECT * FROM `users` WHERE `email`='{$email}'";
@@ -44,6 +64,51 @@ class User extends DB
         }
 
         
+    }
+
+    function checkExists() {
+        $query = 'SELECT * FROM users WHERE `email` = ?';
+
+        try {
+            $sth = $this->pdo->prepare($query);
+            $sth->execute(
+                [
+                    $this -> email,
+                ]
+            );
+
+
+            return $sth -> rowCount() == 1 ? true  : false;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    function create() {
+        $query = 'INSERT INTO users (fullName, phone, email, passWord, address, type) VALUES (?, ?, ?, ?, ?, ?)';
+        if($this -> checkExists()) {
+            return 0;
+        }
+        try {
+            $sth = $this->pdo->prepare($query);
+            $sth->execute(
+                [
+                    $this -> fullName,
+                    $this -> phone,
+                    $this -> email,
+                    $this -> passwork,
+                    $this ->  address,
+                    $this ->  type
+                ]
+            );
+
+            return 1;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+        return 0;
+
     }
 
     function saveWithSession() {
