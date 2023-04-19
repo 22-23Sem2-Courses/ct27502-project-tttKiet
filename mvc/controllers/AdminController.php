@@ -8,33 +8,26 @@ class AdminController extends Controller
         $this->view("listOrder");
     }
 
-    function listOrder()
+    function viewByDate($viewByDate = null)
     {
-        if (isset($_SESSION['user']) && $_SESSION['user']['type'] == 'admin') {
-            // Get stadium from adminId
-            $admin = $this->model('Admin');
-            $ownerStadium = $admin->getStadiumFromAdminId($_SESSION['user']['id']);
-            $allOrder = $admin->getOrderByStadiumId($ownerStadium[0]['id']);
-            $this->view("listOrder", ['stadium' => $ownerStadium, 'allOrder' => $allOrder]);
+        if (is_null($viewByDate)) {
+            $viewByDate = date('Y-m-d');
         }
-    }
-
-    function viewByDate($viewByDate)
-    {
         if (isset($viewByDate) && isset($_SESSION['user']) && $_SESSION['user']['type'] == 'admin') {
             $admin = $this->model('Admin');
+            $stadium = $this->model('Stadium');
             $ownerStadium = $admin->getStadiumFromAdminId($_SESSION['user']['id']);
-            $openTime = $ownerStadium[0]['openTime'];
-            $closeTime = $ownerStadium[0]['closeTime'];
             $stadiumId = $ownerStadium[0]['id'];
             $allOrder = $admin->getOrderByStadiumId($stadiumId);
+            $stadiumOwner = $stadium->fillById($stadiumId);
 
             // Filter all order in day
             $orderInDay = array_filter($allOrder, function ($item) use ($viewByDate) {
                 return substr($item['timeBook'], 0, 10) === $viewByDate;
             });
 
-            $emptyStadium = $admin->findFreeYard($viewByDate, $openTime, $closeTime, $stadiumId);
+
+            $emptyStadium = $stadiumOwner->findFreeYard($viewByDate);
 
             $this->view("listOrder", ['stadium' => $ownerStadium, 'allOrder' => $orderInDay, 'currentDate' => $viewByDate, 'emptyStadium' => $emptyStadium]);
         }
