@@ -292,6 +292,8 @@
             const dateValue = dateBookingInput.val();
             let arrayYardChildren = [];
 
+
+            // handle change input date
             dateBookingInput.on('change', function(e) {
                 getData(<?php echo $data['stadium']->id; ?>);
                 model__date__book.text($(this).val())

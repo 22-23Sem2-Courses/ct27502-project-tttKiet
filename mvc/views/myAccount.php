@@ -74,7 +74,7 @@
                                     </div>
                                     <div class="info_gr">
                                         <span class="title info__lable">Địa chỉ: </span>
-                                        <span class="content"><?= $_SESSION['user']['address'] ?></span>
+                                        <span class="content address-label"><?= $_SESSION['user']['address'] ?></span>
                                     </div>
 
                                     <div class="info_gr">
@@ -230,6 +230,8 @@
             const messageModel = $('.message-model');
             const changeInfoForm = $('form[name="changeInfo"]');
             const changePassForm = $('form[name="changePass"]');
+            const addressLabel = $('.address-label');
+
 
 
 
@@ -308,6 +310,7 @@
                         success: function(data, status) {
                             if (data.code === 0) {
                                 messageModel.text('Thay đổi thông tin thành công!')
+                                addressLabel.text(inputAddress.val())
                                 modelChangeInfo.removeClass('show');
                                 showToast();
                                 setTimeout(() => {

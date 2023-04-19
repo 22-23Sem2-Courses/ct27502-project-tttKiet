@@ -28,29 +28,6 @@ class Order extends DB
         return $this;
     }
 
-    public function getAllOrderInDay($date) {
-        try {
-            $query = "SELECT * FROM orders WHERE DATE(timeBook) = DATE(?)";
-            $sth = $this -> pdo -> prepare($query);
-            $sth->execute(
-                [
-                    $date,
-                ]
-            );
-
-            $result = [];
-            while($row = $sth->fetch()) {
-                // var_dump($row);
-                $order = new Order();
-                $order  -> fillFromDB($row);
-                $result[] = $order;
-            }
-            return $result;
-
-        } catch (PDOException $e) { 
-            echo $e -> getMessage();
-        }
-    }
 
     public function createOrder() {
         try {
